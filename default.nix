@@ -21,6 +21,7 @@ let
   ranger = pkgs.callPackage ./ranger.nix {};
   pidgin = pkgs.callPackage ./pidgin.nix {};
   evince = pkgs.callPackage ./evince.nix {};
+  ack = pkgs.callPackage ./ack.nix {};
 in
   pkgs.buildEnv rec {
     name = "deshev-nix";
@@ -38,6 +39,7 @@ in
         pidgin
         zeal
         ranger
+        ack
         evince
       ] ++ (with pkgs; [
         # vanilla packages
