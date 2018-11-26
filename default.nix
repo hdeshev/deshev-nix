@@ -36,7 +36,7 @@ in
       ranger
 
       # vanilla packages
-      git
+      gitFull
       fossil
       vimHugeX
       evince
