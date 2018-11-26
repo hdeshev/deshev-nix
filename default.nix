@@ -20,6 +20,7 @@ let
   zeal = pkgs.callPackage ./zeal.nix {};
   ranger = pkgs.callPackage ./ranger.nix {};
   pidgin = pkgs.callPackage ./pidgin.nix {};
+  evince = pkgs.callPackage ./evince.nix {};
 in
   pkgs.buildEnv rec {
     name = "deshev-nix";
@@ -36,12 +37,12 @@ in
       pidgin
       zeal
       ranger
+      evince
 
       # vanilla packages
       gitFull
       fossil
       vimHugeX
-      evince
       mpv
       ffmpeg
     ];
