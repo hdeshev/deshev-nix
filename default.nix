@@ -24,28 +24,29 @@ let
 in
   pkgs.buildEnv rec {
     name = "deshev-nix";
-    buildInputs = with pkgs; [
-      # wrapped packages - mostly fixing GUI issues on Ubuntu
-      telegram
-      discord
-      chromium
-      firefox
-      thunderbird
-      gpodder
-      rofi
-      slack
-      pidgin
-      zeal
-      ranger
-      evince
-
-      # vanilla packages
-      gitFull
-      fossil
-      vimHugeX
-      mpv
-      ffmpeg
-    ];
+    buildInputs =
+      [
+        # wrapped packages - mostly fixing GUI issues on Ubuntu
+        telegram
+        discord
+        chromium
+        firefox
+        thunderbird
+        gpodder
+        rofi
+        slack
+        pidgin
+        zeal
+        ranger
+        evince
+      ] ++ (with pkgs; [
+        # vanilla packages
+        gitFull
+        fossil
+        vimHugeX
+        mpv
+        ffmpeg
+      ]);
     # setup buildInputs and alias paths to make nix-shell work
     paths = buildInputs;
   }
