@@ -19,6 +19,7 @@ let
   slack = pkgs.callPackage ./slack.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
   ranger = pkgs.callPackage ./ranger.nix {};
+  pidgin = pkgs.callPackage ./pidgin.nix {};
 in
   pkgs.buildEnv rec {
     name = "deshev-nix";
@@ -32,6 +33,7 @@ in
       gpodder
       rofi
       slack
+      pidgin
       zeal
       ranger
 
