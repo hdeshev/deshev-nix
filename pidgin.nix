@@ -1,7 +1,6 @@
 { gui-wrapper, pidgin, pidgin-skypeweb }:
 gui-wrapper "pidgin" ''
-  mkdir -p ~/.purple/plugins
-  ln -sf ${pidgin-skypeweb}/lib/pidgin/*.so ~/.purple/plugins
+  export PURPLE_PLUGIN_PATH="${pidgin-skypeweb}/lib/pidgin"
 
   exec ${pidgin}/bin/pidgin $@
 ''
