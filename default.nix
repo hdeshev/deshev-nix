@@ -38,6 +38,7 @@ in
       # vanilla packages
       git
       fossil
+      vimHugeX
       evince
       mpv
       ffmpeg
