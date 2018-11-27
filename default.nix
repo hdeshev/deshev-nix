@@ -48,6 +48,7 @@ in
         vimHugeX
         mpv
         ffmpeg
+        qt5.qtimageformats
       ]);
     # setup buildInputs and alias paths to make nix-shell work
     paths = buildInputs;
