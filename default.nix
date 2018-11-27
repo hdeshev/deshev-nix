@@ -22,6 +22,7 @@ let
   pidgin = pkgs.callPackage ./pidgin.nix {};
   evince = pkgs.callPackage ./evince.nix {};
   ack = pkgs.callPackage ./ack.nix {};
+  vim = pkgs.callPackage ./vim.nix {};
 in
   pkgs.buildEnv rec {
     name = "deshev-nix";
@@ -41,11 +42,11 @@ in
         ranger
         ack
         evince
+        vim
       ] ++ (with pkgs; [
         # vanilla packages
         gitFull
         fossil
-        vimHugeX
         mpv
         ffmpeg
         qt5.qtimageformats
