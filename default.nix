@@ -47,6 +47,7 @@ in
         # vanilla packages
         gitFull
         fossil
+        unrar
         mpv
         ffmpeg
         qt5.qtimageformats
