@@ -22,6 +22,7 @@ let
   pidgin = pkgs.callPackage ./pidgin.nix {};
   evince = pkgs.callPackage ./evince.nix {};
   ack = pkgs.callPackage ./ack.nix {};
+  meld = pkgs.callPackage ./meld.nix {};
   vim = pkgs.callPackage ./vim.nix {};
 in
   pkgs.buildEnv rec {
@@ -41,6 +42,7 @@ in
         zeal
         ranger
         ack
+        meld
         evince
         vim
       ] ++ (with pkgs; [
