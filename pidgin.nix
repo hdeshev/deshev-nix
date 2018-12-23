@@ -2,5 +2,5 @@
 gui-wrapper "pidgin" ''
   export PURPLE_PLUGIN_PATH="${pidgin-skypeweb}/lib/pidgin"
 
-  exec ${pidgin}/bin/pidgin $@
+  gui-env ${pidgin}/bin/pidgin "$@"
 ''

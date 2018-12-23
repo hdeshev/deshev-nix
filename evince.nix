@@ -1,4 +1,4 @@
 { gui-wrapper, evince }:
 gui-wrapper "evince" ''
-  exec ${evince}/bin/evince $@
+  gui-env ${evince}/bin/evince "$@"
 ''

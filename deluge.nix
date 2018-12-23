@@ -1,4 +1,4 @@
 { gui-wrapper, deluge }:
 gui-wrapper "deluge" ''
-  exec ${deluge}/bin/deluge $@
+  gui-env ${deluge}/bin/deluge "$@"
 ''

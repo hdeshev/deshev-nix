@@ -11,6 +11,7 @@ let
   };
 
   telegram = pkgs.callPackage ./telegram.nix {};
+  viber = pkgs.callPackage ./viber.nix {};
   discord = pkgs.callPackage ./discord.nix {};
   chromium = pkgs.callPackage ./chromium.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
@@ -20,6 +21,7 @@ let
   rofi = pkgs.callPackage ./rofi.nix {};
   slack = pkgs.callPackage ./slack.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
+  mpv = pkgs.callPackage ./mpv.nix {};
   ranger = pkgs.callPackage ./ranger.nix {};
   pidgin = pkgs.callPackage ./pidgin.nix {};
   evince = pkgs.callPackage ./evince.nix {};
@@ -33,12 +35,14 @@ in
       [
         # wrapped packages - mostly fixing GUI issues on Ubuntu
         telegram
+        viber
         discord
         chromium
         firefox
         thunderbird
         gpodder
         deluge
+        mpv
         rofi
         slack
         pidgin
@@ -55,7 +59,6 @@ in
         gitFull
         fossil
         unrar
-        mpv
         ffmpeg
         qt5.qtimageformats
       ]);

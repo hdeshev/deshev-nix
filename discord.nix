@@ -1,4 +1,4 @@
 { gui-wrapper, discord }:
 gui-wrapper "discord" ''
-  exec ${discord}/bin/Discord $@
+  gui-env ${discord}/bin/Discord "$@"
 ''

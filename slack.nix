@@ -1,4 +1,4 @@
 { gui-wrapper, slack }:
 gui-wrapper "slack" ''
-  exec ${slack}/bin/slack $@
+  gui-env ${slack}/bin/slack "$@"
 ''
