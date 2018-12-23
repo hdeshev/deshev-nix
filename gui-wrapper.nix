@@ -10,7 +10,7 @@ name: code:
     }
 
     gui-exec() {
-      exec gui-run "$@"
+      exec ${nixGL}/bin/nixGLIntel "$@"
     }
 
     ${code}
