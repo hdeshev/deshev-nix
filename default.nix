@@ -24,6 +24,7 @@ let
   mpv = pkgs.callPackage ./mpv.nix {};
   ranger = pkgs.callPackage ./ranger.nix {};
   pidgin = pkgs.callPackage ./pidgin.nix {};
+  gimp = pkgs.callPackage ./gimp.nix {};
   evince = pkgs.callPackage ./evince.nix {};
   ack = pkgs.callPackage ./ack.nix {};
   meld = pkgs.callPackage ./meld.nix {};
@@ -47,6 +48,7 @@ in
         rofi
         slack
         pidgin
+        gimp
         zeal
         ranger
         ack
