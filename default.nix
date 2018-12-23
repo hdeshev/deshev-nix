@@ -5,8 +5,9 @@ let
     ];
   };
   gui-wrapper = pkgs.callPackage ./gui-wrapper.nix {};
+  nixGL = (pkgs.callPackage ./nixGL { nixpkgs = pkgs; }).nixGLIntel;
   gui-wrapper-overlay = self: super: {
-    inherit gui-wrapper;
+    inherit gui-wrapper nixGL;
   };
 
   telegram = pkgs.callPackage ./telegram.nix {};
