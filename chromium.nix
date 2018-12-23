@@ -1,4 +1,4 @@
 { gui-wrapper, chromium }:
 gui-wrapper "chromium" ''
-  gui-env ${chromium}/bin/chromium-browser "$@"
+  gui-exec ${chromium}/bin/chromium-browser "$@"
 ''

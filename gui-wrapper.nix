@@ -5,8 +5,12 @@ name: code:
     export XCURSOR_PATH=/usr/share/icons
     export GTK_PATH="$GTK_PATH:${gtk-engine-murrine}/lib/gtk-2.0"
 
-    gui-env() {
-      exec ${nixGL}/bin/nixGLIntel "$@"
+    gui-run() {
+      ${nixGL}/bin/nixGLIntel "$@"
+    }
+
+    gui-exec() {
+      exec gui-run "$@"
     }
 
     ${code}

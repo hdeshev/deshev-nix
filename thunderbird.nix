@@ -1,4 +1,4 @@
 { gui-wrapper, thunderbird }:
 gui-wrapper "thunderbird" ''
-  gui-env ${thunderbird}/bin/thunderbird "$@"
+  gui-exec ${thunderbird}/bin/thunderbird "$@"
 ''

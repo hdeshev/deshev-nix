@@ -1,4 +1,4 @@
 { gui-wrapper, tdesktop }:
 gui-wrapper "telegram" ''
-  gui-env ${tdesktop}/bin/telegram-desktop "$@"
+  gui-exec ${tdesktop}/bin/telegram-desktop "$@"
 ''

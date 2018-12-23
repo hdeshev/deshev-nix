@@ -1,4 +1,4 @@
 { gui-wrapper, mpv }:
 gui-wrapper "mpv" ''
-  gui-env ${mpv}/bin/mpv "$@"
+  gui-exec ${mpv}/bin/mpv "$@"
 ''

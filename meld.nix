@@ -1,4 +1,4 @@
 { gui-wrapper, meld }:
 gui-wrapper "meld" ''
-  gui-env ${meld}/bin/meld "$@"
+  gui-exec ${meld}/bin/meld "$@"
 ''
