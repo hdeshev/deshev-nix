@@ -28,6 +28,7 @@ let
   ack = pkgs.callPackage ./ack.nix {};
   meld = pkgs.callPackage ./meld.nix {};
   vim = pkgs.callPackage ./vim.nix {};
+  shoot = pkgs.callPackage ./shoot.nix {};
 in
   pkgs.buildEnv rec {
     name = "deshev-nix";
@@ -52,6 +53,7 @@ in
         meld
         evince
         vim
+        shoot
       ] ++ (with pkgs; [
         # vanilla packages
         tmux
