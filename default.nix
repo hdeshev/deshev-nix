@@ -15,6 +15,7 @@ let
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
   gpodder = pkgs.callPackage ./gpodder.nix {};
+  deluge = pkgs.callPackage ./deluge.nix {};
   rofi = pkgs.callPackage ./rofi.nix {};
   slack = pkgs.callPackage ./slack.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
@@ -36,6 +37,7 @@ in
         firefox
         thunderbird
         gpodder
+        deluge
         rofi
         slack
         pidgin
@@ -47,6 +49,8 @@ in
         vim
       ] ++ (with pkgs; [
         # vanilla packages
+        tmux
+        fzf
         gitFull
         fossil
         unrar
