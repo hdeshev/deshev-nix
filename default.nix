@@ -30,6 +30,7 @@ let
   meld = pkgs.callPackage ./meld.nix {};
   vim = pkgs.callPackage ./vim.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
+  rb-vpn = pkgs.callPackage ./rb-vpn.nix {};
 in
   pkgs.buildEnv rec {
     name = "deshev-nix";
@@ -65,6 +66,7 @@ in
         unrar
         ffmpeg
         qt5.qtimageformats
+        rb-vpn
       ]);
     # setup buildInputs and alias paths to make nix-shell work
     paths = buildInputs;
