@@ -31,6 +31,7 @@ let
   meld = pkgs.callPackage ./meld.nix {};
   vim = pkgs.callPackage ./vim.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
+  shutter = pkgs.callPackage ./shutter.nix {};
   rb-vpn = pkgs.callPackage ./rb-vpn.nix {};
 in
   pkgs.buildEnv rec {
@@ -62,6 +63,10 @@ in
       ] ++ (with pkgs; [
         # vanilla packages
         tmux
+        shutter
+        s3cmd
+        xclip
+        libnotify
         fzf
         gitFull
         fossil
