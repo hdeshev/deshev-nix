@@ -26,6 +26,7 @@ let
   pidgin = pkgs.callPackage ./pidgin.nix {};
   gimp = pkgs.callPackage ./gimp.nix {};
   evince = pkgs.callPackage ./evince.nix {};
+  calibre = pkgs.callPackage ./calibre.nix {};
   ack = pkgs.callPackage ./ack.nix {};
   meld = pkgs.callPackage ./meld.nix {};
   vim = pkgs.callPackage ./vim.nix {};
@@ -55,6 +56,7 @@ in
         ack
         meld
         evince
+        calibre
         vim
         shoot
       ] ++ (with pkgs; [
