@@ -71,6 +71,7 @@ in
         libnotify
         fzf
         gitFull
+        universal-ctags
         fossil
         unrar
         ffmpeg
