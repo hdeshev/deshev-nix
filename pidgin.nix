@@ -1,6 +1,8 @@
 { gui-wrapper, pidgin, pidgin-skypeweb }:
-gui-wrapper "pidgin" ''
-  export PURPLE_PLUGIN_PATH="${pidgin-skypeweb}/lib/pidgin"
-
-  gui-exec ${pidgin}/bin/pidgin "$@"
-''
+let pidgin-with-plugins = pidgin.override {
+  plugins = [pidgin-skypeweb];
+};
+in
+  gui-wrapper "pidgin" ''
+    gui-exec ${pidgin-with-plugins}/bin/pidgin "$@"
+  ''
