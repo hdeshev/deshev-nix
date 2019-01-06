@@ -64,6 +64,8 @@ in
         # vanilla packages
         tmux
         shutter
+        youtube-dl
+        python37Packages.mps-youtube
         s3cmd
         xclip
         libnotify
