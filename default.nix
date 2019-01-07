@@ -58,11 +58,12 @@ in
         meld
         evince
         calibre
-        vim
         shoot
       ] ++ (with pkgs; [
         # vanilla packages
         tmux
+        any-nix-shell
+        neovim
         shutter
         youtube-dl
         python37Packages.mps-youtube
