@@ -62,6 +62,9 @@ in
       ] ++ (with pkgs; [
         # vanilla packages
         tmux
+        tmuxPlugins.copycat
+        tmuxPlugins.yank
+        tmuxPlugins.fzf-tmux-url
         any-nix-shell
         neovim
         shutter
