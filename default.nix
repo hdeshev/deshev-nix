@@ -70,6 +70,7 @@ in
         tmuxPlugins.fzf-tmux-url
         any-nix-shell
         neovim
+        nodejs-8_x
         shutter
         youtube-dl
         python37Packages.mps-youtube
