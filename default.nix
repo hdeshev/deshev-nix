@@ -42,12 +42,15 @@ in
         telegram
         viber
         discord
-        chromium
-        firefox
+        chromium.wrapper
+        chromium.desktopItem
+        firefox.wrapper
+        firefox.desktopItem
         thunderbird
         gpodder
         deluge
-        mpv
+        mpv.wrapper
+        mpv.desktopItem
         rofi
         slack
         pidgin
