@@ -69,6 +69,7 @@ in
         tmuxPlugins.yank
         tmuxPlugins.fzf-tmux-url
         any-nix-shell
+        wmctrl
         neovim
         nodejs-8_x
         shutter
