@@ -79,6 +79,7 @@ in
         xclip
         libnotify
         fzf
+        jq
         gitFull
         universal-ctags
         fossil
