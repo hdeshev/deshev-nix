@@ -74,7 +74,9 @@ in
         nodejs-8_x
         shutter
         youtube-dl
+        python37
         python37Packages.mps-youtube
+        python37Packages.flake8
         s3cmd
         xclip
         libnotify
