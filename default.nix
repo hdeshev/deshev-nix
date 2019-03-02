@@ -68,6 +68,14 @@ in
         tmuxPlugins.copycat
         tmuxPlugins.yank
         tmuxPlugins.fzf-tmux-url
+        (pass.withExtensions (exts: with exts; [
+          pass-import
+          pass-otp
+        ]))
+        passff-host
+        gnupg
+        qtpass
+        zbar
         any-nix-shell
         wmctrl
         neovim
