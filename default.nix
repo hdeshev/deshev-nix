@@ -30,6 +30,7 @@ let
   ack = pkgs.callPackage ./ack.nix {};
   meld = pkgs.callPackage ./meld.nix {};
   vim = pkgs.callPackage ./vim.nix {};
+  radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   shoot = pkgs.callPackage ./shoot.nix {};
   shutter = pkgs.callPackage ./shutter.nix {};
   rb-vpn = pkgs.callPackage ./rb-vpn.nix {};
@@ -62,6 +63,7 @@ in
         evince
         calibre
         shoot
+        radio
       ] ++ (with pkgs; [
         # vanilla packages
         tmux
