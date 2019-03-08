@@ -28,7 +28,8 @@ let
   evince = pkgs.callPackage ./evince.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
   ack = pkgs.callPackage ./ack.nix {};
-  meld = pkgs.callPackage ./meld.nix {};
+  meld-custom = pkgs.callPackage ./meld-custom.nix {};
+  meld = pkgs.callPackage ./meld.nix { meld = meld-custom;};
   vim = pkgs.callPackage ./vim.nix {};
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   shoot = pkgs.callPackage ./shoot.nix {};
@@ -84,7 +85,6 @@ in
         nodejs-8_x
         shutter
         youtube-dl
-        python37
         python37Packages.mps-youtube
         python37Packages.flake8
         s3cmd
