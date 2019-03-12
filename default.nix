@@ -19,6 +19,7 @@ let
   gpodder = pkgs.callPackage ./gpodder.nix {};
   deluge = pkgs.callPackage ./deluge.nix {};
   rofi = pkgs.callPackage ./rofi.nix {};
+  gcalcli = pkgs.callPackage ./gcalcli.nix {};
   slack = pkgs.callPackage ./slack.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
   mpv = pkgs.callPackage ./mpv.nix {};
@@ -54,6 +55,7 @@ in
         mpv.wrapper
         mpv.desktopItem
         rofi
+        gcalcli
         slack
         pidgin
         gimp
