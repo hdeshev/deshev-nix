@@ -11,6 +11,7 @@ let script = ''
   stations[somafm-thetrip]="https://somafm.com/thetrip130.pls"
   stations[somafm-thistle]="http://ice1.somafm.com/thistle-128-mp3"
   stations[zrock]="http://193.108.24.6:8000/zrock"
+  stations[jega]="http://g5.turbohost.eu:8004/stream.m3u"
 
   station="$1"
   url="''${stations[$1]}"
