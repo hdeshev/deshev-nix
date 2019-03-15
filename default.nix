@@ -12,7 +12,8 @@ let
 
   telegram = pkgs.callPackage ./telegram.nix {};
   viber = pkgs.callPackage ./viber.nix {};
-  discord = pkgs.callPackage ./discord.nix {};
+  discord-pin = pkgs.callPackage ./discord-pin.nix {};
+  discord = pkgs.callPackage ./discord.nix { discord = discord-pin; };
   chromium = pkgs.callPackage ./chromium.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
