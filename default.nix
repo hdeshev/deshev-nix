@@ -34,6 +34,7 @@ let
   meld = pkgs.callPackage ./meld.nix { meld = meld-custom;};
   vim = pkgs.callPackage ./vim.nix {};
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
+  ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
   shutter = pkgs.callPackage ./shutter.nix {};
   rb-vpn = pkgs.callPackage ./rb-vpn.nix {};
@@ -68,6 +69,7 @@ in
         calibre
         shoot
         radio
+        ssh-ag
       ] ++ (with pkgs; [
         # vanilla packages
         tmux
