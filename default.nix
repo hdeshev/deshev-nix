@@ -94,6 +94,7 @@ in
         python37Packages.flake8
         s3cmd
         xclip
+        ncdu
         libnotify
         fzf
         jq
