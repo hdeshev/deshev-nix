@@ -1,7 +1,7 @@
-{ gui-wrapper, chromium, makeDesktopItem }:
+{ gui-run, writeShellScriptBin, chromium, makeDesktopItem }:
 rec {
-  wrapper = gui-wrapper "chromium" ''
-    gui-exec ${chromium}/bin/chromium-browser "$@"
+  wrapper = writeShellScriptBin "chromium" ''
+    ${gui-run.bin} ${chromium}/bin/chromium-browser "$@"
   '';
   desktopItem = makeDesktopItem {
     name = "chromium";

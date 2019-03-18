@@ -1,7 +1,7 @@
-{ gui-wrapper, mpv, makeDesktopItem }:
+{ gui-run, writeShellScriptBin, mpv, makeDesktopItem }:
 rec {
-  wrapper = gui-wrapper "mpv" ''
-    gui-exec ${mpv}/bin/mpv "$@"
+  wrapper = writeShellScriptBin "mpv" ''
+    ${gui-run.bin} ${mpv}/bin/mpv "$@"
   '';
 
   desktopItem = makeDesktopItem {

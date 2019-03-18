@@ -1,5 +1,5 @@
-{ gui-wrapper, viber }:
-gui-wrapper "viber" ''
+{ gui-run, writeShellScriptBin, viber }:
+writeShellScriptBin "viber" ''
   export QT_AUTO_SCREEN_SCALE_FACTOR=0
-  gui-exec ${viber}/bin/viber "$@"
+  ${gui-run.bin} ${viber}/bin/viber "$@"
 ''

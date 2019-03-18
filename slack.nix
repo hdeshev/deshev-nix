@@ -1,4 +1,4 @@
-{ gui-wrapper, slack }:
-gui-wrapper "slack" ''
-  gui-exec ${slack}/bin/slack "$@"
+{ gui-run, writeShellScriptBin, slack }:
+writeShellScriptBin "slack" ''
+  ${gui-run.bin} ${slack}/bin/slack "$@"
 ''

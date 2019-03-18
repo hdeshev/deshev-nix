@@ -1,7 +1,7 @@
-{ gui-wrapper, firefox, makeDesktopItem }:
+{ gui-run, writeShellScriptBin, firefox, makeDesktopItem }:
 rec {
-  wrapper = gui-wrapper "firefox" ''
-    gui-exec ${firefox}/bin/firefox "$@"
+  wrapper = writeShellScriptBin "firefox" ''
+    ${gui-run.bin} ${firefox}/bin/firefox "$@"
   '';
   desktopItem = makeDesktopItem {
     name = "firefox";

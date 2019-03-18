@@ -1,4 +1,4 @@
-{ gui-wrapper, gimp }:
-gui-wrapper "gimp" ''
-  gui-exec ${gimp}/bin/gimp "$@"
+{ gui-run, writeShellScriptBin, gimp }:
+writeShellScriptBin "gimp" ''
+  ${gui-run.bin} ${gimp}/bin/gimp "$@"
 ''

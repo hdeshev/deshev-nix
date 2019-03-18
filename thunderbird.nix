@@ -1,4 +1,4 @@
-{ gui-wrapper, thunderbird }:
-gui-wrapper "thunderbird" ''
-  gui-exec ${thunderbird}/bin/thunderbird "$@"
+{ gui-run, writeShellScriptBin, thunderbird }:
+writeShellScriptBin "thunderbird" ''
+  ${gui-run.bin} ${thunderbird}/bin/thunderbird "$@"
 ''

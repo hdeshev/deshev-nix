@@ -1,4 +1,4 @@
-{ gui-wrapper, gpodder }:
-gui-wrapper "gpodder" ''
-  gui-exec ${gpodder}/bin/gpodder "$@"
+{ gui-run, writeShellScriptBin, gpodder }:
+writeShellScriptBin "gpodder" ''
+  ${gui-run.bin} ${gpodder}/bin/gpodder "$@"
 ''

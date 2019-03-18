@@ -1,4 +1,5 @@
-{ gui-wrapper, ack }:
-gui-wrapper "ack" ''
+{ gui-run, writeShellScriptBin, ack }:
+writeShellScriptBin "ack" ''
+  ${gui-run.env}
   exec ${ack}/bin/ack $@
 ''

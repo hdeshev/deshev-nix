@@ -1,4 +1,4 @@
-{ gui-wrapper, deluge }:
-gui-wrapper "deluge" ''
-  gui-exec ${deluge}/bin/deluge "$@"
+{ gui-run, writeShellScriptBin, deluge }:
+writeShellScriptBin "deluge" ''
+  ${gui-run.bin} ${deluge}/bin/deluge "$@"
 ''

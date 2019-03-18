@@ -1,4 +1,4 @@
-{ gui-wrapper, evince }:
-gui-wrapper "evince" ''
-  gui-exec ${evince}/bin/evince "$@"
+{ gui-run, writeShellScriptBin, evince }:
+writeShellScriptBin "evince" ''
+  ${gui-run.bin} ${evince}/bin/evince "$@"
 ''

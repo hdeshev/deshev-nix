@@ -1,4 +1,5 @@
-{ gui-wrapper, ranger }:
-gui-wrapper "ranger" ''
+{ gui-run, writeShellScriptBin, ranger }:
+writeShellScriptBin "ranger" ''
+  ${gui-run.env}
   exec ${ranger}/bin/ranger $@
 ''

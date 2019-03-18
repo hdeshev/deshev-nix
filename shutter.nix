@@ -1,4 +1,4 @@
-{ gui-wrapper, shutter }:
-gui-wrapper "shutter" ''
-  gui-exec ${shutter}/bin/shutter "$@"
+{ gui-run, writeShellScriptBin, shutter }:
+writeShellScriptBin "shutter" ''
+  ${gui-run.bin} ${shutter}/bin/shutter "$@"
 ''

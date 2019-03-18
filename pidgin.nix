@@ -1,8 +1,8 @@
-{ gui-wrapper, pidgin, pidgin-skypeweb }:
+{ gui-run, writeShellScriptBin, pidgin, pidgin-skypeweb }:
 let pidgin-with-plugins = pidgin.override {
   plugins = [pidgin-skypeweb];
 };
 in
-  gui-wrapper "pidgin" ''
-    gui-exec ${pidgin-with-plugins}/bin/pidgin "$@"
+  writeShellScriptBin "pidgin" ''
+    ${gui-run.bin} ${pidgin-with-plugins}/bin/pidgin "$@"
   ''

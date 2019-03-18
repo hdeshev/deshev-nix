@@ -1,4 +1,4 @@
-{ gui-wrapper, tdesktop }:
-gui-wrapper "telegram" ''
-  gui-exec ${tdesktop}/bin/telegram-desktop "$@"
+{ gui-run, writeShellScriptBin, tdesktop }:
+writeShellScriptBin "telegram" ''
+  ${gui-run.bin} ${tdesktop}/bin/telegram-desktop "$@"
 ''

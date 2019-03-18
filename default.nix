@@ -1,13 +1,13 @@
 let
   pkgs = import <nixpkgs> {
     overlays = [
-      gui-wrapper-overlay
+      gui-run-overlay
     ];
   };
-  gui-wrapper = pkgs.callPackage ./gui-wrapper.nix {};
+  gui-run = pkgs.callPackage ./gui-run.nix {};
   nixGL = (pkgs.callPackage ./nixGL { nixpkgs = pkgs; }).nixGLIntel;
-  gui-wrapper-overlay = self: super: {
-    inherit gui-wrapper nixGL;
+  gui-run-overlay = self: super: {
+    inherit gui-run nixGL;
   };
 
   telegram = pkgs.callPackage ./telegram.nix {};
@@ -70,6 +70,7 @@ in
         shoot
         radio
         ssh-ag
+        gui-run.script
       ] ++ (with pkgs; [
         # vanilla packages
         tmux

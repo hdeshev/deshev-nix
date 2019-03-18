@@ -1,4 +1,4 @@
-{ gui-wrapper, meld }:
-gui-wrapper "meld" ''
-  gui-exec ${meld}/bin/meld "$@"
+{ gui-run, writeShellScriptBin, meld }:
+writeShellScriptBin "meld" ''
+  ${gui-run.bin} ${meld}/bin/meld "$@"
 ''

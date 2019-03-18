@@ -1,4 +1,4 @@
-{ gui-wrapper, discord }:
-gui-wrapper "discord" ''
-  gui-exec ${discord}/bin/Discord "$@"
+{ gui-run, writeShellScriptBin, discord }:
+writeShellScriptBin "discord" ''
+  ${gui-run.bin} ${discord}/bin/Discord "$@"
 ''
