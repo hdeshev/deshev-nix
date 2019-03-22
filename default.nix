@@ -99,6 +99,7 @@ in
         libnotify
         fzf
         jq
+        cloc
         gitFull
         universal-ctags
         fossil
