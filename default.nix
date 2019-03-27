@@ -11,7 +11,7 @@ let
   };
 
   telegram = pkgs.callPackage ./telegram.nix {};
-  viber = pkgs.callPackage ./viber.nix {};
+  # viber = pkgs.callPackage ./viber.nix {};
   discord-pin = pkgs.callPackage ./discord-pin.nix {};
   discord = pkgs.callPackage ./discord.nix { discord = discord-pin; };
   chromium = pkgs.callPackage ./chromium.nix {};
@@ -20,7 +20,6 @@ let
   gpodder = pkgs.callPackage ./gpodder.nix {};
   deluge = pkgs.callPackage ./deluge.nix {};
   rofi = pkgs.callPackage ./rofi.nix {};
-  gcalcli = pkgs.callPackage ./gcalcli.nix {};
   slack = pkgs.callPackage ./slack.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
   mpv = pkgs.callPackage ./mpv.nix {};
@@ -45,7 +44,7 @@ in
       [
         # wrapped packages - mostly fixing GUI issues on Ubuntu
         telegram
-        viber
+        # viber
         discord
         chromium.wrapper
         chromium.desktopItem
@@ -57,7 +56,6 @@ in
         mpv.wrapper
         mpv.desktopItem
         rofi
-        gcalcli
         slack
         pidgin
         gimp
