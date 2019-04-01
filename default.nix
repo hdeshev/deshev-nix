@@ -11,6 +11,7 @@ let
   };
 
   telegram = pkgs.callPackage ./telegram.nix {};
+  anki = pkgs.callPackage ./anki.nix {};
   # viber = pkgs.callPackage ./viber.nix {};
   discord-pin = pkgs.callPackage ./discord-pin.nix {};
   discord = pkgs.callPackage ./discord.nix { discord = discord-pin; };
@@ -65,6 +66,7 @@ in
         meld
         evince
         calibre
+        anki
         shoot
         radio
         ssh-ag
