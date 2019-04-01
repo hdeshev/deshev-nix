@@ -99,6 +99,7 @@ in
         libnotify
         fzf
         jq
+        shellcheck
         cloc
         gitFull
         universal-ctags
