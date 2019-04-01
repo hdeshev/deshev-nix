@@ -12,6 +12,7 @@ let script = ''
   stations[somafm-thistle]="http://ice1.somafm.com/thistle-128-mp3"
   stations[zrock]="http://193.108.24.6:8000/zrock"
   stations[jega]="http://g5.turbohost.eu:8004/stream.m3u"
+  stations[vipradio]="https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://149.56.175.167:5429/listen.pls?sid=1&t=.m3u"
 
   station="$1"
   url="''${stations[$1]}"
