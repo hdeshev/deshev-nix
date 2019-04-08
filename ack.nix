@@ -1,5 +1,5 @@
 { gui-run, writeShellScriptBin, ack }:
 writeShellScriptBin "ack" ''
-  ${gui-run.env}
+  ${gui-run.locale}
   exec ${ack}/bin/ack $@
 ''

@@ -10,8 +10,10 @@ let
     inherit gui-run nixGL;
   };
 
+  server = import ./server.nix { inherit pkgs; };
+
   telegram = pkgs.callPackage ./telegram.nix {};
-  anki = pkgs.callPackage ./anki.nix {};
+  # anki = pkgs.callPackage ./anki.nix {};
   # viber = pkgs.callPackage ./viber.nix {};
   discord-pin = pkgs.callPackage ./discord-pin.nix {};
   discord = pkgs.callPackage ./discord.nix { discord = discord-pin; };
@@ -24,15 +26,12 @@ let
   slack = pkgs.callPackage ./slack.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
   mpv = pkgs.callPackage ./mpv.nix {};
-  ranger = pkgs.callPackage ./ranger.nix {};
   pidgin = pkgs.callPackage ./pidgin.nix {};
   gimp = pkgs.callPackage ./gimp.nix {};
   evince = pkgs.callPackage ./evince.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
-  ack = pkgs.callPackage ./ack.nix {};
   meld-custom = pkgs.callPackage ./meld-custom.nix {};
   meld = pkgs.callPackage ./meld.nix { meld = meld-custom;};
-  vim = pkgs.callPackage ./vim.nix {};
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
@@ -61,22 +60,16 @@ in
         pidgin
         gimp
         zeal
-        ranger
-        ack
         meld
         evince
         calibre
-        anki
+        # anki
         shoot
         radio
         ssh-ag
         gui-run.script
       ] ++ (with pkgs; [
         # vanilla packages
-        tmux
-        tmuxPlugins.copycat
-        tmuxPlugins.yank
-        tmuxPlugins.fzf-tmux-url
         (pass.withExtensions (exts: with exts; [
           pass-import
           pass-otp
@@ -87,7 +80,6 @@ in
         zbar
         any-nix-shell
         wmctrl
-        neovim
         nodejs-8_x
         shutter
         youtube-dl
@@ -95,20 +87,13 @@ in
         python37Packages.flake8
         s3cmd
         xclip
-        ncdu
         libnotify
-        fzf
-        jq
-        shellcheck
-        cloc
-        gitFull
-        universal-ctags
         fossil
         unrar
         ffmpeg
         qt5.qtimageformats
         rb-vpn
-      ]);
+      ]) ++ server.packages;
     # setup buildInputs and alias paths to make nix-shell work
     paths = buildInputs;
   }
