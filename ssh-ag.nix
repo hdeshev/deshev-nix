@@ -3,5 +3,5 @@
 { writeShellScriptBin }:
 writeShellScriptBin "ssh-ag" ''
   command="$@"
-  ssh-agent bash -c "ssh-add ~/.ssh/id_rsa && $command"
+  ssh-agent bash -c "ssh-add ~/.ssh/id_rsa ~/.ssh/hdeshev.pem && $command"
   ''
