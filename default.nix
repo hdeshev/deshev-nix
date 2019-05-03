@@ -15,8 +15,8 @@ let
   telegram = pkgs.callPackage ./telegram.nix {};
   # anki = pkgs.callPackage ./anki.nix {};
   # viber = pkgs.callPackage ./viber.nix {};
-  discord-pin = pkgs.callPackage ./discord-pin.nix {};
-  discord = pkgs.callPackage ./discord.nix { discord = discord-pin; };
+  discord = pkgs.callPackage ./discord.nix {};
+  signal = pkgs.callPackage ./signal.nix {};
   chromium = pkgs.callPackage ./chromium.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
@@ -46,6 +46,7 @@ in
         telegram
         # viber
         discord
+        signal
         chromium.wrapper
         chromium.desktopItem
         firefox.wrapper
@@ -75,6 +76,7 @@ in
           pass-otp
         ]))
         passff-host
+        browserpass
         gnupg
         qtpass
         zbar
