@@ -93,6 +93,7 @@ in
         fossil
         unrar
         ffmpeg
+        mediainfo
         qt5.qtimageformats
         rb-vpn
       ]) ++ server.packages;
