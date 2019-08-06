@@ -15,7 +15,6 @@ let
   telegram = pkgs.callPackage ./telegram.nix {};
   # anki = pkgs.callPackage ./anki.nix {};
   # viber = pkgs.callPackage ./viber.nix {};
-  discord = pkgs.callPackage ./discord.nix {};
   signal = pkgs.callPackage ./signal.nix {};
   chromium = pkgs.callPackage ./chromium.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
@@ -45,7 +44,6 @@ in
         # wrapped packages - mostly fixing GUI issues on Ubuntu
         telegram
         # viber
-        discord
         signal
         chromium.wrapper
         chromium.desktopItem
