@@ -80,7 +80,7 @@ in
         zbar
         any-nix-shell
         wmctrl
-        nodejs-8_x
+        nodejs-10_x
         shutter
         youtube-dl
         python37Packages.mps-youtube
