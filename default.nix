@@ -29,8 +29,7 @@ let
   gimp = pkgs.callPackage ./gimp.nix {};
   evince = pkgs.callPackage ./evince.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
-  meld-custom = pkgs.callPackage ./meld-custom.nix {};
-  meld = pkgs.callPackage ./meld.nix { meld = meld-custom;};
+  meld = pkgs.callPackage ./meld.nix {};
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
