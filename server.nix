@@ -7,7 +7,6 @@ in {
   packages = [
     ranger
     ack
-    # vim
   ] ++ (with pkgs; [
     tmux
     tmuxPlugins.copycat
