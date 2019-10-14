@@ -33,7 +33,6 @@ let
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
-  shutter = pkgs.callPackage ./shutter.nix {};
   rb-vpn = pkgs.callPackage ./rb-vpn.nix {};
 in
   pkgs.buildEnv rec {
@@ -80,7 +79,6 @@ in
         any-nix-shell
         wmctrl
         nodejs-10_x
-        shutter
         youtube-dl
         python37Packages.mps-youtube
         python37Packages.flake8

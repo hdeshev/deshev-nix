@@ -1,4 +1,4 @@
-{ gui-run, writeShellScriptBin, shutter, xclip, s3cmd, libnotify }:
+{ gui-run, writeShellScriptBin, scrot, xclip, s3cmd, libnotify }:
 writeShellScriptBin "shoot" ''
   BUCKET=s3://sh.deshev.com
   URL_ROOT=http://sh.deshev.com
@@ -20,7 +20,7 @@ writeShellScriptBin "shoot" ''
   sleep 0.5s
 
   mkdir -p "$(dirname $LOCAL_PATH)"
-  ${gui-run.bin} ${shutter}/bin/shutter -e -s -o "$LOCAL_PATH"
+  ${gui-run.bin} ${scrot}/bin/scrot -s "$LOCAL_PATH"
 
   if [ -f $LOCAL_PATH ] ; then
       if upload_image ; then
