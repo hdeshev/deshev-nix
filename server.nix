@@ -2,7 +2,8 @@
 let
   ranger = pkgs.callPackage ./ranger.nix {};
   ack = pkgs.callPackage ./ack.nix {};
-  vim = pkgs.callPackage ./vim.nix {};
+  vim = pkgs.callPackage ./vim {};
+  # vim = pkgs.neovim;
 in {
   packages = [
     ranger
@@ -12,7 +13,7 @@ in {
     tmuxPlugins.copycat
     tmuxPlugins.yank
     tmuxPlugins.fzf-tmux-url
-    neovim
+    vim
     ncdu
     fzf
     jq
