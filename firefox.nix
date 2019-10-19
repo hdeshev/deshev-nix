@@ -3,7 +3,8 @@ rec {
   wrapper = writeShellScriptBin "firefox" ''
     ${gui-run.bin} ${firefox}/bin/firefox "$@"
   '';
-  desktopItem = makeDesktopItem {
+
+  desktop-item = makeDesktopItem {
     name = "firefox";
     exec = "${wrapper}/bin/firefox %U";
     icon = "${firefox}/share/icons/hicolor/64x64/apps/firefox.png";

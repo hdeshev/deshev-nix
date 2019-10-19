@@ -44,14 +44,15 @@ in
         # viber
         signal
         chromium.wrapper
-        chromium.desktopItem
+        chromium.desktop-item
         firefox.wrapper
-        firefox.desktopItem
+        firefox.desktop-item
         thunderbird
         gpodder
         deluge
         mpv.wrapper
-        mpv.desktopItem
+        mpv.wrapper-audio
+        mpv.desktop-item
         rofi
         slack
         pidgin

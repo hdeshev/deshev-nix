@@ -3,7 +3,8 @@ rec {
   wrapper = writeShellScriptBin "chromium" ''
     ${gui-run.bin} ${chromium}/bin/chromium-browser "$@"
   '';
-  desktopItem = makeDesktopItem {
+
+  desktop-item = makeDesktopItem {
     name = "chromium";
     exec = "${wrapper}/bin/chromium %U";
     icon = "${chromium}/share/icons/hicolor/64x64/apps/chromium.png";

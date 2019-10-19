@@ -4,7 +4,11 @@ rec {
     ${gui-run.bin} ${mpv}/bin/mpv "$@"
   '';
 
-  desktopItem = makeDesktopItem {
+  wrapper-audio = writeShellScriptBin "mpv-audio" ''
+    ${gui-run.bin} ${mpv}/bin/mpv --no-video "$@"
+  '';
+
+  desktop-item = makeDesktopItem {
     name = "mpv";
     exec = "${wrapper}/bin/mpv";
     icon = "${mpv}/share/icons/hicolor/64x64/apps/mpv.png";
