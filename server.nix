@@ -3,6 +3,7 @@ let
   ranger = pkgs.callPackage ./ranger.nix {};
   ack = pkgs.callPackage ./ack.nix {};
   vim = pkgs.callPackage ./vim {};
+  ctags = pkgs.callPackage ./ctags {};
   # vim = pkgs.neovim;
 in {
   packages = [
@@ -20,6 +21,6 @@ in {
     shellcheck
     cloc
     gitFull
-    universal-ctags
+    ctags.binary
   ]);
 }
