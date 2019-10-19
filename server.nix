@@ -4,7 +4,6 @@ let
   ack = pkgs.callPackage ./ack.nix {};
   vim = pkgs.callPackage ./vim {};
   ctags = pkgs.callPackage ./ctags {};
-  # vim = pkgs.neovim;
 in {
   packages = [
     ranger
