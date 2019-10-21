@@ -43,7 +43,9 @@
 --regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
 --regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/\1/c,class,classes/
 
+# Treat Salesforce APEX code like Java
 --langmap=java:+.cls
 --langmap=java:+.trigger
 
+# dbt macros in SQL scripts
 --regex-sql=/[ \t]*macro[ \t]+([a-zA-Z0-9_]+)/\1/f,functions/

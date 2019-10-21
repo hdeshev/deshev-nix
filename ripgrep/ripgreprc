@@ -1,0 +1,55 @@
+--smart-case
+--iglob
+!{.ctags-exclude,tags}
+--iglob
+!*.tmp
+--iglob
+!{tmp,log,logs,debug,target}
+--iglob
+!{.vagrant,.vagrant.d}
+# JavaScript
+--iglob
+!*.map
+--iglob
+!*min.js
+--iglob
+!*junit*
+--iglob
+!*jquery*.js
+# node.js
+--iglob
+!{node_modules,bower_components}
+# nativescript
+--iglob
+!{platforms,dist}
+--type-add
+ts:*.d.ts
+--type-add
+dts:*.d.ts
+# python
+--iglob
+!{env,venv,locale,.ropeproject,CACHE}
+# CSS/SCSS
+--type-add
+erb:*.erb
+--type-add
+slim:*.slim
+# tests
+--type-add
+test:*test*
+--type-add
+test:*spec*
+# ruby
+--type-add
+ruby:*.rake
+--type-add
+rake:*.rake
+--type-add
+rake:Rakefile
+--iglob
+!coverage
+# Salesforce
+--type-add
+cls:*.{cls,page,trigger}
+--type-add
+vim:{vimrc,.vimrc}

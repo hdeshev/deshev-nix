@@ -1,10 +1,8 @@
-{ universal-ctags, writeShellScriptBin, writeText }:
-let
-  config = writeText "ctags-options" (builtins.readFile ./ctags-options);
-  binary = writeShellScriptBin "ctags" ''
-    ${universal-ctags}/bin/ctags --options=${config} "$@"
-  '';
-in
-  {
-    binary = binary;
-  }
+{ universal-ctags, writeText }:
+{
+  config = {
+    name = ".ctags";
+    file = writeText "ctags-config" (builtins.readFile ./ctags-config);
+  };
+  binary = universal-ctags;
+}

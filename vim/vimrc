@@ -40,9 +40,9 @@ set wildignore+=*/platforms/ios/*
 
 set path=**
 
-if executable('ack')
-  set grepprg=ack\ -s\ -H\ --nogroup\ --nocolor\ --column
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 autocmd QuickFixCmdPost *grep* cwindow
