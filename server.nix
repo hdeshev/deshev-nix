@@ -5,10 +5,12 @@ let
   ripgrep = pkgs.callPackage ./ripgrep {};
   vim = pkgs.callPackage ./vim {};
   ctags = pkgs.callPackage ./ctags {};
+  git = pkgs.callPackage ./git {};
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     packages = [
       ctags.config
       ripgrep.config
+      git.config
     ];
   };
 in {
@@ -17,6 +19,7 @@ in {
     ack
     ripgrep.binary
     ctags.binary
+    git.binary
     dotfiles
   ] ++ (with pkgs; [
     tmux
@@ -29,6 +32,5 @@ in {
     jq
     shellcheck
     cloc
-    gitFull
   ]);
 }
