@@ -6,11 +6,13 @@ let
   vim = pkgs.callPackage ./vim {};
   ctags = pkgs.callPackage ./ctags {};
   git = pkgs.callPackage ./git {};
+  tmux = pkgs.callPackage ./tmux {};
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     packages = [
       ctags.config
       ripgrep.config
       git.config
+      tmux.config
     ];
   };
 in {
@@ -21,11 +23,7 @@ in {
     ctags.binary
     git.binary
     dotfiles
-  ] ++ (with pkgs; [
-    tmux
-    tmuxPlugins.copycat
-    tmuxPlugins.yank
-    tmuxPlugins.fzf-tmux-url
+  ] ++ tmux.binaries ++ (with pkgs; [
     vim
     ncdu
     fzf
