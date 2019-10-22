@@ -1,7 +1,6 @@
 { pkgs ? import <nixpkgs> {} }:
 let
   ranger = pkgs.callPackage ./ranger.nix {};
-  ack = pkgs.callPackage ./ack.nix {};
   ripgrep = pkgs.callPackage ./ripgrep {};
   vim = pkgs.callPackage ./vim {};
   ctags = pkgs.callPackage ./ctags {};
@@ -18,7 +17,6 @@ let
 in {
   packages = [
     ranger
-    ack
     ripgrep.binary
     ctags.binary
     git.binary
