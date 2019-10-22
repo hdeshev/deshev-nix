@@ -1,4 +1,6 @@
 --smart-case
+--glob
+!.{git,hg,svn}
 --iglob
 !{.ctags-exclude,tags}
 --iglob
