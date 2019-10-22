@@ -21,11 +21,12 @@ in {
     ctags.binary
     git.binary
     dotfiles
-  ] ++ tmux.binaries ++ (with pkgs; [
     vim
+  ] ++ tmux.binaries ++ (with pkgs; [
     ncdu
     fzf
     jq
+    bat
     shellcheck
     cloc
   ]);
