@@ -27,7 +27,7 @@ let
   mpv = pkgs.callPackage ./mpv.nix {};
   pidgin = pkgs.callPackage ./pidgin.nix {};
   gimp = pkgs.callPackage ./gimp.nix {};
-  evince = pkgs.callPackage ./evince.nix {};
+  atril = pkgs.callPackage ./atril.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
   meld = pkgs.callPackage ./meld.nix {};
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
@@ -59,7 +59,7 @@ in
         gimp
         zeal
         meld
-        evince
+        atril
         calibre
         # anki
         shoot

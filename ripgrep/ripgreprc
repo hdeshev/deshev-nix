@@ -4,7 +4,7 @@
 --iglob
 !*.tmp
 --iglob
-!{tmp,log,logs,debug,target}
+!{tmp,log,logs,debug,target,cache}
 --iglob
 !{.vagrant,.vagrant.d}
 # JavaScript
