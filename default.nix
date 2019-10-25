@@ -30,6 +30,7 @@ let
   atril = pkgs.callPackage ./atril.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
   meld = pkgs.callPackage ./meld.nix {};
+  py3status = pkgs.callPackage ./py3status {};
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
@@ -62,6 +63,7 @@ in
         atril
         calibre
         # anki
+        py3status.binary
         shoot
         radio
         ssh-ag
