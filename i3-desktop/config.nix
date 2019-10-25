@@ -1,4 +1,4 @@
-{ gui-run, writeText, writeShellScriptBin, bash }:
+{ gui-run, writeText, writeShellScriptBin, bash, kbdd }:
 rec {
   config = {
     name = ".config/i3/config";
@@ -40,7 +40,7 @@ rec {
       then
         echo "kbdd already running"
       else
-        kbdd
+        ${kbdd}/bin/kbdd
       fi
 
       # Start the XFCE settings daemon to make GUI programs look good
@@ -82,5 +82,10 @@ rec {
       setxkbmap -option compose:rwin
       # us & bg phonetic layout. right alt switches, caps lock lights up when bg toggled
       setxkbmap us,bg ,phonetic grp:toggle,grp_led:caps
+      '';
+
+  i3-explorer = writeShellScriptBin "i3-explorer" ''
+      export XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
+      exec pcmanfm "$@"
       '';
 }

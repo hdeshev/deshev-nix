@@ -71,6 +71,7 @@ in
         ssh-ag
         gui-run.script
         i3.i3-session-start
+        i3.i3-explorer
         i3.configure-input
       ] ++ (with pkgs; [
         # vanilla packages
@@ -91,6 +92,8 @@ in
         python37Packages.flake8
         s3cmd
         xclip
+        kbdd
+        xdotool
         libnotify
         fossil
         unrar
