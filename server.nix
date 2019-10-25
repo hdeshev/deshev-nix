@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {}, symlinks ? [] }:
 let
   ranger = pkgs.callPackage ./ranger.nix {};
   ripgrep = pkgs.callPackage ./ripgrep {};
@@ -7,12 +7,12 @@ let
   git = pkgs.callPackage ./git {};
   tmux = pkgs.callPackage ./tmux {};
   dotfiles = pkgs.callPackage ./dotfiles.nix {
-    packages = [
+    symlinks = [
       ctags.config
       ripgrep.config
       git.config
       tmux.config
-    ];
+    ] ++ symlinks;
   };
 in {
   packages = [

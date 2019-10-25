@@ -10,7 +10,8 @@ let
     inherit gui-run nixGL;
   };
 
-  server = import ./server.nix { inherit pkgs; };
+  i3 = pkgs.callPackage ./i3-desktop/config.nix {};
+  server = import ./server.nix { pkgs = pkgs; symlinks = [i3.config]; };
 
   telegram = pkgs.callPackage ./telegram.nix {};
   # anki = pkgs.callPackage ./anki.nix {};
@@ -30,7 +31,8 @@ let
   atril = pkgs.callPackage ./atril.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
   meld = pkgs.callPackage ./meld.nix {};
-  py3status = pkgs.callPackage ./py3status {};
+  py3status = pkgs.callPackage ./i3-desktop/py3status.nix {};
+  i3-config = pkgs.callPackage ./i3-desktop/config.nix {};
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
@@ -68,6 +70,8 @@ in
         radio
         ssh-ag
         gui-run.script
+        i3.i3-session-start
+        i3.configure-input
       ] ++ (with pkgs; [
         # vanilla packages
         (pass.withExtensions (exts: with exts; [
