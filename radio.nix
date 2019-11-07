@@ -13,6 +13,8 @@ let script = ''
   stations[zrock]="http://193.108.24.6:8000/zrock"
   stations[jega]="http://g5.turbohost.eu:8004/stream.m3u"
   stations[vipradio]="https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://149.56.175.167:5429/listen.pls?sid=1&t=.m3u"
+  stations[calmradio]="http://streams.calmradio.com:30928/stream"
+  stations[yt-piano]="https://www.youtube.com/watch?v=XULUBg_ZcAU"
 
   station="$1"
   url="''${stations[$1]}"
@@ -22,7 +24,7 @@ let script = ''
           printf "%20s: %s\n" $station_name ''${stations[$station_name]}
       done
   else
-      exec ${mpv}/bin/mpv "$url"
+      exec ${mpv}/bin/mpv --no-video "$url"
   fi
 '';
 in
