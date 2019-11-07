@@ -100,7 +100,6 @@ in
         ffmpeg
         mediainfo
         qt5.qtimageformats
-        (conda.override { extraPkgs = [which]; })
         rb-vpn
       ]) ++ server.packages;
     # setup buildInputs and alias paths to make nix-shell work

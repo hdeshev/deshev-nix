@@ -23,6 +23,8 @@ in {
     dotfiles
     vim
   ] ++ tmux.binaries ++ (with pkgs; [
+    fish
+    (conda.override { extraPkgs = [which zlib]; })
     ncdu
     fzf
     jq
