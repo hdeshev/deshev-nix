@@ -90,6 +90,7 @@ in
         youtube-dl
         python37Packages.mps-youtube
         python37Packages.flake8
+        python37Packages.ansible
         s3cmd
         xclip
         kbdd
