@@ -68,6 +68,7 @@ in
         vim-rails
         vim-repeat
         vim-slim
+        vim-go
         vim-addon-mw-utils
         tlib
         vim-snipmate
