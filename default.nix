@@ -73,6 +73,8 @@ in
         i3.i3-session-start
         i3.i3-explorer
         i3.configure-input
+        # RB
+        rb-vpn
       ] ++ (with pkgs; [
         # vanilla packages
         (pass.withExtensions (exts: with exts; [
@@ -101,7 +103,9 @@ in
         ffmpeg
         mediainfo
         qt5.qtimageformats
-        rb-vpn
+        # Go
+        go
+        gocode
       ]) ++ server.packages;
     # setup buildInputs and alias paths to make nix-shell work
     paths = buildInputs;
