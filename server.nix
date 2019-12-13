@@ -20,6 +20,7 @@ in {
     ripgrep.binary
     ctags.binary
     git.binary
+    git.hub
     dotfiles
     vim
   ] ++ tmux.binaries ++ (with pkgs; [
