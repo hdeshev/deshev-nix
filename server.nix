@@ -32,5 +32,6 @@ in {
     bat
     shellcheck
     cloc
+    xsv
   ]);
 }
