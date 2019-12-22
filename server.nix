@@ -19,11 +19,12 @@ in {
     ranger
     ripgrep.binary
     ctags.binary
-    git.binary
-    git.hub
     dotfiles
     vim
-  ] ++ tmux.binaries ++ (with pkgs; [
+  ]
+  ++ tmux.binaries
+  ++ git.binaries
+  ++ (with pkgs; [
     fish
     (conda.override { extraPkgs = [which zlib]; })
     ncdu
