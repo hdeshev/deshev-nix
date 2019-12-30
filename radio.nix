@@ -15,11 +15,12 @@ let script = ''
   stations[vipradio]="https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://149.56.175.167:5429/listen.pls?sid=1&t=.m3u"
   stations[calmradio]="http://streams.calmradio.com:30928/stream"
   stations[yt-piano]="https://www.youtube.com/watch?v=XULUBg_ZcAU"
+  stations[yt-house]="https://www.youtube.com/watch?v=KvRVky0r7YM"
 
   station="$1"
   url="''${stations[$1]}"
 
-  if [ "$station" == "list" ]; then
+  if [ "$url" == "" ]; then
       for station_name in "''${!stations[@]}" ; do
           printf "%20s: %s\n" $station_name ''${stations[$station_name]}
       done
