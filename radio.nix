@@ -16,6 +16,7 @@ let script = ''
   stations[calmradio]="http://streams.calmradio.com:30928/stream"
   stations[yt-piano]="https://www.youtube.com/watch?v=XULUBg_ZcAU"
   stations[yt-house]="https://www.youtube.com/watch?v=KvRVky0r7YM"
+  stations[solo-piano]="https://pianosolo.streamguys1.com/live"
 
   station="$1"
   url="''${stations[$1]}"
