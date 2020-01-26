@@ -14,6 +14,7 @@ let
   server = import ./server.nix { pkgs = pkgs; symlinks = [i3.config]; };
 
   telegram = pkgs.callPackage ./telegram.nix {};
+  discord = pkgs.callPackage ./discord.nix {};
   # anki = pkgs.callPackage ./anki.nix {};
   # viber = pkgs.callPackage ./viber.nix {};
   signal = pkgs.callPackage ./signal.nix {};
@@ -44,6 +45,7 @@ in
       [
         # wrapped packages - mostly fixing GUI issues on Ubuntu
         telegram
+        discord
         # viber
         signal
         chromium.wrapper
