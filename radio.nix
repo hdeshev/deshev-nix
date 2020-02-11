@@ -17,6 +17,7 @@ let script = ''
   stations[yt-piano]="https://www.youtube.com/watch?v=XULUBg_ZcAU"
   stations[yt-house]="https://www.youtube.com/watch?v=KvRVky0r7YM"
   stations[solo-piano]="https://pianosolo.streamguys1.com/live"
+  stations[fimbul-radio]="https://www.youtube.com/watch?v=60UGcXAW0qM"
 
   station="$1"
   url="''${stations[$1]}"
