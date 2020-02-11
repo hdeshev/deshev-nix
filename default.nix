@@ -17,7 +17,8 @@ let
   discord = pkgs.callPackage ./discord.nix {};
   # anki = pkgs.callPackage ./anki.nix {};
   # viber = pkgs.callPackage ./viber.nix {};
-  signal = pkgs.callPackage ./signal.nix {};
+  signal-desktop = pkgs.callPackage ./signal-desktop { };
+  signal = pkgs.callPackage ./signal.nix { signal-desktop = signal-desktop; };
   chromium = pkgs.callPackage ./chromium.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
