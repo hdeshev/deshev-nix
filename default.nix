@@ -93,9 +93,8 @@ in
         wmctrl
         nodejs-10_x
         youtube-dl
-        python37Packages.mps-youtube
+        mps-youtube
         python37Packages.flake8
-        python37Packages.ansible
         s3cmd
         xclip
         kbdd
