@@ -27,6 +27,8 @@ in {
   ++ (with pkgs; [
     fish
     (conda.override { extraPkgs = [which zlib]; })
+    pipenv
+    poetry
     ncdu
     fzf
     jq
