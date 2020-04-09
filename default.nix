@@ -15,8 +15,6 @@ let
 
   telegram = pkgs.callPackage ./telegram.nix {};
   discord = pkgs.callPackage ./discord.nix {};
-  # anki = pkgs.callPackage ./anki.nix {};
-  # viber = pkgs.callPackage ./viber.nix {};
   signal-desktop = pkgs.callPackage ./signal-desktop { };
   signal = pkgs.callPackage ./signal.nix { signal-desktop = signal-desktop; };
   chromium = pkgs.callPackage ./chromium.nix {};
@@ -47,7 +45,6 @@ in
         # wrapped packages - mostly fixing GUI issues on Ubuntu
         telegram
         discord
-        # viber
         signal
         chromium.wrapper
         chromium.desktop-item
@@ -93,7 +90,6 @@ in
         wmctrl
         nodejs-10_x
         youtube-dl
-        mps-youtube
         python37Packages.flake8
         s3cmd
         xclip
