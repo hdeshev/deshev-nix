@@ -192,23 +192,23 @@ mode "move" {
 
 # start dmenu (a program launcher)
 bindsym $mod+r exec ~/.nix-profile/bin/rofi -show run
-bindsym $mod+Control+l exec xscreensaver-command -lock
+bindsym $mod+Control+l exec --no-startup-id xscreensaver-command -lock
 
-bindsym $mod+Shift+n exec ~/.nix-profile/bin/xdotool windowunmap $(~/.nix-profile/bin/xdotool getactivewindow)
-bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
-bindsym $mod+F2 exec amixer -D pulse set Master 1+ toggle
-bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
-bindsym $mod+F3 exec amixer -D pulse set Master 5%-
-bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+
-bindsym $mod+F4 exec amixer -D pulse set Master 5%+
+bindsym $mod+Shift+n exec --no-startup-id ~/.nix-profile/bin/xdotool windowunmap $(~/.nix-profile/bin/xdotool getactivewindow)
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
+bindsym $mod+F2 exec --no-startup-id amixer -D pulse set Master 1+ toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%-
+bindsym $mod+F3 exec --no-startup-id amixer -D pulse set Master 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 5%+
+bindsym $mod+F4 exec --no-startup-id amixer -D pulse set Master 5%+
 
-bindsym $mod+F8 exec brightness down
-bindsym $mod+F9 exec brightness up
+bindsym $mod+F8 exec --no-startup-id brightness down
+bindsym $mod+F9 exec --no-startup-id brightness up
 
 bindsym $mod+e exec ~/.nix-profile/bin/i3-explorer
 
 # screengrabbing
-bindsym $mod+i exec ~/.nix-profile/bin/shoot
+bindsym $mod+i exec --no-startup-id ~/.nix-profile/bin/shoot
 
 
 # App-specific window config
