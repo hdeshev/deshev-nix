@@ -73,6 +73,7 @@ in
         tlib
         vim-snipmate
         vim-surround
+        vimwiki
       ];
     };
   }
