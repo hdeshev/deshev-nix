@@ -61,12 +61,15 @@ in
         radio
         ssh-ag
         gui-run.script
-        i3.i3-session-start
-        i3.i3-explorer
-        i3.configure-input
         # RB
         rb-vpn
-      ] ++ (with pkgs; [
+      ] ++ (with i3; [
+        i3-session-start
+        i3-session-hdeshev-rbank-1
+        i3-session-lever
+        i3-explorer
+        configure-input
+      ]) ++ (with pkgs; [
         # vanilla packages
         (pass.withExtensions (exts: with exts; [
           pass-import
@@ -77,7 +80,6 @@ in
         gnupg
         qtpass
         zbar
-        any-nix-shell
         wmctrl
         nodejs-10_x
         youtube-dl
