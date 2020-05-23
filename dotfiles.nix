@@ -1,4 +1,4 @@
-{ writeShellScriptBin, symlinks }:
+{ writeShellScriptBin, symlinks, browserpass }:
 let
   symlinkLine = (item: "create_symlink '${item.file}' '${item.name}'");
   commandLines = map symlinkLine symlinks;
@@ -19,4 +19,7 @@ in
     sed -n '/# COMMANDS/,$p' "$(command -v dotfiles)"
     # COMMANDS
     ${commands}
+
+    ln -sfv "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json" "$HOME/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts/com.github.browserpass.native.json"
+
   ''
