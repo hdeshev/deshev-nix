@@ -16,6 +16,7 @@ let
   telegram = pkgs.callPackage ./telegram.nix {};
   signal = pkgs.callPackage ./signal.nix {};
   chromium = pkgs.callPackage ./chromium.nix {};
+  brave = pkgs.callPackage ./brave.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
   deluge = pkgs.callPackage ./deluge.nix {};
@@ -44,6 +45,8 @@ in
         chromium.desktop-item
         firefox.wrapper
         firefox.desktop-item
+        brave.wrapper
+        brave.desktop-item
         thunderbird
         deluge
         mpv.wrapper
