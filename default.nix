@@ -11,7 +11,15 @@ let
   };
 
   i3 = pkgs.callPackage ./i3-desktop/config.nix {};
-  server = import ./server.nix { pkgs = pkgs; symlinks = [i3.config]; };
+  termite = pkgs.callPackage ./termite {};
+
+  server = import ./server.nix {
+    pkgs = pkgs;
+    symlinks = [
+      i3.config
+      termite.config
+    ];
+  };
 
   telegram = pkgs.callPackage ./telegram.nix {};
   signal = pkgs.callPackage ./signal.nix {};
@@ -66,6 +74,7 @@ in
         gui-run.script
         # RB
         rb-vpn
+        termite.binary
       ] ++ (with i3; [
         i3-session-start
         i3-session-hdeshev-rbank-1
@@ -74,7 +83,6 @@ in
         configure-input
       ]) ++ (with pkgs; [
         # vanilla packages
-        termite
         (pass.withExtensions (exts: with exts; [
           pass-import
           pass-otp
