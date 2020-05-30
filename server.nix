@@ -4,11 +4,13 @@ let
   ripgrep = pkgs.callPackage ./ripgrep {};
   vim = pkgs.callPackage ./vim {};
   ctags = pkgs.callPackage ./ctags {};
+  starship = pkgs.callPackage ./starship {};
   git = pkgs.callPackage ./git {};
   tmux = pkgs.callPackage ./tmux {};
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     symlinks = [
       ctags.config
+      starship.config
       ripgrep.config
       git.config
       tmux.config
@@ -19,6 +21,7 @@ in {
     ranger
     ripgrep.binary
     ctags.binary
+    starship.binary
     dotfiles
     vim
   ]
