@@ -97,7 +97,6 @@ in
         xdotool
         libnotify
         fossil
-        unrar
         ffmpeg
         mediainfo
         qt5.qtimageformats
