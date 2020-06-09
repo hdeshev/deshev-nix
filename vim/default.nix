@@ -58,7 +58,8 @@ in
         fzf-plugin
         fzf-vim
         nerdcommenter
-        syntastic
+        # syntastic
+        ale
         tagbar
         typescript-vim
         vim-commaobject

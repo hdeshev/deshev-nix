@@ -1,5 +1,4 @@
 "buffers
-map <F5> :SyntasticCheck<CR>
 nmap <silent> <unique> <Leader>s :Errors<CR>
 map <F7> :tn<CR>
 map <F4> :ToggleBufExplorer<CR>
