@@ -7,6 +7,7 @@ let
   starship = pkgs.callPackage ./starship {};
   git = pkgs.callPackage ./git {};
   tmux = pkgs.callPackage ./tmux {};
+  python = pkgs.callPackage ./python {};
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     symlinks = [
       ctags.config
@@ -27,11 +28,9 @@ in {
   ]
   ++ tmux.binaries
   ++ git.binaries
+  ++ python.tools
   ++ (with pkgs; [
     fish
-    (conda.override { extraPkgs = [which zlib]; })
-    pipenv
-    poetry
     ncdu
     fzf
     jq
