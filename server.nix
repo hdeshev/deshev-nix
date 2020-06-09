@@ -8,6 +8,7 @@ let
   git = pkgs.callPackage ./git {};
   tmux = pkgs.callPackage ./tmux {};
   python = pkgs.callPackage ./python {};
+  setup-nix-env = pkgs.callPackage ./setup-nix-env.nix {};
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     symlinks = [
       ctags.config
@@ -23,6 +24,7 @@ in {
     ripgrep.binary
     ctags.binary
     starship.binary
+    setup-nix-env
     dotfiles
     vim
   ]
