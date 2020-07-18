@@ -100,10 +100,6 @@ in
         ffmpeg
         mediainfo
         qt5.qtimageformats
-        # Go
-        go
-        gocode
-        golangci-lint
       ]) ++ server.packages;
     # setup buildInputs and alias paths to make nix-shell work
     paths = buildInputs;
