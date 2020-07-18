@@ -17,14 +17,7 @@ rec {
       ${if-installed-code}
       ${configure-input}/bin/configure-input
 
-      if [ "$(pidof redshift)" ] ; then
-          echo "redshift already running"
-      else
-          if_installed redshift-gtk -l 42.75:23.20&
-      fi
-
       ${bash}/bin/bash "$HOME/.fehbg"
-
 
       #per-window kbd layout selection
       if [ "$(pidof kbdd)" ]
