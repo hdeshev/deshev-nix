@@ -26,7 +26,7 @@ let
   slack = pkgs.callPackage ./slack.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
   mpv = pkgs.callPackage ./mpv.nix {};
-  pidgin = pkgs.callPackage ./pidgin.nix {};
+  pidgin = pkgs.callPackage ./pidgin {};
   gimp = pkgs.callPackage ./gimp.nix {};
   atril = pkgs.callPackage ./atril.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
