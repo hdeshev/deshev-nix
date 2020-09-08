@@ -14,7 +14,6 @@ let
   server = import ./server.nix { pkgs = pkgs; symlinks = [i3.config]; };
 
   telegram = pkgs.callPackage ./telegram.nix {};
-  discord = pkgs.callPackage ./discord.nix {};
   signal-desktop = pkgs.callPackage ./signal-desktop { };
   signal = pkgs.callPackage ./signal.nix { signal-desktop = signal-desktop; };
   chromium = pkgs.callPackage ./chromium.nix {};
@@ -43,7 +42,6 @@ in
       [
         # wrapped packages - mostly fixing GUI issues on Ubuntu
         telegram
-        discord
         signal
         chromium.wrapper
         chromium.desktop-item
