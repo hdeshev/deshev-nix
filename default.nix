@@ -14,8 +14,7 @@ let
   server = import ./server.nix { pkgs = pkgs; symlinks = [i3.config]; };
 
   telegram = pkgs.callPackage ./telegram.nix {};
-  signal-desktop = pkgs.callPackage ./signal-desktop { };
-  signal = pkgs.callPackage ./signal.nix { signal-desktop = signal-desktop; };
+  signal = pkgs.callPackage ./signal.nix {};
   chromium = pkgs.callPackage ./chromium.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
