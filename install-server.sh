@@ -13,7 +13,7 @@ eval "$(starship init bash)"
 ' >> ~/.bashrc
 
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-nix-channel --add https://nixos.org/channels/nixos-20.03 nixpkgs
+nix-channel --add https://nixos.org/channels/nixos-20.09 nixpkgs
 nix-channel --update
 
 nix-env -f ./server-env.nix -i
