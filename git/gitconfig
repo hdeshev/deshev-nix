@@ -36,6 +36,8 @@
 
 [push]
     default = tracking
+[pull]
+    rebase = true
 [color]
     ui = auto
 [color "diff"]
