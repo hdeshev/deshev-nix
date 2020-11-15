@@ -86,7 +86,6 @@ in
         (pass.withExtensions (exts: with exts; [
           pass-import
           pass-otp
-          browserpass
         ]))
         passff-host
         browserpass
