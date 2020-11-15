@@ -25,7 +25,6 @@ let
   mpv = pkgs.callPackage ./mpv.nix {};
   pidgin = pkgs.callPackage ./pidgin {};
   gimp = pkgs.callPackage ./gimp.nix {};
-  atril = pkgs.callPackage ./atril.nix {};
   calibre = pkgs.callPackage ./calibre.nix {};
   meld = pkgs.callPackage ./meld.nix {};
   py3status = pkgs.callPackage ./i3-desktop/py3status.nix {};
@@ -57,7 +56,6 @@ in
         gimp
         zeal
         meld
-        atril
         calibre
         # anki
         py3status.binary
