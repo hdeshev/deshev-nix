@@ -136,5 +136,3 @@ let g:NERDSpaceDelims = 1
 let g:apex_backup_folder="/tmp/apex/backup"
 let g:apex_temp_folder="/tmp/apex/temp"
 let g:apex_properties_folder="/tmp/apex/properties"
-
-let g:vimwiki_list = [{'path': '~/notes/', 'path_html': '~/notes/html/'}]
