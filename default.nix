@@ -18,7 +18,6 @@ let
   chromium = pkgs.callPackage ./chromium.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
-  gpodder = pkgs.callPackage ./gpodder.nix {};
   deluge = pkgs.callPackage ./deluge.nix {};
   rofi = pkgs.callPackage ./rofi.nix {};
   zeal = pkgs.callPackage ./zeal.nix {};
@@ -46,7 +45,6 @@ in
         firefox.wrapper
         firefox.desktop-item
         thunderbird
-        gpodder
         deluge
         mpv.wrapper
         mpv.wrapper-audio
