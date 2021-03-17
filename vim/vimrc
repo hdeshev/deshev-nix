@@ -133,6 +133,7 @@ let g:js_indent_typescript = 1
 
 let g:NERDSpaceDelims = 1
 
-let g:apex_backup_folder="/tmp/apex/backup"
-let g:apex_temp_folder="/tmp/apex/temp"
-let g:apex_properties_folder="/tmp/apex/properties"
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace']
+\}

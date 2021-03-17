@@ -39,13 +39,6 @@ let
       homepage = https://github.com/slim-template/vim-slim;
     };
   };
-  vim-forcedotcom = vimUtils.buildVimPlugin {
-    name = "vim-forcedotcom";
-    src = ./vim-forcedotcom;
-    meta = {
-      homepage = https://github.com/ejholmes/vim-forcedotcom;
-    };
-  };
 in
   neovim.override {
     configure = {
@@ -58,12 +51,10 @@ in
         fzf-plugin
         fzf-vim
         nerdcommenter
-        # syntastic
         ale
         tagbar
         typescript-vim
         vim-commaobject
-        vim-forcedotcom
         vim-js-indent
         vim-nix
         vim-rails
