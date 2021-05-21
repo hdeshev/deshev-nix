@@ -62,7 +62,6 @@ in
         mpv.desktop-item
         rofi
         pidgin
-        gimp
         zeal
         meld
         calibre
