@@ -38,7 +38,6 @@ let
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
-  st = pkgs.callPackage ./st {};
   rb-vpn = pkgs.callPackage ./rb-vpn.nix {};
 in
   pkgs.buildEnv rec {
@@ -59,7 +58,6 @@ in
         mpv.wrapper
         mpv.wrapper-audio
         mpv.desktop-item
-        st
         rofi
         pidgin
         zeal
