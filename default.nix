@@ -75,8 +75,8 @@ in
         rb-vpn
       ] ++ (with i3; [
         i3-session-start
-        i3-session-hdeshev-rbank-1
         i3-session-lever
+        i3-session-curve-linux
         i3-explorer
         configure-input
       ]) ++ (with pkgs; [
