@@ -11,13 +11,11 @@ let
   };
 
   i3 = pkgs.callPackage ./i3-desktop/config.nix {};
-  termite = pkgs.callPackage ./termite {};
 
   server = import ./server.nix {
     pkgs = pkgs;
     symlinks = [
       i3.config
-      termite.config
     ];
   };
 
@@ -40,6 +38,7 @@ let
   radio = pkgs.callPackage ./radio.nix { mpv = mpv.wrapper; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shoot = pkgs.callPackage ./shoot.nix {};
+  st = pkgs.callPackage ./st.nix {};
   rb-vpn = pkgs.callPackage ./rb-vpn.nix {};
 in
   pkgs.buildEnv rec {
@@ -60,6 +59,7 @@ in
         mpv.wrapper
         mpv.wrapper-audio
         mpv.desktop-item
+        st
         rofi
         pidgin
         zeal
@@ -73,7 +73,6 @@ in
         gui-run.script
         # RB
         rb-vpn
-        termite.binary
       ] ++ (with i3; [
         i3-session-start
         i3-session-hdeshev-rbank-1
