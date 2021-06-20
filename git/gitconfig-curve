@@ -1,6 +1,9 @@
 [user]
     name = Hristo Deshev
-    email = hristo@deshev.com
+    email = hristo.deshev@imaginecurve.com
+
+[url "git@git.curve.tools:"]
+        insteadOf = https://git.curve.tools/
 
 [gui]
 	fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
@@ -27,6 +30,7 @@
     autocrlf = input
     safecrlf = true
     excludesfile = ~/.gitignore
+	pager = less -FX
 
 [branch]
     autosetuprebase = always

@@ -21,5 +21,5 @@ in
     ${commands}
 
     ln -sfv "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json" "$HOME/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts/com.github.browserpass.native.json"
-
+    symlink-git-config
   ''
