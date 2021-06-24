@@ -25,20 +25,6 @@ let
       homepage = https://github.com/jason0x43/vim-js-indent;
     };
   };
-  vim-rails = vimUtils.buildVimPlugin {
-    name = "vim-rails";
-    src = ./vim-rails;
-    meta = {
-      homepage = https://github.com/tpope/vim-rails;
-    };
-  };
-  vim-slim = vimUtils.buildVimPlugin {
-    name = "vim-slim";
-    src = ./vim-slim;
-    meta = {
-      homepage = https://github.com/slim-template/vim-slim;
-    };
-  };
 in
   neovim.override {
     configure = {
@@ -57,9 +43,7 @@ in
         vim-commaobject
         vim-js-indent
         vim-nix
-        vim-rails
         vim-repeat
-        vim-slim
         vim-addon-mw-utils
         tlib
         vim-snipmate
