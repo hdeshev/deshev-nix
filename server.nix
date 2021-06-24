@@ -9,12 +9,21 @@ let
   tmux = pkgs.callPackage ./tmux {};
   python = pkgs.callPackage ./python {};
   setup-nix-env = pkgs.callPackage ./setup-nix-env.nix {};
+  shellrc = pkgs.writeShellScriptBin "shellrc" ''
+    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
+    export LOCALE_ARCHIVE=${pkgs.glibcLocales}/lib/locale/locale-archive
+    export XDG_DATA_DIRS="$HOME/.nix-profile/share:$HOME/.share:''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
+
+    eval "$(starship init bash)"
+
+    alias g='git'
+  '';
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     symlinks = [
       ctags.config
       starship.config
       ripgrep.config
-      git.config
       tmux.config
     ] ++ symlinks;
   };
@@ -25,6 +34,7 @@ in {
     ctags.binary
     starship.binary
     setup-nix-env
+    shellrc
     dotfiles
     vim
   ]

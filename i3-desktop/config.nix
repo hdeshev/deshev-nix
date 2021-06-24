@@ -30,38 +30,16 @@ rec {
       "i3-session-$(hostname)"
       '';
 
-  i3-session-hdeshev-rbank-1 = writeShellScriptBin "i3-session-hdeshev-rbank-1" ''
-      ${gui-run.locale}
-      ${if-installed-code}
-
-      xscreensaver -no-splash &
-
-      #clipboard history
-      if [ "$(pidof parcellite)" ]
-      then
-        echo "parcellite already running"
-      else
-        parcellite &
-      fi
-
-      # Start the XFCE settings daemon to make GUI programs look good
-      xfsettingsd --replace
-
-      # Network Manager applet - connect to various networks (eth, wlan)
-      if [ "$(pidof nm-applet)" ]
-      then
-        echo "nm-applet already running"
-      else
-        nm-applet &
-      fi
-
-      xfce4-power-manager
-      '';
-
   i3-session-lever = writeShellScriptBin "i3-session-lever" ''
       ${gui-run.locale}
       ${if-installed-code}
-      echo "lever session starting..."
+      lxqt-session &
+      '';
+
+  i3-session-curve-linux = writeShellScriptBin "i3-session-curve-linux" ''
+      ${gui-run.locale}
+      ${if-installed-code}
+      lxqt-session &
       '';
 
   configure-input = writeShellScriptBin "configure-input" ''
@@ -79,9 +57,6 @@ rec {
       if_installed synclient PalmDetect=1
       if_installed synclient PalmMinWidth=8
       if_installed synclient PalmMinZ=100
-
-      # "mouse" speed and acceleration
-      xset m 6 1
 
       # remap caps lock to ctrl
       setxkbmap -option ctrl:nocaps
