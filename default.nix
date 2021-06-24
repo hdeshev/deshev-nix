@@ -91,7 +91,6 @@ in
         wmctrl
         nodejs-10_x
         youtube-dl
-        python37Packages.flake8
         s3cmd
         xclip
         kbdd

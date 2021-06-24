@@ -7,7 +7,6 @@ let
   starship = pkgs.callPackage ./starship {};
   git = pkgs.callPackage ./git {};
   tmux = pkgs.callPackage ./tmux {};
-  python = pkgs.callPackage ./python {};
   setup-nix-env = pkgs.callPackage ./setup-nix-env.nix {};
   shellrc = pkgs.writeShellScriptBin "shellrc" ''
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"
@@ -40,7 +39,6 @@ in {
   ]
   ++ tmux.binaries
   ++ git.binaries
-  ++ python.tools
   ++ (with pkgs; [
     fish
     ncdu
