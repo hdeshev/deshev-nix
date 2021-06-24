@@ -17,23 +17,7 @@ rec {
       ${if-installed-code}
       ${configure-input}/bin/configure-input
 
-      xscreensaver -no-splash &
-
-      if [ "$(pidof redshift)" ] ; then
-          echo "redshift already running"
-      else
-          if_installed redshift-gtk -l 42.75:23.20&
-      fi
-
       ${bash}/bin/bash "$HOME/.fehbg"
-
-      #clipboard history
-      if [ "$(pidof parcellite)" ]
-      then
-        echo "parcellite already running"
-      else
-        parcellite &
-      fi
 
       #per-window kbd layout selection
       if [ "$(pidof kbdd)" ]
@@ -41,6 +25,23 @@ rec {
         echo "kbdd already running"
       else
         ${kbdd}/bin/kbdd
+      fi
+
+      "i3-session-$(hostname)"
+      '';
+
+  i3-session-hdeshev-rbank-1 = writeShellScriptBin "i3-session-hdeshev-rbank-1" ''
+      ${gui-run.locale}
+      ${if-installed-code}
+
+      xscreensaver -no-splash &
+
+      #clipboard history
+      if [ "$(pidof parcellite)" ]
+      then
+        echo "parcellite already running"
+      else
+        parcellite &
       fi
 
       # Start the XFCE settings daemon to make GUI programs look good
@@ -55,6 +56,12 @@ rec {
       fi
 
       xfce4-power-manager
+      '';
+
+  i3-session-lever = writeShellScriptBin "i3-session-lever" ''
+      ${gui-run.locale}
+      ${if-installed-code}
+      echo "lever session starting..."
       '';
 
   configure-input = writeShellScriptBin "configure-input" ''
@@ -86,6 +93,6 @@ rec {
 
   i3-explorer = writeShellScriptBin "i3-explorer" ''
       export XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
-      exec pcmanfm "$@"
+      exec pcmanfm-qt "$@"
       '';
 }

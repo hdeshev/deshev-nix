@@ -230,6 +230,7 @@ for_window [class="Toplevel"] floating enable
 assign [class="Firefox"] B
 assign [class="Google-chrome"] B
 assign [class="Chromium"] B
+assign [class="Brave-browser"] B
 assign [class="Skype"] 8
 assign [class="Pidgin"] 8
 assign [class="Viber"] 8

@@ -11,11 +11,20 @@ let
   };
 
   i3 = pkgs.callPackage ./i3-desktop/config.nix {};
-  server = import ./server.nix { pkgs = pkgs; symlinks = [i3.config]; };
+  termite = pkgs.callPackage ./termite {};
+
+  server = import ./server.nix {
+    pkgs = pkgs;
+    symlinks = [
+      i3.config
+      termite.config
+    ];
+  };
 
   telegram = pkgs.callPackage ./telegram.nix {};
   signal = pkgs.callPackage ./signal.nix {};
   chromium = pkgs.callPackage ./chromium.nix {};
+  brave = pkgs.callPackage ./brave.nix {};
   firefox = pkgs.callPackage ./firefox.nix {};
   thunderbird = pkgs.callPackage ./thunderbird.nix {};
   deluge = pkgs.callPackage ./deluge.nix {};
@@ -44,6 +53,8 @@ in
         chromium.desktop-item
         firefox.wrapper
         firefox.desktop-item
+        brave.wrapper
+        brave.desktop-item
         thunderbird
         deluge
         mpv.wrapper
@@ -51,7 +62,6 @@ in
         mpv.desktop-item
         rofi
         pidgin
-        gimp
         zeal
         meld
         calibre
@@ -61,12 +71,16 @@ in
         radio
         ssh-ag
         gui-run.script
-        i3.i3-session-start
-        i3.i3-explorer
-        i3.configure-input
         # RB
         rb-vpn
-      ] ++ (with pkgs; [
+        termite.binary
+      ] ++ (with i3; [
+        i3-session-start
+        i3-session-hdeshev-rbank-1
+        i3-session-lever
+        i3-explorer
+        configure-input
+      ]) ++ (with pkgs; [
         # vanilla packages
         (pass.withExtensions (exts: with exts; [
           pass-import
@@ -77,7 +91,6 @@ in
         gnupg
         qtpass
         zbar
-        any-nix-shell
         wmctrl
         nodejs-10_x
         youtube-dl
