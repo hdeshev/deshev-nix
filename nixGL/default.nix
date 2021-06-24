@@ -1,130 +1,29 @@
-{ system ? builtins.currentSystem,
+{ ## Nvidia informations.
+  # Version of the system kernel module. Let it to null to enable auto-detection.
   nvidiaVersion ? null,
+  # Hash of the Nvidia driver .run file. null is fine, but fixing a value here
+  # will be more reproducible and more efficient.
   nvidiaHash ? null,
-  # pkgs ? import <nixpkgs>
-  nixpkgs
+  # Alternatively, you can pass a path that points to a nvidia version file
+  # and let nixGL extract the version from it. That file must be a copy of
+  # /proc/driver/nvidia/version. Nix doesn't like zero-sized files (see
+  # https://github.com/NixOS/nix/issues/3539 ).
+  nvidiaVersionFile ? null,
+  # Enable 32 bits driver
+  # This is on by default, you can switch it to off if you want to reduce a
+  # bit the size of nixGL closure.
+  enable32bits ? true,
+  # Make sure to enable config.allowUnfree to the instance of nixpkgs to be
+  # able to access the nvidia drivers.
+  pkgs ? import <nixpkgs> {
+    config = { allowUnfree = true; };
+  }
 }:
-
-# let
-  # overlay = self: super:
-  # {
-     # linuxPackages = super.linuxPackages //
-     # {
-         # nvidia_x11 = (super.linuxPackages.nvidia_x11.override {
-          # }).overrideAttrs(oldAttrs: rec {
-            # name = "nvidia-${nvidiaVersion}";
-            # src = super.fetchurl {
-              # url = "http://download.nvidia.com/XFree86/Linux-x86_64/${nvidiaVersion}/NVIDIA-Linux-x86_64-${nvidiaVersion}.run";
-              # sha256 = nvidiaHash;
-            # };
-            # useGLVND = true;
-          # });
-     # };
-  # };
-
-  # nixpkgs = pkgs { overlays = [overlay]; config = {allowUnfree = true;};};
-# in
-with nixpkgs;
-rec {
-  nvidia = linuxPackages.nvidia_x11;
-
-  nvidiaLibsOnly = nvidia.override {
-      libsOnly = true;
-      kernel = null;
-  };
-
-  nixGLNvidiaBumblebee = runCommand "nixGLNvidiaBumblebee" {
-    buildInputs = [ nvidia bumblebee ];
-
-     meta = with pkgs.stdenv.lib; {
-         description = "A tool to launch OpenGL application on system other than NixOS - Nvidia bumblebee version";
-         homepage = "https://github.com/guibou/nixGL";
-     };
-    } ''
-      mkdir -p $out/bin
-      cat > $out/bin/nixGLNvidiaBumblebee << FOO
-      #!/usr/bin/env sh
-      export LD_LIBRARY_PATH=${nvidia}/lib:\$LD_LIBRARY_PATH
-      ${bumblebee}/bin/optirun --ldpath ${libglvnd}/lib:${nvidia}/lib "\$@"
-      FOO
-
-      chmod u+x $out/bin/nixGLNvidiaBumblebee
-      '';
-
-  nixNvidiaWrapper = api: runCommand "nix${api}Nvidia" {
-    buildInputs = [ nvidiaLibsOnly ];
-
-     meta = with pkgs.stdenv.lib; {
-         description = "A tool to launch ${api} application on system other than NixOS - Nvidia version";
-         homepage = "https://github.com/guibou/nixGL";
-     };
-    } ''
-      mkdir -p $out/bin
-      cat > $out/bin/nix${api}Nvidia << FOO
-      #!/usr/bin/env sh
-      export LD_LIBRARY_PATH=${libglvnd}/lib:${nvidiaLibsOnly}/lib:\$LD_LIBRARY_PATH
-      "\$@"
-      FOO
-
-      chmod u+x $out/bin/nix${api}Nvidia
-      '';
-
-  nixGLNvidia = nixNvidiaWrapper "GL";
-
-  nixVulkanNvidia = nixNvidiaWrapper "Vulkan";
-
-  nixGLIntel = runCommand "nixGLIntel" {
-    buildInputs = [ mesa_drivers ];
-
-     meta = with pkgs.stdenv.lib; {
-         description = "A tool to launch OpenGL application on system other than NixOS - Intel version";
-         homepage = "https://github.com/guibou/nixGL";
-     };
-    } ''
-      mkdir -p $out/bin
-      cat > $out/bin/nixGLIntel << FOO
-      #!/usr/bin/env sh
-      export LIBGL_DRIVERS_PATH=${mesa_drivers}/lib/dri
-      export LD_LIBRARY_PATH=${mesa_drivers}/lib:\$LD_LIBRARY_PATH
-      "\$@"
-      FOO
-
-      chmod u+x $out/bin/nixGLIntel
-      '';
-
-  nixVulkanIntel = runCommand "nixVulkanIntel" {
-     meta = with pkgs.stdenv.lib; {
-         description = "A tool to launch Vulkan application on system other than NixOS - Intel version";
-         homepage = "https://github.com/guibou/nixGL";
-     };
-   } ''
-     mkdir -p "$out/bin"
-     cat > "$out/bin/nixVulkanIntel" << EOF
-     #!/usr/bin/env bash
-     if [ ! -z "$LD_LIBRARY_PATH" ]; then
-       echo "Warning, nixVulkanIntel overwriting existing LD_LIBRARY_PATH" 1>&2
-     fi
-     export LD_LIBRARY_PATH=${lib.makeLibraryPath [
-       zlib
-       libdrm
-       xorg.libX11
-       xorg.libxcb
-       xorg.libxshmfence
-       wayland
-       gcc.cc
-     ]}:\$LD_LIBRARY_PATH
-     exec "\$@"
-     EOF
-     chmod u+x "$out/bin/nixVulkanIntel"
-     ${shellcheck}/bin/shellcheck "$out/bin/nixVulkanIntel"
-    '';
-
-  nixGLCommon = nixGL:
-    runCommand "nixGLCommon" {
-       buildInuts = [nixGL];
-    }
-    ''
-       mkdir -p "$out/bin"
-       cp "${nixGL}/bin/${nixGL.name}" "$out/bin/nixGL";
-    '';
+pkgs.callPackage ./nixGL.nix {
+  inherit
+    nvidiaVersion
+    nvidiaVersionFile
+    nvidiaHash
+    enable32bits
+    ;
 }

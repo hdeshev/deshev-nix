@@ -1,29 +1,12 @@
-This tool tries to solve the "OpenGL" problem on nix. Works with Nvidia cards (with bumblebee) and most of the card supported by mesa (such as Intel, AMD and nouveau using the free driver). It works for Vulkan programs too.
+# NixGL
 
-# Quick start
-
-Suppose you have a configuration with an nvidia card, host driver version `390.25`
-
-```
-# clone the repository
-git clone https://github.com/guibou/nixGL
-cd nixGL
-
-# build and install the wrapper
-./nvidiaInstall.py 390.25 nixGLNvidia
-
-# install the wrapper
-nix-env -i ./result
-
-# use it with any OpenGL application
-nixGLNvidia blender
-```
+NixGL solve the "OpenGL" problem with [nix](https://nixos.org/nix/). It works with all mesa drivers (Intel cards and "free" version for Nvidia or AMD cards), Nvidia proprietary drivers, and even with hybrid configuration via bumblebee. It works for Vulkan programs too.
 
 # Motivation
 
-You use Nix on any distribution, and any GL application installed fails with this error:
+Using Nix on non-NixOS distros, it's common to see GL application errors:
 
-```
+```bash
 $ program
 libGL error: unable to load driver: i965_dri.so
 libGL error: driver pointer missing
@@ -35,117 +18,93 @@ libGL error: unable to load driver: swrast_dri.so
 libGL error: failed to load driver: swrast
 ```
 
-This library contains a wrapper which is able to launch GL or Vulkan applications:
+NixGL provides a set of wrappers able to launch GL or Vulkan applications:
 
-```
-nixGLXXX program
-nixVulkanXXX program
-```
-
-# Installation / Usage
-
-Clone this git repository:
-
-```
-git clone https://github.com/guibou/nixGL
-cd nixGL
+```bash
+$ nixGL program
+$ nixVulkan program
 ```
 
-## Optional (if NVIDIA): Grab your NVIDIA driver version
+# Installation
 
-Using `glxinfo` from your host system, grab the driver version, here `390.25`:
+## nix-channel (Recommended)
 
-```
-$ glxinfo | grep NVIDIA
-...
-OpenGL core profile version string: 4.5.0 NVIDIA 390.25
-...
-```
+To get started,
 
-## Build
-
-### For mesa (intel, amd, nouveau, ...)
-
-For mesa (intel, amd, nouveau) GL, the package is historically called `nixGLIntel`:
-
-```
-nix-build -A nixGLIntel
+```bash
+$ nix-channel --add https://github.com/guibou/nixGL/archive/master.tar.gz nixgl && nix-channel --update
+$ nix-env -iA nixgl.nixGLDefault   # or replace `nixGLDefault` with your desired wrapper
 ```
 
-For Intel Vulkan:
+Many wrappers are available, depending on your hardware and the graphical API you want to use (i.e. Vulkan or OpenGL). You may want to install a few of them, for example if you want to support OpenGL and Vulkan on a laptop with an hybrid configuration.
 
+OpenGL wrappers:
+
+- `nixGLDefault`: Tries to auto-detect and install Nvidia, if not, fallback to mesa. Recommended. Invoke with `nixGL program`.
+- `nixGLNvidia`: Proprietary Nvidia driver.
+- `nixGLIntel`: Mesa OpenGL implementation (intel, amd, nouveau, ...).
+- `nixGLNvidiaBumblebee`: Proprietary Nvidia driver on hybrid hardware.
+
+Vulkan wrappers:
+
+- `nixVulkanNvidia`: Proprietary Nvidia driver.
+- `nixVulkanIntel`: Mesa Vulkan implementation.
+
+The Vulkan wrapper also sets `VK_LAYER_PATH` the validation layers in the nix store.
+
+## Installation from source
+
+```bash
+$ git clone https://github.com/guibou/nixGL
+$ cd nixGL
+$ nix-env -f ./ -iA <your desired wrapper name>
 ```
-nix-build -A nixVulkanIntel
-```
-
-### For nvidia
-
-Due to some restriction on `nix` 2.0, the `nix-build` must be called with a wrapper script.
-
-For NVIDIA GL alone:
-
-```
-./nvidiaInstall.py 390.25 nixGLNvidia
-```
-
-For NVIDIA Vulkan alone:
-
-Note that the NVIDIA GL and Vulkan wrappers are identical aside from the name
-
-```
-./nvidiaInstall.py 390.25 nixVulkanNvidia
-```
-
-(replace `390.25` with the host driver version gathered earlier.)
-
-For Nvidia with bumblebee:
-
-```
-./nvidiaInstall.py 390.25 nixGLNvidiaBumblebee
-```
-
-(replace `390.25` with the host driver version gathered earlier.)
-
-## Install
-
-The previous commands only build the wrapper, now stored inside `./result`, you need to install it:
-
-```
-nix-env -i ./result
-```
-
-(Note, you can iterate many time on this process to install as many driver as needed. Common example are `nixGLIntel` with `nixGLNvidiaBumblebee`)
-
 
 # Usage
 
-For GL programs
+Just launch the program you want prefixed by the right wrapper.
 
-```
-nixGLXXX program args
-```
-
-For Vulkan programs
-
-```
-nixVulkanXXX program args
-```
-
-For example (on my dual GPU laptop):
+For example, for OpenGL programs:
 
 ```bash
-$ nixGLIntel glxinfo | grep -i 'OpenGL version string'
+$ nixGL program args                 # For the `nixGLDefault` wrapper, recommended.
+$ nixGLNvidia program args
+$ nixGLIntel program args
+$ nixGLNvidiaBumblebee program args
+```
+
+For Vulkan programs:
+
+```bash
+$ nixVulkanNividia program args
+$ nixVulkanIntel program args
+```
+
+# OpenGL - Hybrid Intel + Nvidia laptop
+
+After installing `nixGLIntel` and `nixGLNvidiaBumblebee`.
+
+```bash
+$ nixGLIntel $(nix run nixpkgs.glxinfo -c glxinfo) | grep -i 'OpenGL version string'
 OpenGL version string: 3.0 Mesa 17.3.3
-$ nixGLNvidiaBumblebee glxinfo | grep -i 'OpenGL version string'
+$ nixGLNvidiaBumblebee $(nix run nixpkgs.glxinfo -c glxinfo) | grep -i 'OpenGL version string'
 OpenGL version string: 4.6.0 NVIDIA 390.25
 ```
 
-Another example (on an XPS 9560 with the Intel GPU selected):
+If the program you'd like to run is already installed by nix in your current environment, you can simply run it with the wrapper, for example:
+
+```bash
+$ nixGLIntel blender
+```
+
+# Vulkan - Intel GPU
+
+After installing `nixVulkanIntel`.
 
 ```bash
 $ sudo apt install mesa-vulkan-drivers
 ...
-$ nixVulkanIntel $(nix-build '<nixpkgs>' --no-out-link -A vulkan-loader)/bin/vulkaninfo | grep VkPhysicalDeviceProperties -A 7
+$ nixVulkanIntel $(nix-build '<nixpkgs>' --no-out-link -A vulkan-tools)/bin/vulkaninfo | grep VkPhysicalDeviceProperties -A 7
 VkPhysicalDeviceProperties:
 ===========================
         apiVersion     = 0x400036  (1.0.54)
@@ -156,34 +115,38 @@ VkPhysicalDeviceProperties:
         deviceName     = Intel(R) HD Graphics 630 (Kaby Lake GT2)
 ```
 
-# Limitations
-
-Does not work now for AMD drivers because I dont' have the hardware.
-
-# Comparaison with similar tools
-
-[nix-install-vendor-gl.sh](https://github.com/deepfire/nix-install-vendor-gl)
-provides a similar system with a different approach:
-
-- it auto detect the host driver
-- it needs root access and set your system for a specific driver
-- it only provides wrappers for nvidia (without bumblebee)
-
-Both projects are now really similar and the only reason I did not
-contributed to `nix-install-vendor-gl.sh` was because initial `nixGL`
-had a totally different approach.
-
 # Troubleshooting
 
-If by any chance it does not work, you need to install nixGL using the same nixpkgs checkout than the one of your application. For example:
+## Nvidia auto detection does not work
 
 ```bash
-NIX_PATH=nixpkgs=https://github.com/nixos/nixpkgs/archive/94d80eb72474bf8243b841058ce45eac2b163943.tar.gz nix build -f ./default.nix nixGLIntel
+building '/nix/store/ijs5h6h07faai0k74diiy5b2xlxh891g-auto-detect-nvidia.drv'...
+pcregrep: Failed to open /proc/driver/nvidia/version: No such file or directory
+builder for '/nix/store/ijs5h6h07faai0k74diiy5b2xlxh891g-auto-detect-nvidia.drv' failed with exit code 2
+error: build of '/nix/store/ijs5h6h07faai0k74diiy5b2xlxh891g-auto-detect-nvidia.drv' faile
 ```
 
-# Old nvidia drivers
+You can run the Nvidia installer using an explicit version string instead of the automatic detection method:
 
-Users of nvidia legacy driver should use the `backport/noGLVND` branch.
+```bash
+nix-build -A nixGLNvidia --argstr nvidiaVersion 440.82
+```
+
+The version of your driver can be found using `glxinfo` from your system default package manager, or `nvidia-settings`.
+
+## On nixOS
+
+`nixGL` can also be used on nixOS if the system is installed with a different
+nixpkgs clone than the one your application are installed with. Override the
+`pkgs` argument of the script with the correct nixpkgs clone:
+
+```bash
+nix-build ./default.nix -A nixGLIntel --arg pkgs "import path_to_your_nixpkgs {}".
+```
+
+## Old nvidia drivers
+
+Users of Nvidia legacy driver should use the `backport/noGLVND` branch. This branch is not tested and may not work well, please open a bug report, it will be taken care of as soon as possible.
 
 # `nixGLCommon`
 
@@ -193,3 +156,16 @@ For example:
 
 ```
 nix-build -E "with import ./default.nix {}; nixGLCommon nixGLIntel"
+```
+
+# Limitations
+
+`nixGL` is badly tested, mostly because it is difficult to test automatically in a continuous integration context because you need access to different type of hardware.
+
+Some OpenGL configurations may not work, for example AMD proprietary drivers. There is no fundamental limitation, so if you want support for theses configurations, open an issue.
+
+# Hacking
+
+One great way to contribute to nixGL is to run the test suite. Just run
+`./Test.hs` in the main directory and check that all the test relevant to your
+hardware are green.

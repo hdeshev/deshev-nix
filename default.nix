@@ -5,7 +5,7 @@ let
     ];
   };
   gui-run = pkgs.callPackage ./gui-run.nix {};
-  nixGL = (pkgs.callPackage ./nixGL { nixpkgs = pkgs; }).nixGLIntel;
+  nixGL = (pkgs.callPackage ./nixGL/nixGL.nix {}).nixGLIntel;
   gui-run-overlay = self: super: {
     inherit gui-run nixGL;
   };
