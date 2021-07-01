@@ -40,7 +40,6 @@ in {
   ++ tmux.binaries
   ++ git.binaries
   ++ (with pkgs; [
-    fish
     ncdu
     fzf
     jq
