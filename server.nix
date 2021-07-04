@@ -16,7 +16,20 @@ let
 
     eval "$(starship init bash)"
 
+    export PATH="$HOME/.bin:$PATH"
+
     alias g='git'
+    alias gw='cd ~/w'
+    ffg() {
+        git_repos="$(find . \
+                        -path "*go/pkg*" -prune -o \
+                        -path "*/.*" -type d -prune -o \
+                        -exec test -d {}/.git \; -prune \
+                        -print)"
+
+        selected="$(echo "$git_repos" | fzf)"
+        cd "$selected"
+    }
   '';
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     symlinks = [
