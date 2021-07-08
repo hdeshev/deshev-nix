@@ -89,7 +89,8 @@ in
         qtpass
         zbar
         wmctrl
-        nodejs-10_x
+        nodejs-14_x
+        yarn
         youtube-dl
         s3cmd
         xclip
