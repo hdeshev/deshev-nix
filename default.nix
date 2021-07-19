@@ -1,13 +1,21 @@
+# nixpkgs https://nixos.org/channels/nixos-21.05
+# nixpkgs-unstable https://nixos.org/channels/nixpkgs-unstable
 let
   pkgs = import <nixpkgs> {
     overlays = [
       gui-run-overlay
+      neovim-overlay
     ];
   };
   gui-run = pkgs.callPackage ./gui-run.nix {};
   nixGL = (pkgs.callPackage ./nixGL/nixGL.nix {}).nixGLIntel;
   gui-run-overlay = self: super: {
     inherit gui-run nixGL;
+  };
+  pkgs-unstable = import <nixpkgs-unstable> {};
+  neovim = pkgs-unstable.neovim;
+  neovim-overlay = self: super: {
+    inherit neovim;
   };
 
   i3 = pkgs.callPackage ./i3-desktop/config.nix {};
