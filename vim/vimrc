@@ -124,6 +124,9 @@ set tags=./tags;/
 " show trailing whitespace as dots
 set list listchars=tab:·\ ,trail:·
 
+set emoji
+set lazyredraw
+
 
 let g:GPGDefaultRecipients = ["hristo@deshev.com"]
 
@@ -139,3 +142,7 @@ let g:ale_fixers = {
 \}
 
 let g:snipMate = { 'snippet_version' : 1 }
+
+lua << EOF
+require'lspconfig'.gopls.setup{}
+EOF

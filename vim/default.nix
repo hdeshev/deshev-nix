@@ -48,6 +48,14 @@ in
         tlib
         vim-snipmate
         vim-surround
+        vim-go
+        # completion-nvim
+        coc-nvim
+        plenary-nvim
+        popup-nvim
+        # telescope-nvim
+        lspsaga-nvim
+        nvim-lspconfig
       ];
     };
   }
