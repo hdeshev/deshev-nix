@@ -58,10 +58,6 @@ nnoremap <C-l> <C-w>l
 map <F12> :set filetype=xml<CR>
 map <S-F12> :set filetype=html<CR>
 
-"make Enter select the autocomplete menu item
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
-imap <C-Space> <C-X><C-O>
-
 " Emacs (blasphemy!) shortcuts for cmd line and insert editing
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -94,3 +90,20 @@ vnoremap ^ g^
 vnoremap <HOME> g^
 vnoremap $ g$
 vnoremap <END> g$
+
+" LSP
+nnoremap <space>f :Lspsaga lsp_finder<CR>
+nnoremap <space><space> :Lspsaga hover_doc<CR>
+nnoremap <space>p :Lspsaga preview_definition<CR>
+nnoremap <C-space> :Lspsaga signature_help<CR>
+inoremap <C-space> <C-o>:Lspsaga signature_help<CR>
+nnoremap <space>dd :Lspsaga show_line_diagnostics<CR>
+nnoremap [d :Lspsaga diagnostic_jump_next<CR>
+nnoremap ]d :Lspsaga diagnostic_jump_prev<CR>
+
+nnoremap <space>ca :Lspsaga code_action<CR>
+vnoremap <space>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <space>rn :Lspsaga rename<CR>
+
+nnoremap <space>i :lua vim.lsp.buf.implementation()<CR>
+nnoremap <space>r :lua vim.lsp.buf.references()<CR>
