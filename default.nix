@@ -98,6 +98,8 @@ in
         zbar
         wmctrl
         nodejs-14_x
+        nodePackages.typescript
+        nodePackages.typescript-language-server
         yarn
         youtube-dl
         s3cmd

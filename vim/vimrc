@@ -145,4 +145,5 @@ let g:snipMate = { 'snippet_version' : 1 }
 
 lua << EOF
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.tsserver.setup{}
 EOF
