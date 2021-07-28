@@ -92,7 +92,6 @@ vnoremap $ g$
 vnoremap <END> g$
 
 " LSP
-nnoremap <space>f :Lspsaga lsp_finder<CR>
 nnoremap <space><space> :Lspsaga hover_doc<CR>
 nnoremap <space>p :Lspsaga preview_definition<CR>
 nnoremap <C-space> :Lspsaga signature_help<CR>
@@ -105,5 +104,7 @@ nnoremap <space>ca :Lspsaga code_action<CR>
 vnoremap <space>ca :<C-U>Lspsaga range_code_action<CR>
 nnoremap <space>rn :Lspsaga rename<CR>
 
-nnoremap <space>i :lua vim.lsp.buf.implementation()<CR>
-nnoremap <space>r :lua vim.lsp.buf.references()<CR>
+nnoremap <space>dd :Telescope lsp_definitions<CR>
+nnoremap <space>ii :Telescope lsp_implementations<CR>
+nnoremap <space>rr :Telescope lsp_references<CR>
+nnoremap <space>ss :Telescope lsp_dynamic_workspace_symbols<CR>

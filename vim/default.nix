@@ -53,7 +53,7 @@ in
         coc-nvim
         plenary-nvim
         popup-nvim
-        # telescope-nvim
+        telescope-nvim
         lspsaga-nvim
         nvim-lspconfig
       ];
