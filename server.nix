@@ -30,6 +30,8 @@ let
         selected="$(echo "$git_repos" | fzf)"
         cd "$selected"
     }
+
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
   '';
   dotfiles = pkgs.callPackage ./dotfiles.nix {
     symlinks = [
