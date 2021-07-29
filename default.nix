@@ -100,6 +100,8 @@ in
         nodejs-14_x
         nodePackages.typescript
         nodePackages.typescript-language-server
+        pkgs.php74
+        pkgs.php74.packages.composer
         yarn
         youtube-dl
         s3cmd
