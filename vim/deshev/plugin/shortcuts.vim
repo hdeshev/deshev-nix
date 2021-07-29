@@ -92,19 +92,19 @@ vnoremap $ g$
 vnoremap <END> g$
 
 " LSP
-nnoremap <space><space> :Lspsaga hover_doc<CR>
-nnoremap <space>p :Lspsaga preview_definition<CR>
-nnoremap <C-space> :Lspsaga signature_help<CR>
-inoremap <C-space> <C-o>:Lspsaga signature_help<CR>
-nnoremap <space>dd :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent> <space><space> :Lspsaga hover_doc<CR>
+nnoremap <silent> <space>p :Lspsaga preview_definition<CR>
+nnoremap <silent> <C-space> :Lspsaga signature_help<CR>
+inoremap <silent> <C-space> <C-o>:Lspsaga signature_help<CR>
+nnoremap <silent> <space>dd :Lspsaga show_line_diagnostics<CR>
 nnoremap [d :Lspsaga diagnostic_jump_next<CR>
 nnoremap ]d :Lspsaga diagnostic_jump_prev<CR>
 
-nnoremap <space>ca :Lspsaga code_action<CR>
-vnoremap <space>ca :<C-U>Lspsaga range_code_action<CR>
-nnoremap <space>rn :Lspsaga rename<CR>
+nnoremap <silent> <space>ca :Lspsaga code_action<CR>
+vnoremap <silent> <space>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent> <space>rn :Lspsaga rename<CR>
 
-nnoremap <space>dd :Telescope lsp_definitions<CR>
-nnoremap <space>ii :Telescope lsp_implementations<CR>
-nnoremap <space>rr :Telescope lsp_references<CR>
-nnoremap <space>ss :Telescope lsp_dynamic_workspace_symbols<CR>
+nnoremap <silent> <space>dd :Telescope lsp_definitions<CR>
+nnoremap <silent> <space>ii :Telescope lsp_implementations<CR>
+nnoremap <silent> <space>rr :Telescope lsp_references<CR>
+nnoremap <silent> <space>ss :Telescope lsp_dynamic_workspace_symbols<CR>
