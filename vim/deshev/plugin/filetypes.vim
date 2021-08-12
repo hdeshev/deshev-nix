@@ -40,8 +40,8 @@ autocmd FileType markdown setlocal textwidth=100
 " Git commit lines wrap at 70 characters
 autocmd FileType gitcommit setlocal textwidth=70
 
-" Fix typescript 2-space indents
-autocmd FileType typescript setlocal shiftwidth=4 tabstop=4
+" Force 2-space indents for typescript
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 
 " Override python-mode's fascist line number setting
 autocmd FileType python setlocal nonumber
