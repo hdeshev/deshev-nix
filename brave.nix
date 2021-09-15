@@ -1,7 +1,7 @@
 { gui-run, writeShellScriptBin, brave, makeDesktopItem }:
 rec {
   wrapper = writeShellScriptBin "brave" ''
-    ${gui-run.bin} ${brave}/bin/brave "$@"
+    ${gui-run.bin} ${brave}/bin/brave --force-prefers-reduced-motion "$@"
   '';
 
   desktop-item = makeDesktopItem {
