@@ -1,25 +1,29 @@
 { neovim, vimPlugins, vimUtils, fzf }:
 let
   personal = vimUtils.buildVimPlugin {
-    name = "personal";
+    pname = "deshev-vimconfig";
+    version = "1.0.0";
     src = ./deshev;
     meta = {
       homepage = https://github.com/hdeshev;
     };
   };
   fzf-plugin = vimUtils.buildVimPlugin {
-    name = "fzf-plugin";
+    pname = "fzf-plugin";
+    version = "1.0.0";
     src = "${fzf}/share/vim-plugins/*";
   };
   vim-commaobject = vimUtils.buildVimPlugin {
-    name = "vim-commaobject";
+    pname = "vim-commaobject";
+    version = "1.0.0";
     src = ./vim-commaobject;
     meta = {
       homepage = https://github.com/austintaylor/vim-commaobject;
     };
   };
   vim-js-indent = vimUtils.buildVimPlugin {
-    name = "vim-js-indent";
+    pname = "vim-js-indent";
+    version = "1.0.0";
     src = ./vim-js-indent;
     meta = {
       homepage = https://github.com/jason0x43/vim-js-indent;
@@ -49,7 +53,7 @@ in
         vim-snipmate
         vim-surround
         vim-go
-        # completion-nvim
+        completion-nvim
         coc-nvim
         plenary-nvim
         popup-nvim
