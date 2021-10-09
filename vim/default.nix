@@ -29,37 +29,41 @@ let
       homepage = https://github.com/jason0x43/vim-js-indent;
     };
   };
+  plugins = with vimPlugins; [
+    personal
+    vim-vinegar
+    bufexplorer
+    editorconfig-vim
+    fzf-plugin
+    fzf-vim
+    nerdcommenter
+    ale
+    tagbar
+    typescript-vim
+    vim-commaobject
+    vim-js-indent
+    vim-nix
+    vim-repeat
+    vim-addon-mw-utils
+    tlib
+    vim-snipmate
+    vim-surround
+    vim-go
+    completion-nvim
+    coc-nvim
+    plenary-nvim
+    popup-nvim
+    telescope-nvim
+    lspsaga-nvim
+    nvim-lspconfig
+  ];
 in
   neovim.override {
     configure = {
       customRC = builtins.readFile ./vimrc;
-      plug.plugins = with vimPlugins; [
-        personal
-        vim-vinegar
-        bufexplorer
-        editorconfig-vim
-        fzf-plugin
-        fzf-vim
-        nerdcommenter
-        ale
-        tagbar
-        typescript-vim
-        vim-commaobject
-        vim-js-indent
-        vim-nix
-        vim-repeat
-        vim-addon-mw-utils
-        tlib
-        vim-snipmate
-        vim-surround
-        vim-go
-        completion-nvim
-        coc-nvim
-        plenary-nvim
-        popup-nvim
-        telescope-nvim
-        lspsaga-nvim
-        nvim-lspconfig
-      ];
+      plug.plugins = plugins;
+      packages.myPlugins = {
+          start = plugins;
+      };
     };
   }
