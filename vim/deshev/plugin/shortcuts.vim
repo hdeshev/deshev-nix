@@ -1,19 +1,19 @@
 "buffers
-nmap <silent> <unique> <Leader>s :Errors<CR>
+nmap <silent> <Leader>s :Errors<CR>
 map <F7> :tn<CR>
 map <F4> :ToggleBufExplorer<CR>
 imap <F4> <Esc>:ToggleBufExplorer<CR>
 map <C-F4> :bd<CR>
 nnoremap <silent> <F2> :TagbarToggle<CR>
-nmap <silent> <unique> <Leader>f :Files<CR>
-nmap <silent> <unique> <Leader>b :Buffers<CR>
-nmap <silent> <unique> <Leader>gg :Rg<CR>
-nmap <silent> <unique> <Leader>g :grep
-nmap <silent> <unique> <Leader>gw :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nmap <silent> <Leader>f :Files<CR>
+nmap <silent> <Leader>b :Buffers<CR>
+nmap <silent> <Leader>gg :Rg<CR>
+nmap <silent> <Leader>g :grep
+nmap <silent> <Leader>gw :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " make sure you have your wildignore properly set to ignore unneeded files in
 " projects
 " map <unique> <Leader>f :e **/*
-nmap <silent> <unique> <Leader>t :Tags<CR>
+nmap <silent> <Leader>t :Tags<CR>
 map <silent><F3> :cclose<CR>:lclose<CR>:TagbarClose<CR>
 map <silent><leader><F3> :call tags#GenerateTags()<CR>
 map <F8> :cnext<CR>
