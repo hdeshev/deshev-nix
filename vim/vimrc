@@ -143,6 +143,9 @@ let g:ale_fixers = {
 
 let g:snipMate = { 'snippet_version' : 1 }
 
+let g:go_fmt_command="gopls"
+let g:go_gopls_gofumpt=1
+
 lua << EOF
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}

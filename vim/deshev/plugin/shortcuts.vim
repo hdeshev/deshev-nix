@@ -12,7 +12,7 @@ nmap <silent> <Leader>g :grep
 nmap <silent> <Leader>gw :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " make sure you have your wildignore properly set to ignore unneeded files in
 " projects
-" map <unique> <Leader>f :e **/*
+" map <Leader>f :e **/*
 nmap <silent> <Leader>t :Tags<CR>
 map <silent><F3> :cclose<CR>:lclose<CR>:TagbarClose<CR>
 map <silent><leader><F3> :call tags#GenerateTags()<CR>
