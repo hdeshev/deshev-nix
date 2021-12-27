@@ -1,0 +1,43 @@
+[user]
+    name = Hristo Deshev
+    email = hristo@deshev.com
+
+[gui]
+	fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"DejaVu Sans Mono\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+    spellingdictionary = none
+
+[alias]
+    ci = commit
+    co = checkout
+    k = log --graph --color --all --pretty=format:\"%Cred%h%Creset %ad %Cgreen(%an)%Creset %s%C(yellow)%d%Creset\" --abbrev-commit --date=short
+    g = gui
+    b = branch
+    p = pull
+    s = status
+    unstage = reset HEAD --
+    substatus = submodule foreach git status
+    subpull = !git pull && git submodule update
+    pl = "!git fetch && git rebase --preserve-merges origin/`git rev-parse --abbrev-ref HEAD`"
+    sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+    sapply = "!f() { git stash apply stash^{/$*}; }; f"
+    serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+
+[core]
+    autocrlf = input
+    safecrlf = true
+    excludesfile = ~/.gitignore
+
+[branch]
+    autosetuprebase = always
+
+[push]
+    default = tracking
+[pull]
+    rebase = true
+[color]
+    ui = auto
+[color "diff"]
+    whitespace = red reverse
+[commit]
+    verbose = true
