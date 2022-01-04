@@ -21,6 +21,7 @@ let
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shellenv = pkgs.callPackage ./shellenv.nix {};
   configure-input = pkgs.callPackage ./configure-input.nix {};
+  browserpass = pkgs.browserpass;
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -67,6 +68,13 @@ in
     shellenv
     configure-input
   ] ++ (with pkgs; [
+    (pass.withExtensions (exts: with exts; [
+      pass-import
+      pass-otp
+    ]))
+    passff-host
+    browserpass
+
     tmux
     tmuxPlugins.copycat
     tmuxPlugins.yank
@@ -99,4 +107,7 @@ in
   home.file.".gitconfig".source = ./gitconfig;
   home.file.".xsessionrc".source = ./xsessionrc;
   xdg.configFile."starship.toml".source = ./starship.toml;
+
+  home.file.".config/BraveSoftware/Brave-Browser/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
+  home.file.".config/chromium/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
 }
