@@ -80,6 +80,8 @@ in
     tmuxPlugins.yank
     tmuxPlugins.fzf-tmux-url
 
+    git
+    tig
     fzf
     ripgrep
     universal-ctags
