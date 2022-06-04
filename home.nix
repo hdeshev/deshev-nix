@@ -14,7 +14,6 @@ let
   signal = pkgs.callPackage ./signal.nix { inherit gui-run; };
   thunderbird = pkgs.callPackage ./thunderbird.nix { inherit gui-run; };
   deluge = pkgs.callPackage ./deluge.nix { inherit gui-run; };
-  rofi = pkgs.callPackage ./rofi.nix { inherit gui-run; };
   mpv = pkgs.callPackage ./mpv.nix { inherit gui-run; };
   calibre = pkgs.callPackage ./calibre.nix { inherit gui-run; };
   shoot = pkgs.callPackage ./shoot.nix { inherit gui-run; };
@@ -60,7 +59,6 @@ in
     signal
     thunderbird
     deluge
-    rofi
     calibre
     mpv.wrapper
     mpv.wrapper-audio
