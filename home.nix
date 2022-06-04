@@ -44,6 +44,8 @@ in
 
   home.packages = [
     go
+    pkgs.gopls
+    pkgs.golangci-lint
     vim
     node
     yarn
