@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 let
-  pkgs-unstable = import <nixpkgs-unstable>{};
-  vim = pkgs-unstable.callPackage ./vim {};
+  pkgs-unstable = import <nixpkgs-unstable>{
+    overlays = [ (import <rust-overlay>) ];
+  };
+  vim = pkgs.callPackage ./vim {};
   go = pkgs-unstable.go_1_17;
   node = pkgs.nodejs-14_x;
   yarn = pkgs.yarn.override { nodejs = node; };
@@ -21,6 +23,7 @@ let
   shellenv = pkgs.callPackage ./shellenv.nix {};
   configure-input = pkgs.callPackage ./configure-input.nix {};
   browserpass = pkgs.browserpass;
+  helix = pkgs.callPackage ./helix.nix {};
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -51,14 +54,11 @@ in
     gui-run
     brave.wrapper
     brave.desktop-item
-    chromium.wrapper
-    chromium.desktop-item
     firefox.wrapper
     firefox.desktop-item
     telegram
     signal
     thunderbird
-    deluge
     calibre
     mpv.wrapper
     mpv.wrapper-audio
@@ -67,7 +67,12 @@ in
     shoot
     shellenv
     configure-input
-  ] ++ (with pkgs; [
+
+    helix
+  ] ++ (with pkgs-unstable; [
+    rust-bin.stable.latest.default
+    rust-analyzer
+  ]) ++ (with pkgs; [
     (pass.withExtensions (exts: with exts; [
       pass-import
       pass-otp
@@ -111,5 +116,4 @@ in
   xdg.configFile."starship.toml".source = ./starship.toml;
 
   home.file.".config/BraveSoftware/Brave-Browser/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
-  home.file.".config/chromium/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
 }
