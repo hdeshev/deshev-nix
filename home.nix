@@ -3,7 +3,7 @@ let
   pkgs-unstable = import <nixpkgs-unstable>{
     overlays = [ (import <rust-overlay>) ];
   };
-  vim = pkgs.callPackage ./vim {};
+  # vim = pkgs.callPackage ./vim {};
   go = pkgs-unstable.go_1_17;
   node = pkgs.nodejs-14_x;
   yarn = pkgs.yarn.override { nodejs = node; };
@@ -48,7 +48,7 @@ in
     go
     pkgs.gopls
     pkgs.golangci-lint
-    vim
+    # vim
     node
     yarn
     gui-run
