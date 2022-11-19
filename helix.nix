@@ -4,6 +4,8 @@ rustPlatform.buildRustPackage rec {
   pname = "helix";
   version = "22.08.1";
 
+  doCheck = false;
+
   # This release tarball includes source code for the tree-sitter grammars,
   # which is not ordinarily part of the repository.
   src = fetchzip {

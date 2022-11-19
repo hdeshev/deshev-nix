@@ -4,7 +4,7 @@ let
     overlays = [ (import <rust-overlay>) ];
   };
   # vim = pkgs.callPackage ./vim {};
-  go = pkgs-unstable.go_1_17;
+  go = pkgs.go_1_17;
   node = pkgs.nodejs-14_x;
   yarn = pkgs.yarn.override { nodejs = node; };
   nixGL = (pkgs.callPackage ./nixGL/nixGL.nix {}).nixGLIntel;
@@ -23,7 +23,7 @@ let
   shellenv = pkgs.callPackage ./shellenv.nix {};
   configure-input = pkgs.callPackage ./configure-input.nix {};
   browserpass = pkgs.browserpass;
-  helix = pkgs.callPackage ./helix.nix {};
+  # helix = pkgs.callPackage ./helix.nix {};
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -67,11 +67,10 @@ in
     shoot
     shellenv
     configure-input
-
-    helix
   ] ++ (with pkgs-unstable; [
     rust-bin.stable.latest.default
     rust-analyzer
+    helix
   ]) ++ (with pkgs; [
     (pass.withExtensions (exts: with exts; [
       pass-import
