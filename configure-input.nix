@@ -2,16 +2,9 @@
 writeShellScriptBin "configure-input" ''
 if_installed() {
     which $1 > /dev/null && \
-        eval $@
+       shift && \
+       $@
 }
-
-TRACKBALL_DEVICE="Primax Kensington Eagle Trackball"
-TRACKBALL_ID="''$(xinput list --id-only "$TRACKBALL_DEVICE")"
-
-if [ -n "$TRACKBALL_ID" ] ; then
-    echo "Enabling middle button emulation for trackball '$TRACKBALL_DEVICE' with id '$TRACKBALL_ID'"
-    xinput set-prop $TRACKBALL_ID "libinput Middle Emulation Enabled" 1
-fi
 
 # Set up Synaptics touchpad palm detection
 if_installed synclient PalmDetect=1
@@ -26,10 +19,6 @@ setxkbmap -option compose:rwin
 setxkbmap us,bg ,phonetic grp:toggle,grp_led:caps
 
 # per-window kbd layout selection
-if [ "$(pidof kbdd)" ]
-then
-  echo "kbdd already running"
-else
-  ${kbdd}/bin/kbdd
-fi
+pkill kbdd # terminate any previous instances
+${kbdd}/bin/kbdd
 ''
