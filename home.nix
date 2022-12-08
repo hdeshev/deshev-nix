@@ -4,7 +4,7 @@ let
     overlays = [ (import <rust-overlay>) ];
   };
   # vim = pkgs.callPackage ./vim {};
-  go = pkgs.go_1_17;
+  go = pkgs.go_1_19;
   node = pkgs.nodejs-14_x;
   yarn = pkgs.yarn.override { nodejs = node; };
   nixGL = (pkgs.callPackage ./nixGL/nixGL.nix {}).nixGLIntel;
@@ -100,10 +100,10 @@ in
 
     nodePackages.typescript
     nodePackages.typescript-language-server
-    pkgs.php74
-    pkgs.php74.packages.composer
+    pkgs.php81
+    pkgs.php81.packages.composer
 
-    youtube-dl
+    yt-dlp
     s3cmd
   ]);
 
