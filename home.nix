@@ -92,7 +92,7 @@ in
     starship
     ncdu
     jq
-    yq
+    yq-go
     bat
     shellcheck
     cloc
