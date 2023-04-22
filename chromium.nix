@@ -1,7 +1,7 @@
-{ gui-run, writeShellScriptBin, chromium, makeDesktopItem }:
+{ writeGLScriptBin, chromium, makeDesktopItem }:
 rec {
-  wrapper = writeShellScriptBin "chromium" ''
-    ${gui-run}/bin/gui-run ${chromium}/bin/chromium-browser --force-prefers-reduced-motion "$@"
+  wrapper = writeGLScriptBin "chromium" ''
+    gl-v ${chromium}/bin/chromium-browser --force-prefers-reduced-motion "$@"
   '';
 
   desktop-item = makeDesktopItem {

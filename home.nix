@@ -7,18 +7,18 @@ let
   go = pkgs.go_1_19;
   node = pkgs.nodejs-14_x;
   yarn = pkgs.yarn.override { nodejs = node; };
-  nixGL = (pkgs.callPackage ./nixGL/nixGL.nix {}).nixGLIntel;
-  gui-run = pkgs.callPackage ./gui-run.nix { nixGL = nixGL; };
-  brave = pkgs.callPackage ./brave.nix { inherit gui-run; };
-  chromium = pkgs.callPackage ./chromium.nix { inherit gui-run; };
-  firefox = pkgs.callPackage ./firefox.nix { inherit gui-run; };
-  telegram = pkgs.callPackage ./telegram.nix { inherit gui-run; };
-  signal = pkgs.callPackage ./signal.nix { inherit gui-run; };
-  thunderbird = pkgs.callPackage ./thunderbird.nix { inherit gui-run; };
-  deluge = pkgs.callPackage ./deluge.nix { inherit gui-run; };
-  mpv = pkgs.callPackage ./mpv.nix { inherit gui-run; };
-  calibre = pkgs.callPackage ./calibre.nix { inherit gui-run; };
-  shoot = pkgs.callPackage ./shoot.nix { inherit gui-run; };
+  nixGL = (pkgs.callPackage ./nixGL/nixGL.nix {});
+  gl = pkgs.callPackage ./gl.nix { nixGL = nixGL; };
+  brave = pkgs.callPackage ./brave.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  chromium = pkgs.callPackage ./chromium.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  firefox = pkgs.callPackage ./firefox.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  telegram = pkgs.callPackage ./telegram.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  signal = pkgs.callPackage ./signal.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  thunderbird = pkgs.callPackage ./thunderbird.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  deluge = pkgs.callPackage ./deluge.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  mpv = pkgs.callPackage ./mpv.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  calibre = pkgs.callPackage ./calibre.nix { writeGLScriptBin = gl.writeGLScriptBin; };
+  shoot = pkgs.callPackage ./shoot.nix { writeGLScriptBin = gl.writeGLScriptBin; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shellenv = pkgs.callPackage ./shellenv.nix {};
   configure-input = pkgs.callPackage ./configure-input.nix {};
@@ -51,7 +51,8 @@ in
     # vim
     node
     yarn
-    gui-run
+    gl.gl-i
+    gl.gl-v
     brave.wrapper
     brave.desktop-item
     firefox.wrapper
@@ -68,9 +69,12 @@ in
     shellenv
     configure-input
   ] ++ (with pkgs-unstable; [
+    lld
     rust-bin.stable.latest.default
     rust-analyzer
     helix
+    vscode
+    rnix-lsp
   ]) ++ (with pkgs; [
     (pass.withExtensions (exts: with exts; [
       pass-import

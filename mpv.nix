@@ -1,11 +1,11 @@
-{ gui-run, writeShellScriptBin, mpv, makeDesktopItem }:
+{ writeGLScriptBin, mpv, makeDesktopItem }:
 rec {
-  wrapper = writeShellScriptBin "mpv" ''
-    ${gui-run}/bin/gui-run ${mpv}/bin/mpv "$@"
+  wrapper = writeGLScriptBin "mpv" ''
+    gl-v ${mpv}/bin/mpv "$@"
   '';
 
-  wrapper-audio = writeShellScriptBin "mpv-audio" ''
-    ${gui-run}/bin/gui-run ${mpv}/bin/mpv --no-video "$@"
+  wrapper-audio = writeGLScriptBin "mpv-audio" ''
+    gl-v ${mpv}/bin/mpv --no-video "$@"
   '';
 
   desktop-item = makeDesktopItem {

@@ -16,9 +16,9 @@ setxkbmap -option ctrl:nocaps
 # right Win key is my Compose key
 setxkbmap -option compose:rwin
 # us & bg phonetic layout. right alt switches, caps lock lights up when bg toggled
-setxkbmap us,bg ,phonetic grp:toggle,grp_led:caps
+# setxkbmap us,bg,phonetic grp:toggle,grp_led:caps
 
 # per-window kbd layout selection
-pkill kbdd # terminate any previous instances
-${kbdd}/bin/kbdd
+# pkill kbdd # terminate any previous instances
+# ${kbdd}/bin/kbdd
 ''

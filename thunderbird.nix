@@ -1,4 +1,4 @@
-{ gui-run, writeShellScriptBin, thunderbird }:
-writeShellScriptBin "thunderbird" ''
-  ${gui-run}/bin/gui-run ${thunderbird}/bin/thunderbird "$@"
+{ writeGLScriptBin, thunderbird }:
+writeGLScriptBin "thunderbird" ''
+  gl-v ${thunderbird}/bin/thunderbird "$@"
 ''

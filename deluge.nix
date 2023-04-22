@@ -1,4 +1,4 @@
-{ gui-run, writeShellScriptBin, deluge }:
-writeShellScriptBin "deluge" ''
-  ${gui-run}/bin/gui-run ${deluge}/bin/deluge "$@"
+{ writeGLScriptBin, deluge }:
+writeGLScriptBin "deluge" ''
+  gl-v ${deluge}/bin/deluge "$@"
 ''

@@ -1,5 +1,5 @@
-{ gui-run, writeShellScriptBin, scrot, xclip, s3cmd, libnotify }:
-writeShellScriptBin "shoot" ''
+{ writeGLScriptBin, scrot, xclip, s3cmd, libnotify }:
+writeGLScriptBin "shoot" ''
   BUCKET=s3://sh.deshev.com
   URL_ROOT=http://sh.deshev.com
   LOCAL_BUCKET_ROOT=/data/deshev/sh.deshev.com
@@ -20,7 +20,7 @@ writeShellScriptBin "shoot" ''
   sleep 0.5s
 
   mkdir -p "$(dirname $LOCAL_PATH)"
-  ${gui-run}/bin/gui-run ${scrot}/bin/scrot -s "$LOCAL_PATH"
+  gl-v ${scrot}/bin/scrot -s "$LOCAL_PATH"
 
   if [ -f $LOCAL_PATH ] ; then
       if upload_image ; then

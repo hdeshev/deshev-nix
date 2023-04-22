@@ -1,7 +1,7 @@
-{ gui-run, writeShellScriptBin, firefox, makeDesktopItem }:
+{ writeGLScriptBin, firefox, makeDesktopItem }:
 rec {
-  wrapper = writeShellScriptBin "firefox" ''
-    ${gui-run}/bin/gui-run ${firefox}/bin/firefox "$@"
+  wrapper = writeGLScriptBin "firefox" ''
+    gl-v ${firefox}/bin/firefox "$@"
   '';
 
   desktop-item = makeDesktopItem {
