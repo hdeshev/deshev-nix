@@ -117,6 +117,7 @@ in
   home.file.".gitconfig".source = ./gitconfig;
   home.file.".xsessionrc".source = ./xsessionrc;
   xdg.configFile."starship.toml".source = ./starship.toml;
+  home.file.".cargo/config.toml".source = ./cargo-config.toml;
 
   home.file.".config/BraveSoftware/Brave-Browser/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
 }
