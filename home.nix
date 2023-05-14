@@ -1,27 +1,14 @@
 { config, pkgs, ... }:
 let
   pkgs-unstable = import <nixpkgs-unstable>{
-    overlays = [ (import <rust-overlay>) ];
+    # overlays = [ (import <rust-overlay>) ];
   };
   # vim = pkgs.callPackage ./vim {};
   go = pkgs.go_1_19;
   node = pkgs.nodejs-14_x;
   yarn = pkgs.yarn.override { nodejs = node; };
-  nixGL = (pkgs.callPackage ./nixGL/nixGL.nix {});
-  gl = pkgs.callPackage ./gl.nix { nixGL = nixGL; };
-  brave = pkgs.callPackage ./brave.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  chromium = pkgs.callPackage ./chromium.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  firefox = pkgs.callPackage ./firefox.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  telegram = pkgs.callPackage ./telegram.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  signal = pkgs.callPackage ./signal.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  thunderbird = pkgs.callPackage ./thunderbird.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  deluge = pkgs.callPackage ./deluge.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  mpv = pkgs.callPackage ./mpv.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  calibre = pkgs.callPackage ./calibre.nix { writeGLScriptBin = gl.writeGLScriptBin; };
-  shoot = pkgs.callPackage ./shoot.nix { writeGLScriptBin = gl.writeGLScriptBin; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shellenv = pkgs.callPackage ./shellenv.nix {};
-  configure-input = pkgs.callPackage ./configure-input.nix {};
   browserpass = pkgs.browserpass;
   # helix = pkgs.callPackage ./helix.nix {};
 in
@@ -39,10 +26,18 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  home.stateVersion = "22.11";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.firefox.enable = true;
+  programs.brave.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "qt";
+  };
 
   home.packages = [
     go
@@ -51,42 +46,37 @@ in
     # vim
     node
     yarn
-    gl.gl-i
-    gl.gl-v
-    brave.wrapper
-    brave.desktop-item
-    firefox.wrapper
-    firefox.desktop-item
-    telegram
-    signal
-    thunderbird
-    calibre
-    mpv.wrapper
-    mpv.wrapper-audio
-    mpv.desktop-item
     ssh-ag
-    shoot
     shellenv
-    configure-input
   ] ++ (with pkgs-unstable; [
-    lld
-    rust-bin.stable.latest.default
-    rust-analyzer
+    # lld
+    # rust-bin.stable.latest.default
+    # rust-analyzer
     helix
-    vscode
-    rnix-lsp
+    # vscode
+    # rnix-lsp
   ]) ++ (with pkgs; [
+    gnupg
     (pass.withExtensions (exts: with exts; [
       pass-import
       pass-otp
     ]))
     passff-host
+    pinentry-qt
     browserpass
 
     tmux
     tmuxPlugins.copycat
     tmuxPlugins.yank
     tmuxPlugins.fzf-tmux-url
+
+    # brave
+    # firefox
+    tdesktop
+    signal-desktop
+    thunderbird
+    calibre
+    mpv
 
     git
     tig
@@ -115,6 +105,7 @@ in
   home.file.".ripgreprc".source = ./ripgreprc;
   home.file.".ctags".source = ./ctags;
   home.file.".gitconfig".source = ./gitconfig;
+  home.file.".config/helix/config.toml".source = ./helix/config.toml;
   home.file.".xsessionrc".source = ./xsessionrc;
   xdg.configFile."starship.toml".source = ./starship.toml;
   home.file.".cargo/config.toml".source = ./cargo-config.toml;

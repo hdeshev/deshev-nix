@@ -1,12 +1,7 @@
 {writeShellScriptBin, glibcLocales}:
 writeShellScriptBin "shellenv" ''
-. "$HOME/.nix-profile/etc/profile.d/nix.sh"
 export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-
-
-export LOCALE_ARCHIVE=${glibcLocales}/lib/locale/locale-archive
-export XDG_DATA_DIRS="$HOME/.nix-profile/share:$HOME/.share:''${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
 
 eval "$(starship init bash)"
 

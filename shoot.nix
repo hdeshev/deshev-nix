@@ -20,7 +20,7 @@ writeGLScriptBin "shoot" ''
   sleep 0.5s
 
   mkdir -p "$(dirname $LOCAL_PATH)"
-  gl-v ${scrot}/bin/scrot -s "$LOCAL_PATH"
+  ${scrot}/bin/scrot -s "$LOCAL_PATH"
 
   if [ -f $LOCAL_PATH ] ; then
       if upload_image ; then

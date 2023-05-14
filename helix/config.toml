@@ -1,0 +1,14 @@
+theme = "monokai_pro"
+
+[editor]
+# gutters = ["diagnostics"]
+
+[editor.lsp]
+display-messages = true
+
+[keys.normal]
+C-s = ":write-all"
+space = {t = ":sh tmux send-keys -t 0 last_test c-m"}
+
+[keys.insert]
+C-s = [":write-all", "normal_mode"]
