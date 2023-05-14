@@ -62,7 +62,6 @@ in
       pass-otp
     ]))
     passff-host
-    pinentry-qt
     browserpass
 
     tmux
@@ -77,6 +76,7 @@ in
     thunderbird
     calibre
     mpv
+    lxqt.qlipper
 
     git
     tig
