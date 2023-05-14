@@ -5,6 +5,9 @@ export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 
 eval "$(starship init bash)"
 
+export EDITOR="hx"
+export VISUAL="hx"
+
 export PATH="$HOME/.bin:$PATH"
 
 alias g='git'
