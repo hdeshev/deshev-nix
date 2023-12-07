@@ -1,6 +1,6 @@
 {writeShellScriptBin, glibcLocales}:
 writeShellScriptBin "shellenv" ''
-export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
+# export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 eval "$(starship init bash)"

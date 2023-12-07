@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 let
   pkgs-unstable = import <nixpkgs-unstable>{
-    # overlays = [ (import <rust-overlay>) ];
+    overlays = [ (import <rust-overlay>) ];
   };
   # vim = pkgs.callPackage ./vim {};
-  go = pkgs.go_1_19;
-  node = pkgs.nodejs-14_x;
+  go = pkgs-unstable.go_1_21;
+  node = pkgs.nodejs-18_x;
   yarn = pkgs.yarn.override { nodejs = node; };
   ssh-ag = pkgs.callPackage ./ssh-ag.nix {};
   shellenv = pkgs.callPackage ./shellenv.nix {};
@@ -41,20 +41,25 @@ in
 
   home.packages = [
     go
-    pkgs.gopls
-    pkgs.golangci-lint
+    pkgs-unstable.gopls
+    pkgs-unstable.golangci-lint
     # vim
     node
     yarn
     ssh-ag
     shellenv
   ] ++ (with pkgs-unstable; [
-    # lld
-    # rust-bin.stable.latest.default
-    # rust-analyzer
+    clang
+    lld
+    rust-bin.stable.latest.default
+    rust-analyzer
     helix
+    emacs29
     # vscode
-    # rnix-lsp
+    rnix-lsp
+
+    tdesktop
+    signal-desktop
   ]) ++ (with pkgs; [
     gnupg
     (pass.withExtensions (exts: with exts; [
@@ -71,16 +76,20 @@ in
 
     # brave
     # firefox
-    tdesktop
-    signal-desktop
     thunderbird
     calibre
+    libreoffice-fresh
     mpv
     lxqt.qlipper
 
+    coreutils
+    unzip
     git
     tig
+    direnv
+    nix-direnv
     fzf
+    fd
     ripgrep
     universal-ctags
     starship
@@ -90,14 +99,22 @@ in
     bat
     shellcheck
     cloc
-    xsv
+    xclip
+    wl-clipboard
+    python3
+    # needed to compile Emacs vterm
+    libtool
+    pkgconfig
+    gnumake
+    cmake
 
-    nodePackages.typescript
-    nodePackages.typescript-language-server
+    node.pkgs.typescript
+    node.pkgs.typescript-language-server
     pkgs.php81
     pkgs.php81.packages.composer
 
     yt-dlp
+    ffmpeg
     s3cmd
   ]);
 
