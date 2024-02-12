@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   pkgs-unstable = import <nixpkgs-unstable>{
-    overlays = [ (import <rust-overlay>) ];
   };
   # vim = pkgs.callPackage ./vim {};
   go = pkgs-unstable.go_1_21;
@@ -49,17 +48,10 @@ in
     ssh-ag
     shellenv
   ] ++ (with pkgs-unstable; [
-    clang
-    lld
-    rust-bin.stable.latest.default
-    rust-analyzer
-    helix
     emacs29
-    # vscode
     rnix-lsp
 
-    tdesktop
-    signal-desktop
+    yt-dlp
   ]) ++ (with pkgs; [
     gnupg
     (pass.withExtensions (exts: with exts; [
@@ -74,13 +66,12 @@ in
     tmuxPlugins.yank
     tmuxPlugins.fzf-tmux-url
 
-    # brave
-    # firefox
     thunderbird
     calibre
     libreoffice-fresh
     mpv
-    lxqt.qlipper
+    tdesktop
+    signal-desktop
 
     coreutils
     unzip
@@ -101,11 +92,19 @@ in
     cloc
     xclip
     wl-clipboard
+
     python3
+    poetry
+    python311Packages.python-lsp-server
+    python311Packages.pylsp-mypy
+    # node.pkgs.pyright
+    cookiecutter
+
     # needed to compile Emacs vterm
     libtool
-    pkgconfig
+    pkg-config
     gnumake
+    gcc
     cmake
 
     node.pkgs.typescript
@@ -113,11 +112,11 @@ in
     pkgs.php81
     pkgs.php81.packages.composer
 
-    yt-dlp
     ffmpeg
     s3cmd
   ]);
 
+  home.file.".vimrc".source = ./vimrc;
   home.file.".tmux.conf".source = ./tmux.conf;
   home.file.".ripgreprc".source = ./ripgreprc;
   home.file.".ctags".source = ./ctags;

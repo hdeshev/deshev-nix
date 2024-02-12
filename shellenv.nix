@@ -5,8 +5,8 @@ writeShellScriptBin "shellenv" ''
 
 eval "$(starship init bash)"
 
-export EDITOR="hx"
-export VISUAL="hx"
+export EDITOR="vim"
+export VISUAL="vim"
 
 export PATH="$HOME/.bin:$PATH"
 
