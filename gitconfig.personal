@@ -1,0 +1,9 @@
+[user]
+email = hristo@deshev.com
+name = Hristo Deshev
+ 
+[github]
+user = "hdeshev"
+ 
+[core]
+sshCommand = "ssh -i ~/.ssh/id_rsa"

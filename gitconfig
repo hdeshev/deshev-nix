@@ -1,7 +1,3 @@
-[user]
-    name = Hristo Deshev
-    email = hristo@deshev.com
-
 [gui]
 	fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"DejaVu Sans Mono\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
@@ -42,5 +38,29 @@
 [commit]
     verbose = true
 
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+[credential "https://github.com"]
+        helper = 
+        helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+        helper = 
+        helper = !gh auth git-credential
+
+[user]
+email = hristo@deshev.com
+name = Hristo Deshev
+ 
+[github]
+user = "hdeshev"
+ 
+[core]
+sshCommand = "ssh -i ~/.ssh/id_rsa"
+
+[includeIf "gitdir:~/xp/"]
+  path = ~/xp/.gitconfig.xp
+
+# [includeIf "gitdir:~/w/"]
+#   path = ~/.gitconfig.personal
+#
+# [includeIf "gitdir:~/p/"]
+#   path = ~/.gitconfig.personal
