@@ -1,9 +1,12 @@
-{writeShellScriptBin, glibcLocales, jdk21}:
-writeShellScriptBin "shellenv" ''
+{writeShellScriptBin, glibcLocales, jdk21, babelfish}:
+{
+  bash = writeShellScriptBin "shellenv-bash" ''
 # export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 eval "$(starship init bash)"
+eval "$(direnv hook bash)"
+source "$HOME/.cargo/env"
 
 export EDITOR="vim"
 export VISUAL="vim"
@@ -14,19 +17,27 @@ alias g='git'
 alias gw='cd ~/w'
 alias gx='cd ~/xp'
 
-ffg() {
-    git_repos="$(find . \
-                    -path "*go/pkg*" -prune -o \
-                    -path "*/.*" -type d -prune -o \
-                    -exec test -d {}/.git \; -prune \
-                    -print)"
-
-    selected="$(echo "$git_repos" | fzf)"
-    cd "$selected"
-}
-
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 export JAVA_HOME="${jdk21.home}";
 export JAVA_21_HOME="${jdk21.home}";
-''
+'';
+
+  fish = writeShellScriptBin "shellenv-fish" ''
+cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | ${babelfish}/bin/babelfish | source
+
+direnv hook fish | source
+starship init fish | source
+cat ~/.cargo/env | babelfish | source
+
+set -x EDITOR "vim"
+set -x VISUAL "vim"
+
+set -x PATH "$HOME/.bin:$PATH"
+
+set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
+
+set -x JAVA_HOME "${jdk21.home}";
+set -x JAVA_21_HOME "${jdk21.home}";
+'';
+}

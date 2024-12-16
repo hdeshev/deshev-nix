@@ -85,7 +85,8 @@ rec {
     # vim
     node
     yarn
-    shellenv
+    shellenv.bash
+    shellenv.fish
     zoom-power-management
   ] ++
   ssh-wrappers
@@ -122,6 +123,7 @@ rec {
     tig
     lazygit
     direnv
+    babelfish
     nix-direnv
     fzf
     fd
@@ -134,6 +136,7 @@ rec {
     jq
     yq-go
     gron
+    sqlite
     bat
     shellcheck
     cloc
@@ -143,6 +146,8 @@ rec {
     pyright
     jdk21
     terraform
+    mariadb
+    postgresql
     # python3
     # poetry
     # python311Packages.python-lsp-server
