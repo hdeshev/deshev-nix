@@ -5,11 +5,12 @@
 . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 eval "$(starship init bash)"
+eval "$(zoxide init bash)"
 eval "$(direnv hook bash)"
 source "$HOME/.cargo/env"
 
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 export PATH="$HOME/.bin:$PATH"
 
@@ -28,10 +29,11 @@ cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | ${babelfish}/bin/babelfish
 
 direnv hook fish | source
 starship init fish | source
+zoxide init fish | source
 cat ~/.cargo/env | babelfish | source
 
-set -x EDITOR "vim"
-set -x VISUAL "vim"
+set -x EDITOR "nvim"
+set -x VISUAL "nvim"
 
 set -x PATH "$HOME/.bin:$PATH"
 

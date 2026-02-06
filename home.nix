@@ -3,11 +3,15 @@ let
   pkgs-unstable = import <nixpkgs-unstable>{
   };
   # vim = pkgs.callPackage ./vim {};
-  go = pkgs-unstable.go_1_22;
-  node = pkgs.nodejs-18_x;
-  yarn = pkgs.yarn.override { nodejs = node; };
+  go = pkgs-unstable.go_1_25;
+  node = pkgs.nodejs_24;
+  bun = pkgs-unstable.bun;
+  # yarn = pkgs.yarn.override { nodejs = node; };
+  pnpm = pkgs.pnpm.override { nodejs = node; };
   ssh-wrappers = pkgs.callPackage ./ssh-ag.nix {};
   shellenv = pkgs.callPackage ./shellenv.nix {};
+  # jujutsu = pkgs-unstable.callPackage ./jujutsu.nix {};
+  jujutsu = pkgs-unstable.jujutsu;
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -58,7 +62,9 @@ rec {
 
   services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-qt;
+    pinentry = {
+      package = pkgs.pinentry-qt;
+    };
 
     enableSshSupport = true;
     sshKeys = [
@@ -70,7 +76,9 @@ rec {
 
   # Espanso is a snippets completion tool
   services.espanso = {
-    enable = true;
+    enable = false;
+    # espanso-wayland is utterly broken and does not start
+    package = pkgs-unstable.espanso-wayland;
     configs = {
       default = {
         search_shortcut = "off";
@@ -83,18 +91,34 @@ rec {
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
     # vim
+    jujutsu
     node
-    yarn
+    pnpm
+    bun
+    # yarn
     shellenv.bash
     shellenv.fish
-    zoom-power-management
+    # yaml
+    pkgs-unstable.yaml-language-server
+    pkgs-unstable.yamlfmt
+    pkgs-unstable.yamllint
+    # shell
+    pkgs-unstable.shfmt
+    pkgs-unstable.bash-language-server
+
+    # markdown
+    pkgs-unstable.marksman
+    pkgs-unstable.markdownlint-cli
+    # javascript and frontend
+    pkgs-unstable.prettier
+    # zoom-power-management
   ] ++
   ssh-wrappers
   ++ (with pkgs-unstable; [
+    helix
     yt-dlp
     # mpv
     # tdesktop
-    pipx
   ]) ++ (with pkgs; [
     gh
     gnupg
@@ -105,10 +129,12 @@ rec {
     passff-host
     browserpass
 
-    tmux
-    tmuxPlugins.copycat
-    tmuxPlugins.yank
-    tmuxPlugins.fzf-tmux-url
+    # tmux
+    # tmuxPlugins.copycat
+    # tmuxPlugins.yank
+    # tmuxPlugins.fzf-tmux-url
+    neovim
+    zellij
 
     emote
     # thunderbird
@@ -128,8 +154,12 @@ rec {
     fzf
     fd
     ripgrep
+    btop
+    zoxide
     delta
     bat
+    yazi
+    micro
     universal-ctags
     starship
     ncdu
@@ -145,9 +175,10 @@ rec {
 
     pyright
     jdk21
-    terraform
+    # terraform
     mariadb
     postgresql
+    protobuf
     # python3
     # poetry
     # python311Packages.python-lsp-server
@@ -172,7 +203,8 @@ rec {
   ]);
 
   home.file.".vimrc".source = ./vimrc;
-  home.file.".tmux.conf".source = ./tmux.conf;
+  home.file.".config/nvim/init.vim".source = ./vimrc;
+  # home.file.".tmux.conf".source = ./tmux.conf;
   home.file.".ripgreprc".source = ./ripgreprc;
   home.file.".ctags".source = ./ctags;
   home.file.".gitconfig".source = ./gitconfig;
@@ -196,15 +228,15 @@ rec {
     Install = { WantedBy = [ "default.target" ]; };
   };
 
-  systemd.user.services.zoom-power-management = {
-    Unit = { Description = "Auto-toggle XFCE presentation mode when in Zoom meeting"; };
-    Service = {
-      Type = "exec";
-      ExecStart = "${zoom-power-management}/bin/zoom-power-management";
-      Restart = "on-failure";
-    };
-    Install = { WantedBy = [ "default.target" ]; };
-  };
+  # systemd.user.services.zoom-power-management = {
+  #   Unit = { Description = "Auto-toggle XFCE presentation mode when in Zoom meeting"; };
+  #   Service = {
+  #     Type = "exec";
+  #     ExecStart = "${zoom-power-management}/bin/zoom-power-management";
+  #     Restart = "on-failure";
+  #   };
+  #   Install = { WantedBy = [ "default.target" ]; };
+  # };
 
   systemd.user.services.wiki = {
     Unit = { Description = "Local TiddlyWiki notes"; };

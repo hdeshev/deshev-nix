@@ -1,3 +1,5 @@
+set ignorecase
+set smartcase
 set smarttab
 set smartindent
 set hlsearch
