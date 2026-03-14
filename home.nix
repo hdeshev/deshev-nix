@@ -12,6 +12,7 @@ let
   shellenv = pkgs.callPackage ./shellenv.nix {};
   # jujutsu = pkgs-unstable.callPackage ./jujutsu.nix {};
   jujutsu = pkgs-unstable.jujutsu;
+  mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -87,11 +88,17 @@ rec {
   };
 
   home.packages = [
+    # Golang 
     go
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
+    
+    # dotnet
+    pkgs.dotnetCorePackages.sdk_11_0-bin
+    pkgs.dotnetPackages.Nuget
     # vim
     jujutsu
+    mdterm
     node
     pnpm
     bun
