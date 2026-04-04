@@ -178,7 +178,14 @@ rec {
     # terraform
     mariadb
     postgresql
+
+    # protobuf and grpc
+    buf
     protobuf
+    python3Packages.grpcio-tools
+
+    # dotnet
+    dotnet-sdk_6
     # python3
     # poetry
     # python311Packages.python-lsp-server
