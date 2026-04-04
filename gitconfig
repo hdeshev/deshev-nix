@@ -75,8 +75,10 @@ user = "hdeshev"
 [core]
 sshCommand = "ssh -i ~/.ssh/id_rsa"
 
-[includeIf "gitdir:~/xp/"]
-  path = ~/xp/.gitconfig.xp
+[includeIf "gitdir:~/m2m/"]
+  path = ~/m2m/.gitconfig.m2m
+[includeIf "gitdir:/mnt/c/w/"]
+  path = ~/m2m/.gitconfig.m2m
 
 # [includeIf "gitdir:~/w/"]
 #   path = ~/.gitconfig.personal

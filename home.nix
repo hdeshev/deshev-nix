@@ -136,7 +136,7 @@ rec {
     neovim
     zellij
 
-    emote
+    # emote
     # thunderbird
     # calibre
     # libreoffice-fresh
