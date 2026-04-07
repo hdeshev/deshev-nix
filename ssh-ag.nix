@@ -7,8 +7,8 @@
     ssh-agent bash -c "ssh-add ~/.ssh/id_rsa ~/.ssh/hdeshev.pem && $command"
   '')
 
-  (writeShellScriptBin "ssh-xp" ''
+  (writeShellScriptBin "ssh-m2m" ''
     command="$@"
-    ssh-agent bash -c "ssh-add ~/.ssh/xp && $command"
+    ssh-agent bash -c "ssh-add ~/.ssh/m2m_id_ed25519 && $command"
   '')
 ]
