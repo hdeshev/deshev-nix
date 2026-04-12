@@ -155,6 +155,9 @@ rec {
     git
     tig
     lazygit
+    radicle-node
+    radicle-tui
+    radicle-explorer
     direnv
     babelfish
     nix-direnv
