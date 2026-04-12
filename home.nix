@@ -13,6 +13,7 @@ let
   # jujutsu = pkgs-unstable.callPackage ./jujutsu.nix {};
   jujutsu = pkgs-unstable.jujutsu;
   mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
+  tuicr = pkgs-unstable.callPackage ./tuicr.nix {};
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -99,6 +100,7 @@ rec {
     # vim
     jujutsu
     mdterm
+    tuicr
     node
     pnpm
     bun
