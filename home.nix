@@ -147,7 +147,7 @@ rec {
     # tmuxPlugins.yank
     # tmuxPlugins.fzf-tmux-url
     neovim
-    zellij
+    pkgs-unstable.zellij
 
     emote
     # thunderbird
