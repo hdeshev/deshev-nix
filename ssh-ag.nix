@@ -9,6 +9,6 @@
 
   (writeShellScriptBin "ssh-m2m" ''
     command="$@"
-    ssh-agent bash -c "ssh-add ~/.ssh/m2m_ecdsa && $command"
+    ssh-agent bash -c "ssh-add ~/.ssh/m2m_id_ed25519 && $command"
   '')
 ]
