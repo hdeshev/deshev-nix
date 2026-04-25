@@ -130,6 +130,9 @@ rec {
   ++ (with pkgs-unstable; [
     helix
     yt-dlp
+    radicle-node
+    radicle-tui
+    radicle-explorer
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
@@ -161,9 +164,6 @@ rec {
     git
     tig
     lazygit
-    radicle-node
-    radicle-tui
-    radicle-explorer
     direnv
     babelfish
     nix-direnv
