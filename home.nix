@@ -132,7 +132,6 @@ rec {
     yt-dlp
     radicle-node
     radicle-tui
-    radicle-explorer
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
