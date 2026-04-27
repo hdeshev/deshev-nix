@@ -190,7 +190,13 @@ rec {
     python3Packages.grpcio-tools
 
     # dotnet
-    pkgs.dotnetCorePackages.dotnet_10.sdk
+    (pkgs.dotnetCorePackages.combinePackages [
+      pkgs.dotnet-sdk_6
+      pkgs.dotnetCorePackages.dotnet_8.sdk
+      pkgs.dotnetCorePackages.dotnet_8.runtime
+      pkgs.dotnetCorePackages.dotnet_10.sdk
+      pkgs.dotnetCorePackages.dotnet_10.runtime
+    ])
     pkgs.dotnetPackages.Nuget
     csharp-ls
     # python3
