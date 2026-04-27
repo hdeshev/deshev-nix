@@ -186,6 +186,7 @@ rec {
 
     # dotnet
     dotnet-sdk_6
+    nuget
     # python3
     # poetry
     # python311Packages.python-lsp-server
