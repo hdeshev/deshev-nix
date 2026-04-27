@@ -1,7 +1,8 @@
-theme = "monokai_pro"
+theme = "catppuccin_moccha"
 
 [editor]
 # gutters = ["diagnostics"]
+true-color = true
 mouse = true
 clipboard-provider = "wayland"
 
