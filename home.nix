@@ -12,6 +12,9 @@ let
   shellenv = pkgs.callPackage ./shellenv.nix {};
   # jujutsu = pkgs-unstable.callPackage ./jujutsu.nix {};
   jujutsu = pkgs-unstable.jujutsu;
+  mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
+  tuicr = pkgs-unstable.callPackage ./tuicr.nix {};
+  csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -92,6 +95,8 @@ rec {
     pkgs-unstable.golangci-lint
     # vim
     jujutsu
+    mdterm
+    tuicr
     node
     pnpm
     bun
@@ -134,7 +139,7 @@ rec {
     # tmuxPlugins.yank
     # tmuxPlugins.fzf-tmux-url
     neovim
-    zellij
+    pkgs-unstable.zellij
 
     # emote
     # thunderbird
@@ -185,8 +190,9 @@ rec {
     python3Packages.grpcio-tools
 
     # dotnet
-    dotnet-sdk_6
-    nuget
+    pkgs.dotnetCorePackages.dotnet_10.sdk
+    pkgs.dotnetPackages.Nuget
+    csharp-ls
     # python3
     # poetry
     # python311Packages.python-lsp-server
@@ -218,6 +224,7 @@ rec {
   home.file.".gitconfig".source = ./gitconfig;
   home.file.".gitconfig.personal".source = ./gitconfig.personal;
   home.file.".config/helix/config.toml".source = ./helix/config.toml;
+  home.file.".config/helix/languages.toml".source = ./helix/languages.toml;
   # home.file.".xsessionrc".source = ./xsessionrc;
   xdg.configFile."starship.toml".source = ./starship.toml;
   home.file.".cargo/config.toml".source = ./cargo-config.toml;
