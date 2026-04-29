@@ -99,12 +99,6 @@ rec {
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
     
-    # dotnet
-    # pkgs.dotnetCorePackages.dotnet_8.sdk
-    # pkgs.dotnetCorePackages.dotnet_9.sdk
-    pkgs.dotnetCorePackages.dotnet_10.sdk
-    pkgs.dotnetPackages.Nuget
-    csharp-ls
     # vim
     jujutsu
     mdterm
@@ -133,7 +127,6 @@ rec {
   ssh-wrappers
   ++ (with pkgs-unstable; [
     helix
-    yt-dlp
     radicle-node
     radicle-tui
     # mpv
@@ -232,6 +225,7 @@ rec {
     # pkgs.php81
     # pkgs.php81.packages.composer
 
+    yt-dlp
     ffmpeg
     s3cmd
   ]);
