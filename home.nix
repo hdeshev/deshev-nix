@@ -46,6 +46,10 @@ rec {
   # changes in each release.
   home.stateVersion = "23.11";
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-sdk-6.0.428"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
