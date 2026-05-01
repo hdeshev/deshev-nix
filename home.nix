@@ -154,7 +154,7 @@ targets.genericLinux.enable = true;
     neovim
     pkgs-unstable.zellij
 
-    emote
+    # emote
     # thunderbird
     # calibre
     # libreoffice-fresh
@@ -253,15 +253,15 @@ targets.genericLinux.enable = true;
   home.file.".config/chromium/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
   home.file.".config/google-chrome/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
 
-  systemd.user.services.emote = {
-    Unit = { Description = "Emote: faster emoji picker"; };
-    Service = {
-      Type = "exec";
-      ExecStart = "${pkgs.emote}/bin/emote";
-      Restart = "on-failure";
-    };
-    Install = { WantedBy = [ "default.target" ]; };
-  };
+  # systemd.user.services.emote = {
+  #   Unit = { Description = "Emote: faster emoji picker"; };
+  #   Service = {
+  #     Type = "exec";
+  #     ExecStart = "${pkgs.emote}/bin/emote";
+  #     Restart = "on-failure";
+  #   };
+  #   Install = { WantedBy = [ "default.target" ]; };
+  # };
 
   # systemd.user.services.zoom-power-management = {
   #   Unit = { Description = "Auto-toggle XFCE presentation mode when in Zoom meeting"; };
@@ -273,13 +273,13 @@ targets.genericLinux.enable = true;
   #   Install = { WantedBy = [ "default.target" ]; };
   # };
 
-  systemd.user.services.wiki = {
-    Unit = { Description = "Local TiddlyWiki notes"; };
-    Service = {
-      Type = "exec";
-      ExecStart = "${pkgs.nodePackages.tiddlywiki}/bin/tiddlywiki '${home.homeDirectory}/p/notes' --listen port=20080";
-      Restart = "on-failure";
-    };
-    Install = { WantedBy = [ "default.target" ]; };
-  };
+  # systemd.user.services.wiki = {
+  #   Unit = { Description = "Local TiddlyWiki notes"; };
+  #   Service = {
+  #     Type = "exec";
+  #     ExecStart = "${pkgs.nodePackages.tiddlywiki}/bin/tiddlywiki '${home.homeDirectory}/p/notes' --listen port=20080";
+  #     Restart = "on-failure";
+  #   };
+  #   Install = { WantedBy = [ "default.target" ]; };
+  # };
 }
