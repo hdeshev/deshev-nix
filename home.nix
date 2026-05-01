@@ -1,7 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, nixgl, ... }:
 let
-  pkgs-unstable = import <nixpkgs-unstable>{
-  };
   # vim = pkgs.callPackage ./vim {};
   go = pkgs-unstable.go_1_25;
   node = pkgs.nodejs_24;
@@ -15,6 +13,7 @@ let
   mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
   tuicr = pkgs-unstable.callPackage ./tuicr.nix {};
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
+  gl = pkgs.callPackage ./gl.nix { inherit nixgl; };
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -53,7 +52,12 @@ rec {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  targets.genericLinux.enable = true;
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
+targets.genericLinux.enable = true;
   home.sessionVariables = {
     # QT_SCALE_FACTOR = "2";
     GTK_IM_MODULE = "xim";
@@ -123,6 +127,7 @@ rec {
     # javascript and frontend
     pkgs-unstable.prettier
     # zoom-power-management
+    gl
   ] ++
   ssh-wrappers
   ++ (with pkgs-unstable; [
@@ -132,6 +137,7 @@ rec {
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
+    mesa-demos
     gh
     gnupg
     (pass.withExtensions (exts: with exts; [
