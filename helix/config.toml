@@ -4,6 +4,7 @@ theme = "catppuccin_moccha"
 # gutters = ["diagnostics"]
 true-color = true
 mouse = true
+auto-pairs = false
 clipboard-provider = "wayland"
 
 [editor.lsp]
