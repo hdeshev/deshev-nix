@@ -137,7 +137,6 @@ targets.genericLinux.enable = true;
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
-    mesa-demos
     gh
     gnupg
     (pass.withExtensions (exts: with exts; [
