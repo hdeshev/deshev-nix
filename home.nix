@@ -1,7 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, nixgl, ... }:
 let
-  pkgs-unstable = import <nixpkgs-unstable>{
-  };
   # vim = pkgs.callPackage ./vim {};
   go = pkgs-unstable.go_1_25;
   node = pkgs.nodejs_24;
@@ -15,6 +13,7 @@ let
   mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
   tuicr = pkgs-unstable.callPackage ./tuicr.nix {};
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
+  gl = pkgs.callPackage ./gl.nix { inherit nixgl; };
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -46,10 +45,19 @@ rec {
   # changes in each release.
   home.stateVersion = "23.11";
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-sdk-6.0.428"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  targets.genericLinux.enable = true;
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
+targets.genericLinux.enable = true;
   home.sessionVariables = {
     # QT_SCALE_FACTOR = "2";
     GTK_IM_MODULE = "xim";
@@ -90,9 +98,11 @@ rec {
   };
 
   home.packages = [
+    # Golang 
     go
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
+    
     # vim
     jujutsu
     mdterm
@@ -117,14 +127,17 @@ rec {
     # javascript and frontend
     pkgs-unstable.prettier
     # zoom-power-management
+    gl
   ] ++
   ssh-wrappers
   ++ (with pkgs-unstable; [
     helix
-    yt-dlp
+    radicle-node
+    radicle-tui
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
+    mesa-demos
     gh
     gnupg
     (pass.withExtensions (exts: with exts; [
@@ -141,7 +154,7 @@ rec {
     neovim
     pkgs-unstable.zellij
 
-    # emote
+    emote
     # thunderbird
     # calibre
     # libreoffice-fresh
@@ -218,6 +231,7 @@ rec {
     # pkgs.php81
     # pkgs.php81.packages.composer
 
+    yt-dlp
     ffmpeg
     s3cmd
   ]);
