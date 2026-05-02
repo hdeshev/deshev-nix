@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, nixgl, ... }:
+{ config, pkgs, pkgs-unstable, nixgl, crit, ... }:
 let
   # vim = pkgs.callPackage ./vim {};
   go = pkgs-unstable.go_1_25;
@@ -107,6 +107,7 @@ targets.genericLinux.enable = true;
     jujutsu
     mdterm
     tuicr
+    crit
     node
     pnpm
     bun
