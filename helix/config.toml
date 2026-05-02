@@ -5,6 +5,7 @@ theme = "catppuccin_moccha"
 true-color = true
 mouse = true
 auto-pairs = false
+soft-wrap.enable = true
 clipboard-provider = "wayland"
 
 [editor.lsp]
