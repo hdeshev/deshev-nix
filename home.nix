@@ -134,6 +134,7 @@ targets.genericLinux.enable = true;
     helix
     radicle-node
     radicle-tui
+    yt-dlp
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
