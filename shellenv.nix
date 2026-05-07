@@ -1,4 +1,4 @@
-{writeShellScriptBin, glibcLocales, jdk21, babelfish}:
+{writeShellScriptBin, glibcLocales, jdk21_headless, babelfish}:
 {
   bash = writeShellScriptBin "shellenv-bash" ''
 # export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
@@ -20,8 +20,8 @@ alias gx='cd ~/xp'
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-export JAVA_HOME="${jdk21.home}";
-export JAVA_21_HOME="${jdk21.home}";
+export JAVA_HOME="${jdk21_headless.home}";
+export JAVA_21_HOME="${jdk21_headless.home}";
 '';
 
   fish = writeShellScriptBin "shellenv-fish" ''
@@ -39,7 +39,7 @@ set -x PATH "$HOME/.bin:$PATH"
 
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 
-set -x JAVA_HOME "${jdk21.home}";
-set -x JAVA_21_HOME "${jdk21.home}";
+set -x JAVA_HOME "${jdk21_headless.home}";
+set -x JAVA_21_HOME "${jdk21_headless.home}";
 '';
 }
