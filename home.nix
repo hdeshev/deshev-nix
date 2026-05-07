@@ -109,6 +109,7 @@ targets.genericLinux.enable = true;
     tuicr
     crit
     node
+    # requires shamefully-hoist=true in ~/.npmrc
     pnpm
     bun
     # yarn
@@ -252,6 +253,8 @@ targets.genericLinux.enable = true;
   home.file.".config/BraveSoftware/Brave-Browser/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
   home.file.".config/chromium/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
   home.file.".config/google-chrome/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
+
+  home.file.".npmrc".source = ./npmrc;
 
   # systemd.user.services.emote = {
   #   Unit = { Description = "Emote: faster emoji picker"; };
