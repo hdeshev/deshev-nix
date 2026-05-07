@@ -155,7 +155,7 @@ targets.genericLinux.enable = true;
     neovim
     pkgs-unstable.zellij
 
-    # emote
+    emote
     # thunderbird
     # calibre
     # libreoffice-fresh
@@ -256,15 +256,15 @@ targets.genericLinux.enable = true;
 
   home.file.".npmrc".source = ./npmrc;
 
-  # systemd.user.services.emote = {
-  #   Unit = { Description = "Emote: faster emoji picker"; };
-  #   Service = {
-  #     Type = "exec";
-  #     ExecStart = "${pkgs.emote}/bin/emote";
-  #     Restart = "on-failure";
-  #   };
-  #   Install = { WantedBy = [ "default.target" ]; };
-  # };
+  systemd.user.services.emote = {
+    Unit = { Description = "Emote: faster emoji picker"; };
+    Service = {
+      Type = "exec";
+      ExecStart = "${pkgs.emote}/bin/emote";
+      Restart = "on-failure";
+    };
+    Install = { WantedBy = [ "default.target" ]; };
+  };
 
   # systemd.user.services.zoom-power-management = {
   #   Unit = { Description = "Auto-toggle XFCE presentation mode when in Zoom meeting"; };
