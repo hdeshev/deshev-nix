@@ -193,7 +193,7 @@ targets.genericLinux.enable = true;
     wl-clipboard
 
     pyright
-    jdk21
+    jdk21_headless
     # terraform
     mariadb
     postgresql
