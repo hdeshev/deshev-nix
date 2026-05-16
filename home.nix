@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, nixgl, crit, ... }:
+{ config, pkgs, pkgs-unstable, crit, ... }:
 let
   # vim = pkgs.callPackage ./vim {};
   go = pkgs-unstable.go_1_25;
@@ -13,7 +13,6 @@ let
   mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
   tuicr = pkgs-unstable.callPackage ./tuicr.nix {};
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
-  gl = pkgs.callPackage ./gl.nix { inherit nixgl; };
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -128,8 +127,6 @@ targets.genericLinux.enable = true;
     pkgs-unstable.markdownlint-cli
     # javascript and frontend
     pkgs-unstable.prettier
-    # zoom-power-management
-    gl
   ] ++
   ssh-wrappers
   ++ (with pkgs-unstable; [
