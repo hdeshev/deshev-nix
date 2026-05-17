@@ -8,14 +8,10 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     crit.url = "github:tomasz-tomczyk/crit/v0.10.4";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixgl, crit, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, crit, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -30,7 +26,6 @@
 
         extraSpecialArgs = {
           pkgs-unstable = unstable;
-          nixgl = nixgl.packages.${system};
           crit = crit.packages.${system}.crit;
         };
       };
