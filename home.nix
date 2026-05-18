@@ -192,6 +192,7 @@ targets.genericLinux.enable = true;
     pyright
     jdk21_headless
     maven
+    (pkgs.jdt-language-server.override { jdk = pkgs.jdk21_headless; })
     # terraform
     mariadb
     postgresql

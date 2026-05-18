@@ -1,6 +1,14 @@
 [language-server.csharp-ls]
 command = "csharp-ls"
 
+[language-server.jdtls]
+command = "jdtls"
+args = ["-data", "/home/hd/.cache/jdtls-workspace"]
+
 [[language]]
 name = "c-sharp"
 language-servers = ["csharp-ls"]
+
+[[language]]
+name = "java"
+language-servers = ["jdtls"]
