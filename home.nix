@@ -191,6 +191,7 @@ targets.genericLinux.enable = true;
 
     pyright
     jdk21_headless
+    maven
     # terraform
     mariadb
     postgresql
