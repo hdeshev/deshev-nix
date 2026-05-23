@@ -13,6 +13,7 @@ let
   mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
   tuicr = pkgs-unstable.callPackage ./tuicr.nix {};
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
+  helix-allium = pkgs-unstable.callPackage ./helix-allium.nix { helix = pkgs-unstable.helix; };
   browserpass = pkgs.browserpass;
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
@@ -130,7 +131,7 @@ targets.genericLinux.enable = true;
   ] ++
   ssh-wrappers
   ++ (with pkgs-unstable; [
-    helix
+    helix-allium
     radicle-node
     radicle-tui
     # mpv

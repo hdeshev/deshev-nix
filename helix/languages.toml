@@ -12,10 +12,6 @@ file-types = ["allium"]
 comment-token = "--"
 language-servers = ["allium-lsp"]
 
-[[grammar]]
-name = "allium"
-source = { git = "git@github.com:juxt/tree-sitter-allium", rev = "728f4d3410894da3b74507003c95282042d50f8b" }
-
 [[language]]
 name = "c-sharp"
 language-servers = ["csharp-ls"]
