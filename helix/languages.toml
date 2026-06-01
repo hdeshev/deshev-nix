@@ -1,13 +1,23 @@
 [language-server.csharp-ls]
 command = "csharp-ls"
 
-[language-server.jdtls]
-command = "jdtls"
-args = ["-data", "/home/hd/.cache/jdtls-workspace"]
+[language-server.allium-lsp]
+command = "allium-lsp"
+args = ["--stdio"]
+
+[[language]]
+name = "allium"
+scope = "source.allium"
+file-types = ["allium"]
+comment-token = "--"
+language-servers = ["allium-lsp"]
 
 [[language]]
 name = "c-sharp"
 language-servers = ["csharp-ls"]
+
+[language-server.jdtls]
+command = "jdtls"
 
 [[language]]
 name = "java"
