@@ -47,6 +47,7 @@ rec {
 
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-sdk-6.0.428"
+    "dotnet-runtime-6.0.36"
   ];
 
   # Let Home Manager install and manage itself.
@@ -205,6 +206,7 @@ targets.genericLinux.enable = true;
     # dotnet
     (pkgs.dotnetCorePackages.combinePackages [
       pkgs.dotnet-sdk_6
+      pkgs.dotnet-sdk_6.runtime
       pkgs.dotnetCorePackages.dotnet_8.sdk
       pkgs.dotnetCorePackages.dotnet_8.runtime
       pkgs.dotnetCorePackages.dotnet_10.sdk
@@ -234,6 +236,8 @@ targets.genericLinux.enable = true;
     yt-dlp
     ffmpeg
     s3cmd
+
+    (pkgs.jdt-language-server.override { jdk = pkgs.jdk21_headless; })
   ]);
 
   home.file.".vimrc".source = ./vimrc;

@@ -15,3 +15,10 @@ language-servers = ["allium-lsp"]
 [[language]]
 name = "c-sharp"
 language-servers = ["csharp-ls"]
+
+[language-server.jdtls]
+command = "jdtls"
+
+[[language]]
+name = "java"
+language-servers = ["jdtls"]
