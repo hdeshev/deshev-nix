@@ -8,6 +8,9 @@ auto-pairs = false
 soft-wrap.enable = true
 clipboard-provider = "wayland"
 
+[editor.file-picker]
+hidden = false
+
 [editor.lsp]
 display-messages = true
 
