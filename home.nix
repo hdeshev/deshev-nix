@@ -1,9 +1,7 @@
 { config, pkgs, pkgs-unstable, crit, ... }:
 let
   # vim = pkgs.callPackage ./vim {};
-  go = pkgs-unstable.go_1_25;
   node = pkgs.nodejs_24;
-  bun = pkgs-unstable.bun;
   # yarn = pkgs.yarn.override { nodejs = node; };
   pnpm = pkgs.pnpm.override { nodejs = node; };
   ssh-wrappers = pkgs.callPackage ./ssh-ag.nix {};
@@ -100,7 +98,7 @@ targets.genericLinux.enable = true;
 
   home.packages = [
     # Golang 
-    go
+    pkgs-unstable.go_1_26
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
     
@@ -112,7 +110,6 @@ targets.genericLinux.enable = true;
     node
     # requires shamefully-hoist=true in ~/.npmrc
     pnpm
-    bun
     # yarn
     shellenv.bash
     shellenv.fish
