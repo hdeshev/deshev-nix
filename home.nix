@@ -13,6 +13,7 @@ let
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
   helix-allium = pkgs-unstable.callPackage ./helix-allium.nix { helix = pkgs-unstable.helix; };
   browserpass = pkgs.browserpass;
+  emacs = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: with epkgs; [ vterm ]);
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
     sleep 30
@@ -158,6 +159,11 @@ targets.genericLinux.enable = true;
     # mpv
     # signal-desktop
 
+    # Doom Emacs
+    emacs
+    gnutls
+    zstd
+    editorconfig-core-c
     coreutils
     unzip
     git
