@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, crit, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 let
   # vim = pkgs.callPackage ./vim {};
   node = pkgs.nodejs_24;
@@ -107,7 +107,6 @@ targets.genericLinux.enable = true;
     jujutsu
     mdterm
     tuicr
-    crit
     node
     # requires shamefully-hoist=true in ~/.npmrc
     pnpm
@@ -231,8 +230,8 @@ targets.genericLinux.enable = true;
     # gcc
     # cmake
 
-    node.pkgs.typescript
-    node.pkgs.typescript-language-server
+    pkgs.typescript
+    pkgs.typescript-language-server
     # pkgs.php81
     # pkgs.php81.packages.composer
 
