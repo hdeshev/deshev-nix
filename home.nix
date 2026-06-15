@@ -97,6 +97,12 @@ targets.genericLinux.enable = true;
     };
   };
 
+  services.emacs = {
+    enable = true;
+    package = emacs;
+    startWithUserSession = true;
+  };
+
   home.packages = [
     # Golang 
     pkgs-unstable.go_1_26
