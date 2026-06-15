@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, crit, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 let
   # vim = pkgs.callPackage ./vim {};
   node = pkgs.nodejs_24;
@@ -13,6 +13,7 @@ let
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
   helix-allium = pkgs-unstable.callPackage ./helix-allium.nix { helix = pkgs-unstable.helix; };
   browserpass = pkgs.browserpass;
+  emacs = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: with epkgs; [ vterm ]);
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
     sleep 30
@@ -106,7 +107,6 @@ targets.genericLinux.enable = true;
     jujutsu
     mdterm
     tuicr
-    crit
     node
     # requires shamefully-hoist=true in ~/.npmrc
     pnpm
@@ -158,6 +158,11 @@ targets.genericLinux.enable = true;
     # mpv
     # signal-desktop
 
+    # Doom Emacs
+    emacs
+    gnutls
+    zstd
+    editorconfig-core-c
     coreutils
     unzip
     git
@@ -225,8 +230,8 @@ targets.genericLinux.enable = true;
     # gcc
     # cmake
 
-    node.pkgs.typescript
-    node.pkgs.typescript-language-server
+    pkgs.typescript
+    pkgs.typescript-language-server
     # pkgs.php81
     # pkgs.php81.packages.composer
 
