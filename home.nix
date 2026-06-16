@@ -104,7 +104,10 @@ targets.genericLinux.enable = true;
   };
 
   home.packages = [
-    # Golang 
+    # Nix
+    pkgs.nixfmt
+
+    # Golang
     pkgs-unstable.go_1_26
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
