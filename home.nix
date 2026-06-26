@@ -130,6 +130,8 @@ targets.genericLinux.enable = true;
     pkgs-unstable.shfmt
     pkgs-unstable.bash-language-server
 
+    # docker
+    pkgs-unstable.dockerfile-language-server
     # markdown
     pkgs-unstable.marksman
     pkgs-unstable.markdownlint-cli
