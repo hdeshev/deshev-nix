@@ -251,6 +251,8 @@ targets.genericLinux.enable = true;
     s3cmd
 
     (pkgs.jdt-language-server.override { jdk = pkgs.jdk21_headless; })
+
+    ansible
   ]);
 
   home.file.".vimrc".source = ./vimrc;
