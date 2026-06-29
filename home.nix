@@ -130,6 +130,8 @@ targets.genericLinux.enable = true;
     pkgs-unstable.shfmt
     pkgs-unstable.bash-language-server
 
+    # docker
+    pkgs-unstable.dockerfile-language-server
     # markdown
     pkgs-unstable.marksman
     pkgs-unstable.markdownlint-cli
@@ -249,6 +251,8 @@ targets.genericLinux.enable = true;
     s3cmd
 
     (pkgs.jdt-language-server.override { jdk = pkgs.jdk21_headless; })
+
+    ansible
   ]);
 
   home.file.".vimrc".source = ./vimrc;
