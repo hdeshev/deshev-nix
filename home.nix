@@ -13,7 +13,6 @@ let
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
   helix-allium = pkgs-unstable.callPackage ./helix-allium.nix { helix = pkgs-unstable.helix; };
   browserpass = pkgs.browserpass;
-  emacs = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: with epkgs; [ vterm ]);
   zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
   while true; do
     sleep 30
@@ -29,6 +28,8 @@ let
   # helix = pkgs.callPackage ./helix.nix {};
 in
 rec {
+  imports = [ ./emacs.nix ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "hd";
@@ -95,12 +96,6 @@ targets.genericLinux.enable = true;
         search_shortcut = "off";
       };
     };
-  };
-
-  services.emacs = {
-    enable = true;
-    package = emacs;
-    startWithUserSession = true;
   };
 
   home.packages = [
@@ -170,7 +165,6 @@ targets.genericLinux.enable = true;
     # signal-desktop
 
     # Doom Emacs
-    emacs
     gnutls
     zstd
     editorconfig-core-c
