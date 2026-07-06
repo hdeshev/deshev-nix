@@ -3,7 +3,7 @@ let
   # vim = pkgs.callPackage ./vim {};
   node = pkgs.nodejs_24;
   # yarn = pkgs.yarn.override { nodejs = node; };
-  pnpm = pkgs.pnpm.override { nodejs = node; };
+  pnpm = pkgs.pnpm.override { nodejs-slim = node; };
   ssh-wrappers = pkgs.callPackage ./ssh-ag.nix {};
   shellenv = pkgs.callPackage ./shellenv.nix {};
   # jujutsu = pkgs-unstable.callPackage ./jujutsu.nix {};
