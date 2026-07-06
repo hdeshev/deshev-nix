@@ -29,7 +29,7 @@ in
       Requires = [ "emacs-wsl-env.service" ];
     };
     Service = {
-      Type = "simple";
+      Type = "forking";
       EnvironmentFile = "-%h/.cache/emacs/wsl-env";
       ExecStart = "${emacs}/bin/emacs --daemon";
       ExecStop = "${emacs}/bin/emacsclient --eval '(kill-emacs)'";

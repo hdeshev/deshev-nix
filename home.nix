@@ -13,22 +13,10 @@ let
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
   helix-allium = pkgs-unstable.callPackage ./helix-allium.nix { helix = pkgs-unstable.helix; };
   browserpass = pkgs.browserpass;
-  zoom-power-management = pkgs.writeShellScriptBin "zoom-power-management" ''
-  while true; do
-    sleep 30
-
-    pid=$(wmctrl -lpv 2> /dev/null | awk '$5 ~ /Meeting/ { print $3; }')
-    if [ ! -z "$pid" ] && grep -qi zoom "/proc/$pid/cmdline"; then
-      xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s true
-    else
-      xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s false
-    fi
-  done
-  '';
   # helix = pkgs.callPackage ./helix.nix {};
 in
 rec {
-  imports = [ ./emacs.nix ];
+  imports = [ ./emacs.nix ./espanso.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -84,18 +72,6 @@ targets.genericLinux.enable = true;
       "hdeshev"
       "xp"
     ];
-  };
-
-  # Espanso is a snippets completion tool
-  services.espanso = {
-    enable = false;
-    # espanso-wayland is utterly broken and does not start
-    package = pkgs-unstable.espanso-wayland;
-    configs = {
-      default = {
-        search_shortcut = "off";
-      };
-    };
   };
 
   home.packages = [
@@ -157,7 +133,6 @@ targets.genericLinux.enable = true;
     neovim
     pkgs-unstable.zellij
 
-    # emote
     # thunderbird
     # calibre
     # libreoffice-fresh
@@ -267,26 +242,6 @@ targets.genericLinux.enable = true;
   home.file.".config/google-chrome/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
 
   home.file.".npmrc".source = ./npmrc;
-
-  # systemd.user.services.emote = {
-  #   Unit = { Description = "Emote: faster emoji picker"; };
-  #   Service = {
-  #     Type = "exec";
-  #     ExecStart = "${pkgs.emote}/bin/emote";
-  #     Restart = "on-failure";
-  #   };
-  #   Install = { WantedBy = [ "default.target" ]; };
-  # };
-
-  # systemd.user.services.zoom-power-management = {
-  #   Unit = { Description = "Auto-toggle XFCE presentation mode when in Zoom meeting"; };
-  #   Service = {
-  #     Type = "exec";
-  #     ExecStart = "${zoom-power-management}/bin/zoom-power-management";
-  #     Restart = "on-failure";
-  #   };
-  #   Install = { WantedBy = [ "default.target" ]; };
-  # };
 
   # systemd.user.services.wiki = {
   #   Unit = { Description = "Local TiddlyWiki notes"; };
