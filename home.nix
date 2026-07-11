@@ -82,6 +82,7 @@ targets.genericLinux.enable = true;
     pkgs-unstable.go_1_26
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
+    pkgs.go-jira
     
     # vim
     jujutsu
