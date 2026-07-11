@@ -104,6 +104,7 @@ targets.genericLinux.enable = true;
     # docker
     pkgs-unstable.dockerfile-language-server
     # markdown
+    pkgs.pandoc
     pkgs-unstable.marksman
     pkgs-unstable.markdownlint-cli
     # javascript and frontend
