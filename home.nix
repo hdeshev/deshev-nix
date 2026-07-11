@@ -16,7 +16,7 @@ let
   # helix = pkgs.callPackage ./helix.nix {};
 in
 rec {
-  imports = [ ./emacs.nix ./espanso.nix ];
+  imports = [ ./emacs.nix ./espanso.nix ./jira.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -82,7 +82,6 @@ targets.genericLinux.enable = true;
     pkgs-unstable.go_1_26
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
-    pkgs.go-jira
     
     # vim
     jujutsu
