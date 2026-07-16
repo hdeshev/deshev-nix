@@ -16,7 +16,7 @@ let
   # helix = pkgs.callPackage ./helix.nix {};
 in
 rec {
-  imports = [ ./emacs.nix ./espanso.nix ];
+  imports = [ ./emacs.nix ./espanso.nix ./jira.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -104,6 +104,7 @@ targets.genericLinux.enable = true;
     # docker
     pkgs-unstable.dockerfile-language-server
     # markdown
+    pkgs.pandoc
     pkgs-unstable.marksman
     pkgs-unstable.markdownlint-cli
     # javascript and frontend

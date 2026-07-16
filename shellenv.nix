@@ -9,8 +9,8 @@ eval "$(zoxide init bash)"
 eval "$(direnv hook bash)"
 source "$HOME/.cargo/env"
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="emacsclient -t"
+export VISUAL="emacsclient -t"
 
 export PATH="$HOME/.bin:$PATH"
 
