@@ -16,7 +16,7 @@ export PATH="$HOME/.bin:$PATH"
 
 alias g='git'
 alias gw='cd ~/w'
-alias gx='cd ~/xp'
+alias gm='cd ~/m2m'
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
@@ -32,8 +32,8 @@ starship init fish | source
 zoxide init fish | source
 cat ~/.cargo/env | babelfish | source
 
-set -x EDITOR "nvim"
-set -x VISUAL "nvim"
+set -x EDITOR "emacsclient -t"
+set -x VISUAL "emacsclient -t"
 
 set -x PATH "$HOME/.bin:$PATH"
 
