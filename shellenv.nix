@@ -7,8 +7,22 @@
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval "$(direnv hook bash)"
+
+# .NET
+export PATH="$PATH:$HOME/.dotnet/tools"
+export DOTNET_ROOT="$HOME/.nix-profile/share/dotnet"
+
+# Golang
+export PATH="$HOME/go/bin:$PATH"
+
+# Python
+. "$HOME/.local/bin/env"
+
+# Rust
 source "$HOME/.cargo/env"
 
+# Emacs
+export PATH="$HOME/.config/emacs/bin:$PATH"
 export EDITOR="emacsclient -t"
 export VISUAL="emacsclient -t"
 
@@ -16,7 +30,7 @@ export PATH="$HOME/.bin:$PATH"
 
 alias g='git'
 alias gw='cd ~/w'
-alias gx='cd ~/xp'
+alias gm='cd ~/m2m'
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
@@ -30,12 +44,30 @@ cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | ${babelfish}/bin/babelfish
 direnv hook fish | source
 starship init fish | source
 zoxide init fish | source
-cat ~/.cargo/env | babelfish | source
 
-set -x EDITOR "nvim"
-set -x VISUAL "nvim"
+# .NET
+set -x PATH "$PATH:$HOME/.dotnet/tools"
+set -x DOTNET_ROOT "$HOME/.nix-profile/share/dotnet"
+
+# Golang
+set -x PATH "$HOME/go/bin:$PATH"
+
+# Python
+cat ~/.local/bin/env | ${babelfish}/bin/babelfish | source
+
+# Rust
+cat ~/.cargo/env | ${babelfish}/bin/babelfish | source
+
+# Emacs
+set -x PATH "$HOME/.config/emacs/bin:$PATH"
+set -x EDITOR "emacsclient -t"
+set -x VISUAL "emacsclient -t"
 
 set -x PATH "$HOME/.bin:$PATH"
+
+alias g='git'
+alias gw='cd ~/w'
+alias gm='cd ~/m2m'
 
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 
