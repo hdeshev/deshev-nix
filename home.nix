@@ -115,6 +115,8 @@ targets.genericLinux.enable = true;
     helix-allium
     radicle-node
     radicle-tui
+    syft
+    grype
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
