@@ -1,19 +1,12 @@
 { config, pkgs, pkgs-unstable, ... }:
 let
-  # vim = pkgs.callPackage ./vim {};
   node = pkgs.nodejs_24;
   # yarn = pkgs.yarn.override { nodejs = node; };
   pnpm = pkgs.pnpm.override { nodejs-slim = node; };
   ssh-wrappers = pkgs.callPackage ./ssh-ag.nix {};
   shellenv = pkgs.callPackage ./shellenv.nix {};
-  # jujutsu = pkgs-unstable.callPackage ./jujutsu.nix {};
-  jujutsu = pkgs-unstable.jujutsu;
-  mdterm = pkgs-unstable.callPackage ./mdterm.nix {};
-  tuicr = pkgs-unstable.callPackage ./tuicr.nix {};
   csharp-ls = pkgs.callPackage ./csharp-ls.nix {};
-  helix-allium = pkgs-unstable.callPackage ./helix-allium.nix { helix = pkgs-unstable.helix; };
   browserpass = pkgs.browserpass;
-  # helix = pkgs.callPackage ./helix.nix {};
 in
 rec {
   imports = [ ./emacs.nix ./espanso.nix ./jira.nix ];
@@ -84,9 +77,6 @@ targets.genericLinux.enable = true;
     pkgs-unstable.golangci-lint
     
     # vim
-    jujutsu
-    mdterm
-    tuicr
     node
     # requires shamefully-hoist=true in ~/.npmrc
     pnpm
@@ -112,9 +102,6 @@ targets.genericLinux.enable = true;
   ] ++
   ssh-wrappers
   ++ (with pkgs-unstable; [
-    helix-allium
-    radicle-node
-    radicle-tui
     # mpv
     # tdesktop
   ]) ++ (with pkgs; [
@@ -132,7 +119,6 @@ targets.genericLinux.enable = true;
     # tmuxPlugins.yank
     # tmuxPlugins.fzf-tmux-url
     neovim
-    pkgs-unstable.zellij
 
     # thunderbird
     # calibre
@@ -147,7 +133,6 @@ targets.genericLinux.enable = true;
     coreutils
     unzip
     git
-    tig
     lazygit
     direnv
     babelfish
@@ -159,8 +144,6 @@ targets.genericLinux.enable = true;
     zoxide
     delta
     bat
-    yazi
-    micro
     universal-ctags
     starship
     ncdu
