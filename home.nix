@@ -151,6 +151,7 @@ targets.genericLinux.enable = true;
     yq-go
     gron
     sqlite
+    sqlcmd # MS SQL Server CLI tool
     bat
     shellcheck
     cloc
