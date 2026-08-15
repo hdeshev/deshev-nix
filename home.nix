@@ -207,6 +207,9 @@ targets.genericLinux.enable = true;
     (pkgs.jdt-language-server.override { jdk = pkgs.jdk21_headless; })
 
     ansible
+
+    # diagrams
+    d2
   ]);
 
   home.file.".vimrc".source = ./vimrc;
