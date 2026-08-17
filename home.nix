@@ -134,6 +134,7 @@ targets.genericLinux.enable = true;
     unzip
     git
     lazygit
+    prr
     direnv
     babelfish
     nix-direnv
