@@ -31,7 +31,7 @@ in
     Service = {
       Type = "exec";
       EnvironmentFile = "-%h/.cache/emacs/wsl-env";
-      ExecStart = "${pkgs.fish}/bin/fish -i -c 'exec ${emacs}/bin/emacs --fg-daemon'";
+      ExecStart = "${pkgs.bash}/bin/bash -lic 'exec ${emacs}/bin/emacs --fg-daemon'";
       ExecStop = "${emacs}/bin/emacsclient --eval '(kill-emacs)'";
       Restart = "on-failure";
       Environment = "SSH_AUTH_SOCK=%t/keyring/ssh";
