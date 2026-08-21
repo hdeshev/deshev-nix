@@ -134,6 +134,7 @@ targets.genericLinux.enable = true;
     unzip
     git
     lazygit
+    prr
     direnv
     babelfish
     nix-direnv
@@ -181,7 +182,9 @@ targets.genericLinux.enable = true;
     ])
     pkgs.dotnetPackages.Nuget
     csharp-ls
-    # python3
+    (pkgs.python314.withPackages (ps: with ps; [
+      httpx
+    ]))
     # poetry
     # python311Packages.python-lsp-server
     # python311Packages.pylsp-mypy
