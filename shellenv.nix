@@ -25,6 +25,7 @@ source "$HOME/.cargo/env"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export EDITOR="emacsclient -t"
 export VISUAL="emacsclient -t"
+alias e='emacsclient -nc -a ""'
 
 export PATH="$HOME/.bin:$PATH"
 
