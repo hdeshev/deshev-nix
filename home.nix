@@ -72,7 +72,7 @@ targets.genericLinux.enable = true;
     pkgs.nixfmt
 
     # Golang
-    pkgs-unstable.go_1_26
+    pkgs-unstable.go_1_27
     pkgs-unstable.gopls
     pkgs-unstable.golangci-lint
     
