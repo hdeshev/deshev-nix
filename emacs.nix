@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 let
-  emacs = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: with epkgs; [ vterm ]);
+  emacs = (pkgs-unstable.emacsPackagesFor pkgs-unstable.emacs-pgtk).emacsWithPackages (epkgs: with epkgs; [ vterm ]);
 in
 {
   home.packages = [ emacs ];
