@@ -160,7 +160,7 @@ targets.genericLinux.enable = true;
     wl-clipboard
 
     pyright
-    jdk21_headless
+    jdk25_headless
     maven
     # terraform
     mariadb
@@ -207,7 +207,7 @@ targets.genericLinux.enable = true;
     ffmpeg
     s3cmd
 
-    (pkgs.jdt-language-server.override { jdk = pkgs.jdk21_headless; })
+    (pkgs.jdt-language-server.override { jdk = pkgs.jdk25_headless; })
 
     ansible
 
