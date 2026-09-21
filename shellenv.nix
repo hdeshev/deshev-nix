@@ -1,4 +1,4 @@
-{writeShellScriptBin, glibcLocales, jdk21_headless, babelfish}:
+{writeShellScriptBin, glibcLocales, jdk25_headless, babelfish}:
 {
   bash = writeShellScriptBin "shellenv-bash" ''
 # export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
@@ -35,8 +35,8 @@ alias gm='cd ~/m2m'
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-export JAVA_HOME="${jdk21_headless.home}";
-export JAVA_21_HOME="${jdk21_headless.home}";
+export JAVA_HOME="${jdk25_headless.home}";
+export JAVA_25_HOME="${jdk25_headless.home}";
 '';
 
   fish = writeShellScriptBin "shellenv-fish" ''
@@ -72,7 +72,7 @@ alias gm='cd ~/m2m'
 
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 
-set -x JAVA_HOME "${jdk21_headless.home}";
-set -x JAVA_21_HOME "${jdk21_headless.home}";
+set -x JAVA_HOME "${jdk25_headless.home}";
+set -x JAVA_25_HOME "${jdk25_headless.home}";
 '';
 }
