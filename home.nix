@@ -232,7 +232,7 @@ targets.genericLinux.enable = true;
   home.file.".config/chromium/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
   home.file.".config/google-chrome/NativeMessagingHosts/com.github.browserpass.native.json".source = "${browserpass}/lib/browserpass/hosts/chromium/com.github.browserpass.native.json";
 
-  home.file.".npmrc".source = ./npmrc;
+  # home.file.".npmrc".source = ./npmrc;
 
   # systemd.user.services.wiki = {
   #   Unit = { Description = "Local TiddlyWiki notes"; };
