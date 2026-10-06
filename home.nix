@@ -106,6 +106,7 @@ targets.genericLinux.enable = true;
     # tdesktop
   ]) ++ (with pkgs; [
     gh
+    openbao
     gnupg
     (pass.withExtensions (exts: with exts; [
       pass-import
@@ -134,9 +135,8 @@ targets.genericLinux.enable = true;
     unzip
     git
     lazygit
-    prr
     direnv
-    babelfish
+    # babelfish
     nix-direnv
     fzf
     fd
