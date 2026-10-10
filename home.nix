@@ -97,6 +97,7 @@ targets.genericLinux.enable = true;
     pkgs.pandoc
     pkgs-unstable.marksman
     pkgs-unstable.markdownlint-cli
+    pkgs.mermaid-cli
     # javascript and frontend
     pkgs-unstable.prettier
   ] ++
