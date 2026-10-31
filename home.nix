@@ -60,11 +60,6 @@ targets.genericLinux.enable = true;
     };
 
     enableSshSupport = true;
-    sshKeys = [
-      "id_rsa"
-      "hdeshev"
-      "xp"
-    ];
   };
 
   home.packages = [
@@ -82,7 +77,6 @@ targets.genericLinux.enable = true;
     pnpm
     # yarn
     shellenv.bash
-    shellenv.fish
     # yaml
     pkgs-unstable.yaml-language-server
     pkgs-unstable.yamlfmt
@@ -137,7 +131,6 @@ targets.genericLinux.enable = true;
     git
     lazygit
     direnv
-    # babelfish
     nix-direnv
     fzf
     fd
