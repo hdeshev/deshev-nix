@@ -1,8 +1,20 @@
-{writeShellScriptBin, glibcLocales, jdk25_headless, babelfish}:
+{writeShellScriptBin, glibcLocales, jdk25_headless, babelfish, gnupg}:
 {
   bash = writeShellScriptBin "shellenv-bash" ''
 # export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
+# Use gpg-agent as the ssh-agent. Only when its socket actually exists, so this
+# is a no-op on hosts without a running gpg-agent (e.g. WSL2) and never
+# overrides an agent forwarded over ssh.
+if [ -z "''${SSH_CONNECTION:-}" ]; then
+  _gpg_ssh_sock="$(${gnupg}/bin/gpgconf --list-dirs agent-ssh-socket 2>/dev/null)"
+  if [ -n "$_gpg_ssh_sock" ] && [ -S "$_gpg_ssh_sock" ]; then
+    unset SSH_AGENT_PID
+    export SSH_AUTH_SOCK="$_gpg_ssh_sock"
+  fi
+  unset _gpg_ssh_sock
+fi
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
