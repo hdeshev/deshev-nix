@@ -1,4 +1,4 @@
-{writeShellScriptBin, glibcLocales, jdk25_headless, babelfish, gnupg}:
+{writeShellScriptBin, jdk25_headless, gnupg}:
 {
   bash = writeShellScriptBin "shellenv-bash" ''
 # export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
@@ -49,42 +49,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 export JAVA_HOME="${jdk25_headless.home}";
 export JAVA_25_HOME="${jdk25_headless.home}";
-'';
-
-  fish = writeShellScriptBin "shellenv-fish" ''
-cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | ${babelfish}/bin/babelfish | source
-
-direnv hook fish | source
-starship init fish | source
-zoxide init fish | source
-
-# .NET
-set -x PATH "$PATH:$HOME/.dotnet/tools"
-set -x DOTNET_ROOT "$HOME/.nix-profile/share/dotnet"
-
-# Golang
-set -x PATH "$HOME/go/bin:$PATH"
-
-# Python
-cat ~/.local/bin/env | ${babelfish}/bin/babelfish | source
-
-# Rust
-cat ~/.cargo/env | ${babelfish}/bin/babelfish | source
-
-# Emacs
-set -x PATH "$HOME/.config/emacs/bin:$PATH"
-set -x EDITOR "emacsclient -t"
-set -x VISUAL "emacsclient -t"
-
-set -x PATH "$HOME/.bin:$PATH"
-
-alias g='git'
-alias gw='cd ~/w'
-alias gm='cd ~/m2m'
-
-set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
-
-set -x JAVA_HOME "${jdk25_headless.home}";
-set -x JAVA_25_HOME "${jdk25_headless.home}";
 '';
 }

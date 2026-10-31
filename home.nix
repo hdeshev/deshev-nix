@@ -77,7 +77,6 @@ targets.genericLinux.enable = true;
     pnpm
     # yarn
     shellenv.bash
-    shellenv.fish
     # yaml
     pkgs-unstable.yaml-language-server
     pkgs-unstable.yamlfmt
@@ -132,7 +131,6 @@ targets.genericLinux.enable = true;
     git
     lazygit
     direnv
-    # babelfish
     nix-direnv
     fzf
     fd
