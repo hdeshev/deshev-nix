@@ -60,11 +60,6 @@ targets.genericLinux.enable = true;
     };
 
     enableSshSupport = true;
-    sshKeys = [
-      "id_rsa"
-      "hdeshev"
-      "xp"
-    ];
   };
 
   home.packages = [
