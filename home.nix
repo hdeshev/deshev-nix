@@ -167,10 +167,10 @@ targets.genericLinux.enable = true;
 
     # dotnet
     (pkgs.dotnetCorePackages.combinePackages [
-      pkgs.dotnet-sdk_6
-      pkgs.dotnet-sdk_6.runtime
-      pkgs.dotnetCorePackages.dotnet_8.sdk
-      pkgs.dotnetCorePackages.dotnet_8.runtime
+      # pkgs.dotnet-sdk_6
+      # pkgs.dotnet-sdk_6.runtime
+      # pkgs.dotnetCorePackages.dotnet_8.sdk
+      # pkgs.dotnetCorePackages.dotnet_8.runtime
       pkgs.dotnetCorePackages.sdk_10_0
       pkgs.dotnetCorePackages.dotnet_10.runtime
     ])
