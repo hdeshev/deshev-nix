@@ -130,6 +130,7 @@ targets.genericLinux.enable = true;
     unzip
     git
     lazygit
+    pkgs-unstable.jujutsu
     direnv
     nix-direnv
     fzf
