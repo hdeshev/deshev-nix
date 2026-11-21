@@ -205,6 +205,7 @@ targets.genericLinux.enable = true;
     (pkgs.jdt-language-server.override { jdk = pkgs.jdk25_headless; })
 
     ansible
+    ansible-lint
 
     # diagrams
     d2
